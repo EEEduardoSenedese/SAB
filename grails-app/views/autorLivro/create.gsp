@@ -28,14 +28,39 @@
                 <fieldset class="form">
                     <f:field bean="autorLivro" property="autor">
                         <g:select name="autor.id" from="${sab.Autor.list(sort:'nome')}" optionKey="id"/>
+
+                        <g:submitButton name="create" class="botao-normal" value="Adicionar este Autor" />
+
+
                     </f:field>
 
+                    <!-- Link para novo genero-->
+                    <g:link controller="Genero" action="create" target="_blank">Novo Autor</g:link>
+
                     <g:select name="livro.id" from="${sab.Livro.get(params.long('livro.id'))}" optionKey="id" class="escondido"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="Adicionar este Autor ao Livro" />
+
+                    <div class="fieldset">
                 </fieldset>
             </g:form>
+
+            <fieldset class="form">
+                <div class="fieldcontain">
+                    <table class="tabela-de-adicao">
+                        <caption>Autores cadastrados</caption>
+                        <g:each in="${autorLivroList}" var="autorLivro">
+                            <tr>
+                                <td>
+                                    ${autorLivro.autor.nome}
+                                </td>
+                            </tr>
+                        </g:each>
+                    </table>
+                </div>
+            </fieldset>
+
+            <fieldset class="buttons">
+                <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Voltar</g:link>
+            </fieldset>
         </div>
     </body>
 </html>

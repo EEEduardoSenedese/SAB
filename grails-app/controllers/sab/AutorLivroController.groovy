@@ -18,7 +18,14 @@ class AutorLivroController {
     }
 
     def create() {
-        respond new AutorLivro(params)
+
+        def autorLivroList = sab.AutorLivro.withCriteria {
+            livro{
+                eq 'id', params.long('livro.id')
+            }
+        }
+
+        respond new AutorLivro(params), model:[autorLivroList: autorLivroList]
     }
 
     @Transactional
@@ -37,7 +44,7 @@ class AutorLivroController {
 
         autorLivro.save flush:true
 
-        redirect autorLivro.livro
+        redirect (action:"create", params:['livro.id':autorLivro.livro.id])
     }
 
     def edit(AutorLivro autorLivro) {

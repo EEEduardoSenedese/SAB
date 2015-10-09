@@ -29,43 +29,48 @@
                     <!-- Escolhe genero -->
                     <f:field bean="generoLivro" property="genero">
                         <g:select name="genero.id" optionKey="id" from="${sab.Genero.list(sort: 'nome')}"/>
-                        <g:submitButton name="create" class="save" value="Adicionar este Genero" />
+                        <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero" />
+
                     </f:field>
+
+                    <!-- Link para novo genero-->
+                    <g:link controller="Genero" action="create" target="_blank">Novo Genero</g:link>
+
                 </fieldset>
 
                 <!-- Livro -->
                 <!-- Este item fica escondido -->
                 <g:select name="livro.id" optionKey="id" from="${sab.Livro.get(params.long('livro.id'))}" class="escondido"/>
-
-
             </g:form>
 
+            <fieldset class="form">
+                <!-- Tabela com os livros cadastrados -->
+                <div class="fieldcontain">
+                    <table class="tabela-de-adicao">
+                        <caption>Generos do Livro</caption>
+                        <g:each in="${generoLivroList}" var="generoLivro" status="i">
+                            <tr>
+                                <td>
+                                    ${generoLivro.genero}
+                                </td>
 
-                <fieldset class="form">
-                    <!-- Tabela com os livros cadastrados -->
-                    <div class="fieldcontain">
-                        <table class="tabela-de-adicao">
-                            <caption>Generos do Livro</caption>
-                            <g:each in="${generoLivroList}" var="generoLivro" status="i">
-                                <tr>
-                                    <td>
-                                        ${generoLivro.genero}
-                                    </td>
-                                    <td>
-                                        <g:form resource="${this.generoLivro}" method="DELETE">
-                                            <fieldset class="buttons">
-                                                <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                                            </fieldset>
-                                        </g:form>
-                                    </td>
-                                </tr>
-                            </g:each>
-                        </table>
-                    </div>
-                </fieldset>
+                                <!-- Coluna para o botão de deletar
+                                <td>
+                                    <g:form resource="${this.generoLivro}" method="DELETE">
+                                        <fieldset class="buttons">
+                                            <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                        </fieldset>
+                                    </g:form>
+                                </td>
+                                -->
+                            </tr>
+                        </g:each>
+                    </table>
+                </div>
+            </fieldset>
 
             <fieldset class="buttons">
-                <g:submitButton name="create" class="save" value="Adicionar este Genero" />
+                <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Voltar</g:link>
             </fieldset>
         </div>
     </body>
