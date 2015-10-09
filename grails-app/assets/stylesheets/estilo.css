@@ -6,19 +6,16 @@ header {
 }
 
 section {
-    width: 80%;
+    margin: auto;
 }
 
 nav#menu-corpo{
   font-size: 15px;
-  float: left;
   background-color: #333333;
   padding: 10px;
   height: 50px;
-  position: fixed;
   top: 0px;
   margin: auto;
-  width: 100%;
 }
 
 nav#menu-corpo ul{
@@ -82,6 +79,16 @@ div#nav ul{
     background-color: rgba(200, 200, 200, .5);
 }
 
-hr{
-    margin: 20px;
+.botao-normal{
+    border-radius: 10px;
+    box-shadow: 1px, 1px, 5px, rgba(0, 0, 0, 0.5);
+}
+
+.botao-normal:hover{
+    background-color: #999999;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+       -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }

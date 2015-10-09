@@ -26,10 +26,6 @@
             </nav>
         </header>
 
-        <div class="espaco">
-
-        </div>
-
         <section>
             <g:layoutBody/>
         </section>
