@@ -113,9 +113,9 @@
                     <g:link class="edit" action="edit" resource="${this.livro}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 
-                    <g:link class="edit" controller="GeneroLivro" action="create" params="[ 'livro.id': this.livro.id]">Adicionar Genero</g:link>
+                    <g:link class="edit" controller="GeneroLivro" action="create" params="[ 'livro.id': this.livro.id]">Modificar Genero(s)</g:link>
 
-                    <g:link class="edit" controller="AutorLivro" action="create" params="[ 'livro.id': this.livro.id]">Adicionar Autor</g:link>
+                    <g:link class="edit" controller="AutorLivro" action="create" params="[ 'livro.id': this.livro.id]">Modificar Autor(es)</g:link>
 
                     <g:link class="edit" action="duplicar" resource="${this.livro}">Duplicar Livro</g:link>
                 </fieldset>

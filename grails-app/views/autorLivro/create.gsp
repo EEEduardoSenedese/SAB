@@ -51,6 +51,14 @@
                                 <td>
                                     <g:link action="show" controller="Autor" id="${autorLivro.autor.id}"> ${autorLivro.autor.nome} </g:link>
                                 </td>
+                                
+                                <td>
+                                    <g:form resource="${autorLivro}" method="DELETE">
+                                        <fieldset class="buttons">
+                                            <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                        </fieldset>
+                                    </g:form>
+                                </td>
                             </tr>
                         </g:each>
                     </table>

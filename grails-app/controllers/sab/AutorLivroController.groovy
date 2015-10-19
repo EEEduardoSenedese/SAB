@@ -90,7 +90,7 @@ class AutorLivroController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'autorLivro.label', default: 'AutorLivro'), autorLivro.id])
-                redirect autorLivro.livro
+                redirect (controller:"AutorLivro", action:"create", params:['livro.id': autorLivro.livro.id])
             }
             '*'{ render status: NO_CONTENT }
         }

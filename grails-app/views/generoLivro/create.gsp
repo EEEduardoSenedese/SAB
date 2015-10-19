@@ -54,15 +54,13 @@
                                     <g:link action="show" controller="Genero" id="${generoLivro.genero.id}"> ${generoLivro.genero}</g:link>
                                 </td>
 
-                                <!-- Coluna para o botão de deletar
                                 <td>
-                                    <g:form resource="${this.generoLivro}" method="DELETE">
+                                    <g:form resource="${generoLivro}" method="DELETE">
                                         <fieldset class="buttons">
                                             <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                                         </fieldset>
                                     </g:form>
                                 </td>
-                                -->
                             </tr>
                         </g:each>
                     </table>
