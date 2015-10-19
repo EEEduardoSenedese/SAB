@@ -33,8 +33,8 @@
 
                     </f:field>
 
-                    <!-- Link para novo genero-->
-                    <g:link controller="Genero" action="create" target="_blank">Novo Autor</g:link>
+                    <!-- Link para novo Autor-->
+                    <g:link controller="Autor" action="create" target="_blank">Novo Autor</g:link>
 
                     <g:select name="livro.id" from="${sab.Livro.get(params.long('livro.id'))}" optionKey="id" class="escondido"/>
 
