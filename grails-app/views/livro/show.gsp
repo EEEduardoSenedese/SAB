@@ -32,7 +32,81 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="livro"/>
+
+            <ol class="property-list livro">
+
+                <li class="fieldcontain">
+                    <span id="titulo-label" class="property-label">Titulo</span>
+                    <div class="property-value" aria-labelledby="titulo-label">${livro.titulo}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="data-label" class="property-label">Data</span>
+                    <div class="property-value" aria-labelledby="data-label">${livro.data}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="numeroDePaginas-label" class="property-label">Numero De Paginas</span>
+                    <div class="property-value" aria-labelledby="numeroDePaginas-label">${livro.numeroDePaginas}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="editora-label" class="property-label">Editora</span>
+                    <div class="property-value" aria-labelledby="editora-label">
+                        <g:link controller="Editora" action="show" id="${livro.editora.id}" target="_blank">${livro.editora}</g:link>
+                </li>
+
+                <br>
+
+                <li class="fieldcontain">
+                    <span id="aquisicao-label" class="property-label">Aquisicao</span>
+                    <div class="property-value" aria-labelledby="aquisicao-label">
+                        <g:link controller="Aquisicao" action="show" id="${livro.aquisicao.id}" target="_blank">${livro.aquisicao}</g:link>
+                    </div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="categoria-label" class="property-label">Categoria</span>
+                    <div class="property-value" aria-labelledby="categoria-label">
+                        <g:link controller="Categoria" action="show" id="${livro.categoria.id}" target="_blank">${livro.categoria}</g:link>
+                    </div>
+                </li>
+
+                <%
+                    def autoresDoLivro = sab.AutorLivro.findAllByLivro(livro)
+                    def generosDoLivro = sab.GeneroLivro.findAllByLivro(livro)
+                %>
+
+                <br>
+
+                <li class="fieldcontain">
+                    <span id="autorLivro-label" class="property-label">Autor(es) do Livro</span>
+                    <div class="property-value" aria-labelledby="autorLivro-label">
+                        <ul>
+                            <g:each var="autorLivro" in="${autoresDoLivro}">
+                                <li><g:link  controller="Autor" action="show" target="_blank" id="${autorLivro.autor.id}">${autorLivro.autor.nome}</g:link ></li>
+                            </g:each>
+                        </ul>
+                    </div>
+                </li>
+
+                <br>
+
+                <li class="fieldcontain">
+                    <span id="generoLivro-label" class="property-label">Genero(s) do Livro</span>
+                    <div class="property-value" aria-labelledby="generoLivro-label">
+                        <ul>
+                            <g:each in="${generosDoLivro}" var="generoLivro">
+                                <li>
+                                    <g:link controller="Genero" action="show" id="${generoLivro.genero.id}" target="_blank">
+                                    ${generoLivro.genero.nome}
+                                    </g:link>
+                                </li>
+                            </g:each>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
 
             <g:form resource="${this.livro}" method="DELETE">
                 <fieldset class="buttons">
