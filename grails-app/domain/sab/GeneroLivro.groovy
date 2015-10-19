@@ -12,7 +12,7 @@ class GeneroLivro {
 
     String toString(){
       if(genero?.nome && livro?.titulo){
-        "Genero: ${genero.nome} - Livro: ${livro.titulo}"
+        "Genero: ${genero.nome} - Livro: (${livro.id}) ${livro.titulo}"
       }
     }
 }

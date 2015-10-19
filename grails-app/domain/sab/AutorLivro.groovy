@@ -12,7 +12,7 @@ class AutorLivro {
 
     String toString(){
       if(autor?.nome && livro?.titulo){
-        "Autor: $autor.nome - Livro: $livro.titulo"
+        "Autor: $autor.nome - Livro: (${livro.id}) $livro.titulo"
       }
     }
 }
