@@ -49,7 +49,7 @@
                         <g:each in="${autorLivroList}" var="autorLivro" status="i">
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                                 <td>
-                                    ${autorLivro.autor.nome}
+                                    <g:link action="show" controller="Autor" id="${autorLivro.autor.id}"> ${autorLivro.autor.nome} </g:link>
                                 </td>
                             </tr>
                         </g:each>

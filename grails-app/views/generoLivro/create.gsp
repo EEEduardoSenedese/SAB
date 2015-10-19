@@ -51,7 +51,7 @@
                         <g:each in="${generoLivroList}" var="generoLivro" status="i">
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                                 <td>
-                                    ${generoLivro.genero}
+                                    <g:link action="show" controller="Genero" id="${generoLivro.genero.id}"> ${generoLivro.genero}</g:link>
                                 </td>
 
                                 <!-- Coluna para o botão de deletar
