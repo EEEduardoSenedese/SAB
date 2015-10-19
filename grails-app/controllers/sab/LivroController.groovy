@@ -162,7 +162,7 @@ class LivroController {
       request.withFormat {
           form multipartForm {
               flash.message = message(code: 'default.created.message', args: [message(code: 'copia.label', default: 'Livro'), "$copia.id - $copia.titulo"])
-              redirect copia
+              redirect (action: "edit", params:[id: copia.id])
           }
       }
     }
