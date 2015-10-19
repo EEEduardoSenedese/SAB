@@ -49,7 +49,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-    color: #48802c;
+    color: #48809c;
 }
 
 a:hover, a:active {
@@ -57,7 +57,7 @@ a:hover, a:active {
 }
 
 h1 {
-    color: #48802c;
+    color: #48809c;
     font-weight: normal;
     font-size: 1.25em;
     margin: 0.8em 0 0.3em 0;
@@ -472,7 +472,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-    background: #E1F2B6;
+    background: #b1c2c9;
 }
 
 /* PAGINATION */
