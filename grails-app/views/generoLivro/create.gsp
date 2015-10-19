@@ -49,7 +49,7 @@
                     <table class="tabela-de-adicao">
                         <caption>Generos do Livro</caption>
                         <g:each in="${generoLivroList}" var="generoLivro" status="i">
-                            <tr>
+                            <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                                 <td>
                                     ${generoLivro.genero}
                                 </td>

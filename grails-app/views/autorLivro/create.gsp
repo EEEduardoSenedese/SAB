@@ -29,8 +29,7 @@
                     <f:field bean="autorLivro" property="autor">
                         <g:select name="autor.id" from="${sab.Autor.list(sort:'nome')}" optionKey="id"/>
 
-                        <g:submitButton name="create" class="botao-normal" value="Adicionar este Autor" />
-
+                        <g:submitButton name="create" class="botao-normal" value="Adicionar este Autor"/>
 
                     </f:field>
 
@@ -47,8 +46,8 @@
                 <div class="fieldcontain">
                     <table class="tabela-de-adicao">
                         <caption>Autores cadastrados</caption>
-                        <g:each in="${autorLivroList}" var="autorLivro">
-                            <tr>
+                        <g:each in="${autorLivroList}" var="autorLivro" status="i">
+                            <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                                 <td>
                                     ${autorLivro.autor.nome}
                                 </td>
