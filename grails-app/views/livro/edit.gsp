@@ -7,7 +7,7 @@
     </head>
     <body>
         <a href="#edit-livro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        
+
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -42,10 +42,20 @@
             <g:form resource="${this.livro}" method="PUT">
                 <g:hiddenField name="version" value="${this.livro?.version}" />
                 <fieldset class="form">
-                    <f:all bean="livro" except="editora"/>
+                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas"/>
                     <f:field bean="livro" property="editora">
                         <g:select name="editora.id" from="${sab.Editora.list(sort:'nome')}" optionKey="id" value="${livro.editora.id}"/>
                     </f:field>
+
+                    <f:field bean="livro" property="data">
+                        <input type="number" name="data" value="${livro.data}"/>
+                    </f:field>
+
+                    <f:field bean="livro" property="numeroDePaginas">
+                        <input type="number" name="numeroDePaginas" value="${livro.numeroDePaginas}"
+                    </f:field>
+
+
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
