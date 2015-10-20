@@ -52,7 +52,7 @@
                     </f:field>
 
                     <f:field bean="livro" property="numeroDePaginas">
-                        <input type="number" name="numeroDePaginas" value="${livro.numeroDePaginas}"
+                        <input type="number" name="numeroDePaginas" value="${livro.numeroDePaginas}">
                     </f:field>
 
 
