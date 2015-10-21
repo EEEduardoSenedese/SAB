@@ -13,7 +13,8 @@ class Livro {
       aquisicao:  Aquisicao,
       categoria:  Categoria,
       editora:    Editora,
-]
+      colecao:      Colecao,
+      ]
 
     static constraints = {
       titulo  nullable:false, blank:false, maxsize:128, unique:false

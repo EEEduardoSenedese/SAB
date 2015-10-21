@@ -148,6 +148,7 @@ class LivroController {
       copia.data = livro.data
       copia.numeroDePaginas = livro.numeroDePaginas
       copia.categoria = livro.categoria
+      copia.colecao = livro.colecao
 
       for(autorLivroAtual in livro.autorLivro){
           copia.addToAutorLivro(new AutorLivro(autor: autorLivroAtual.autor))

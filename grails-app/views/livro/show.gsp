@@ -54,6 +54,14 @@
                     <span id="editora-label" class="property-label">Editora</span>
                     <div class="property-value" aria-labelledby="editora-label">
                         <g:link controller="Editora" action="show" id="${livro.editora.id}" target="_blank">${livro.editora}</g:link>
+                    </div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="colecao-label" class="property-label">Coleção</span>
+                    <div class="property-value" aria-labelledby="colecao-label">
+                        <g:link controller="Colecao" action="show" id="${livro.colecao.id}" target="_blank">${livro.colecao}</g:link>
+                    </div>
                 </li>
 
                 <br>
@@ -72,18 +80,13 @@
                     </div>
                 </li>
 
-                <%
-                    def autoresDoLivro = sab.AutorLivro.findAllByLivro(livro)
-                    def generosDoLivro = sab.GeneroLivro.findAllByLivro(livro)
-                %>
-
                 <br>
 
                 <li class="fieldcontain">
                     <span id="autorLivro-label" class="property-label">Autor(es) do Livro</span>
                     <div class="property-value" aria-labelledby="autorLivro-label">
                         <ul>
-                            <g:each var="autorLivro" in="${autoresDoLivro}">
+                            <g:each var="autorLivro" in="${sab.AutorLivro.findAllByLivro(livro)}">
                                 <li><g:link  controller="Autor" action="show" target="_blank" id="${autorLivro.autor.id}">${autorLivro.autor.nome}</g:link ></li>
                             </g:each>
                         </ul>
@@ -96,7 +99,7 @@
                     <span id="generoLivro-label" class="property-label">Genero(s) do Livro</span>
                     <div class="property-value" aria-labelledby="generoLivro-label">
                         <ul>
-                            <g:each in="${generosDoLivro}" var="generoLivro">
+                            <g:each in="${sab.GeneroLivro.findAllByLivro(livro)}" var="generoLivro">
                                 <li>
                                     <g:link controller="Genero" action="show" id="${generoLivro.genero.id}" target="_blank">
                                     ${generoLivro.genero.nome}

@@ -50,6 +50,12 @@
                         <g:select name="editora.id" from="${sab.Editora.list(sort:'nome')}" optionKey="id"/>
                         <g:link action="create" controller="Editora" target="_blank">Nova Editora</g:link>
                     </f:field>
+
+                    <f:field bean="livro" property="colecao">
+                        <g:select name="colecao.id" from="${sab.Colecao.list()}" optionKey="id"/>
+                        <g:link action="create" controller="Colecao" target="_blank">Nova Colecao</g:link>
+                    </f:field>
+
                     <f:field bean="livro" property="titulo"/>
                     <f:field bean="livro" property="aquisicao"/>
                     <f:field bean="livro" property="data"/>
