@@ -23,6 +23,8 @@
                   <li><g:link controller="Categoria">Categoria</g:link></li>
                   <li><g:link controller="Aquisicao">Aquisição</g:link></li>
                   <li><g:link controller="Colecao">Coleção</g:link></li>
+                  <li><g:link controller="Aluno">Aluno</g:link></li>
+                  <li><g:link controller="Arquivo">Arquivo</g:link></li>
               </ul>
             </nav>
         </header>
