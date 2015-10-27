@@ -104,7 +104,7 @@ class LivroController {
 
     def pesquisar(){
 
-        def livrosEncontrados = Livro.findAllByTituloLike("$params.parametro%", [sort: 'titulo'])
+        def livrosEncontrados = Livro.findAllByTituloLike("%$params.parametro%", [sort: 'titulo'])
 
         [livroList: livrosEncontrados]
     }
