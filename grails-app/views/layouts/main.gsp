@@ -25,6 +25,7 @@
                   <li><g:link controller="Colecao">Coleção</g:link></li>
                   <li><g:link controller="Aluno">Aluno</g:link></li>
                   <li><g:link controller="Arquivo">Arquivo</g:link></li>
+                  <li><g:link controller="EstadoDoAluno">Estado do aluno</g:link></li>
               </ul>
             </nav>
         </header>
