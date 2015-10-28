@@ -15,7 +15,7 @@
                 <li>
                     <g:form action="pesquisar">
                         <label for="parametro" class="escondido">Pesquisa por Titulo</label>
-                        <input type="text" name="parametro" value="" placeholder="Pesquisa por Título">
+                        <input type="text" name="parametro" value="${params.parametro}" placeholder="Pesquisa por Título">
                     </g:form>
                 </li>
                 <li>
