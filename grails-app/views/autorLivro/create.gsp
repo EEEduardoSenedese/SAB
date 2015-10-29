@@ -4,6 +4,10 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'autorLivro.label', default: 'AutorLivro')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:javascript src="jquery-ui.js"/>
+        <asset:stylesheet src="jquery-ui.css"/>
+        <asset:stylesheet src="jquery-ui.theme.css"/>
+
     </head>
     <body>
         <a href="#create-autorLivro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

@@ -2,7 +2,6 @@
 
 header {
     width: 100%;
-
 }
 
 section {
@@ -13,14 +12,14 @@ nav#menu-corpo{
   font-size: 15px;
   background-color: #333333;
   padding: 10px;
-  height: 50px;
   top: 0px;
   margin: auto;
 }
 
 nav#menu-corpo ul{
   text-decoration: none;
-  margin: 10px;
+  margin: 30px;
+
 }
 
 nav#menu-corpo li{
@@ -53,7 +52,7 @@ div#nav ul{
 
 
 .espaco{
-  height: 70px;
+  height: 130px;
 }
 
 .esquerda{

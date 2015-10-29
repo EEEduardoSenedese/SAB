@@ -23,9 +23,13 @@
                   <li><g:link controller="Categoria">Categoria</g:link></li>
                   <li><g:link controller="Aquisicao">Aquisição</g:link></li>
                   <li><g:link controller="Colecao">Coleção</g:link></li>
+              </ul>
+              <ul>
                   <li><g:link controller="Aluno">Aluno</g:link></li>
                   <li><g:link controller="Arquivo">Arquivo</g:link></li>
-                  <li><g:link controller="EstadoDoAluno">Estado do aluno</g:link></li>
+                  <li><g:link controller="EstadoDoAluno">EstadoDoAluno</g:link></li>
+                  <li><g:link controller="Serie">Serie</g:link></li>
+                  <li><g:link controller="Posicao">Posicao</g:link></li>
               </ul>
             </nav>
         </header>

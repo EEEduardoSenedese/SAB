@@ -51,6 +51,16 @@
                 </li>
 
                 <li class="fieldcontain">
+                    <span id="numeroDePaginas-label" class="property-label">Data de Aquisição</span>
+                    <div class="property-value" aria-labelledby="numeroDePaginas-label">${livro.dataDeAquisicao}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="numeroDePaginas-label" class="property-label">Numero de emprestimos</span>
+                    <div class="property-value" aria-labelledby="numeroDePaginas-label">${livro.numeroDeEmprestimos}</div>
+                </li>
+
+                <li class="fieldcontain">
                     <span id="editora-label" class="property-label">Editora</span>
                     <div class="property-value" aria-labelledby="editora-label">
                         <g:link controller="Editora" action="show" id="${livro.editora.id}" target="_blank">${livro.editora}</g:link>

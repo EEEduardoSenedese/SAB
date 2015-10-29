@@ -2,36 +2,32 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'aluno.label', default: 'Aluno')}" />
+        <g:set var="entityName" value="${message(code: 'serie.label', default: 'Serie')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#create-aluno" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <a href="#create-serie" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="create-aluno" class="content scaffold-create" role="main">
+        <div id="create-serie" class="content scaffold-create" role="main">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${this.aluno}">
+            <g:hasErrors bean="${this.serie}">
             <ul class="errors" role="alert">
-                <g:eachError bean="${this.aluno}" var="error">
+                <g:eachError bean="${this.serie}" var="error">
                 <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                 </g:eachError>
             </ul>
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:field bean="aluno" property="nome">
-                        <input type="text" autofocus name="nome">
-                    </f:field>
-                    <f:all bean="aluno" except="email, usuario, senha, bairro, cidade, uf, rua, estado, posicao, nome"/>
-                    <f:all bean="aluno" except="nome, arquivo, dataDeNascimento, naturidade, pai, mae, serie, estadoDoAluno, naturalidade, ultimoAno"/>
+                    <f:all bean="serie"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
