@@ -1,94 +1,80 @@
 <!doctype html>
 <html>
     <head>
-        <meta name="layout" content="main"/>
         <title>Welcome to Grails</title>
-        <style type="text/css" media="screen">
-            #status {
-                background-color: #eee;
-                border: .2em solid #fff;
-                margin: 2em 2em 1em;
-                padding: 1em;
-                width: 12em;
-                float: left;
-                -moz-box-shadow: 0px 0px 1.25em #ccc;
-                -webkit-box-shadow: 0px 0px 1.25em #ccc;
-                box-shadow: 0px 0px 1.25em #ccc;
-                -moz-border-radius: 0.6em;
-                -webkit-border-radius: 0.6em;
-                border-radius: 0.6em;
+        <style type="text/css">
+            #conteiner{
+              margin: 80px 15%;
+              border: 1px solid gray;
+              padding: 30px;
+              border-radius: 10px;
+              background-color: #f2f2f2;
+              box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
             }
 
-            #status ul {
-                font-size: 0.9em;
-                list-style-type: none;
-                margin-bottom: 0.6em;
-                padding: 0;
+            h1{
+              color: #3eb0eb;
+              margin-bottom: 50px;
+              text-shadow: 1px 1px 1px rgba(#3eb0eb, 0.5);
             }
 
-            #status li {
-                line-height: 1.3;
+            h2{
+              margin: 10px;
+              color: #4d4d4d;
+              text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+              margin-bottom: 60px;
             }
 
-            #status h1 {
-                text-transform: uppercase;
-                font-size: 1.1em;
-                margin: 0 0 0.3em;
+            section{
+              margin: 30px;
             }
 
-            #page-body {
-                margin: 2em 1em 1.25em 18em;
+            table{
+              margin: auto;
+              margin-top: 50px;
+              margin-bottom: 50px;
+              padding: 20px;
             }
 
-            h2 {
-                margin-top: 1em;
-                margin-bottom: 0.3em;
-                font-size: 1em;
+            table a{
+              margin: 10px;
+              padding: 50px 70px;
+              background-color: #3eb0eb;
+              text-decoration: none;
+              font-weight: bold;
+              color: white;
+              border-radius: 10px;
+              box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+              font-size: 15pt;
             }
 
-            p {
-                line-height: 1.5;
-                margin: 0.25em 0;
-            }
-
-            #controller-list ul {
-                list-style-position: inside;
-            }
-
-            #controller-list li {
-                line-height: 1.3;
-                list-style-position: inside;
-                margin: 0.25em 0;
-            }
-
-            @media screen and (max-width: 480px) {
-                #status {
-                    display: none;
-                }
-
-                #page-body {
-                    margin: 0 1em 1em;
-                }
-
-                #page-body h1 {
-                    margin-top: 0;
-                }
+            body{
+              background-color: #252525;
+              font-family: monospace sans-serif;
             }
 
         </style>
     </head>
     <body>
-        <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-        <div id="page-body" role="main">
+        <div id="conteiner">
 
             <div id="controller-list" role="navigation">
-                <h2>Available Controllers:</h2>
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.logicalPropertyName}</g:link></li>
-                    </g:each>
-                </ul>
+                <h1>Bem vindo(a) ao Sistema de Apoio Bibliotecário</h1>
+                <section>
+                  <h2>Módulos disponíveis:</h2>
+
+                  <table>
+                    <tr>
+                      <td>
+                        <g:link controller="livro">Livros</g:link>
+                      </td>
+                      <td>
+                        <g:link controller="aluno">Alunos</g:link>
+                      </td>
+                    </tr>
+                  </table>
+                </section>
             </div>
         </div>
     </body>
