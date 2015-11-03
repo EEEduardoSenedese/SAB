@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'livro.label', default: 'Livro')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:javascript src="jquery-ui.js"/>
     </head>
     <body>
         <a href="#create-livro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -45,7 +46,23 @@
             <g:form action="save">
                 <fieldset class="form">
                     <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
+                    <f:field bean="livro" property="editora">
+                      <div class="ui-widget">
+                        <input id="editoras"/>
+                      </div>
+                    </f:field>
+                    <g:javascript>
+                      $(function(){
 
+                        var editoras = [
+                          "edioro",
+                          "Atica",
+                          "Record"
+                        ]
+
+                        $(editoras).autocomplete({source: editoras});
+                      })
+                    </g:javascript>
                     <f:field bean="livro" property="editora">
                         <g:select name="editora.id" from="${sab.livros.Editora.list(sort:'nome')}" optionKey="id"/>
                         <g:link action="create" controller="Editora" target="_blank">Nova Editora</g:link>
