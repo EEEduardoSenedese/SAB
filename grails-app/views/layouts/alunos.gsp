@@ -16,13 +16,11 @@
             <nav id="menu-corpo">
               <h2>Menu</h2>
               <ul>
-                  <li><g:link controller="Livro">Livro</g:link></li>
-                  <li><g:link controller="Genero">Gênero</g:link></li>
-                  <li><g:link controller="Autor">Autor</g:link></li>
-                  <li><g:link controller="Editora">Editoras</g:link></li>
-                  <li><g:link controller="Categoria">Categoria</g:link></li>
-                  <li><g:link controller="Aquisicao">Aquisição</g:link></li>
-                  <li><g:link controller="Colecao">Coleção</g:link></li>
+                  <li><g:link controller="Aluno">Aluno</g:link></li>
+                  <li><g:link controller="Arquivo">Arquivo</g:link></li>
+                  <li><g:link controller="EstadoDoAluno">EstadoDoAluno</g:link></li>
+                  <li><g:link controller="Serie">Serie</g:link></li>
+                  <li><g:link controller="Posicao">Posicao</g:link></li>
               </ul>
             </nav>
         </header>
