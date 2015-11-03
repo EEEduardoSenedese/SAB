@@ -2,7 +2,8 @@ package sab.individuo
 
 class Aluno extends Pessoa{
 
-    Date ultimoAno
+    int ultimoAno
+    int codigo = 0
 
     static belongsTo = [
       arquivo: Arquivo,
