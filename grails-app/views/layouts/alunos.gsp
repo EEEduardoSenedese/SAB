@@ -20,6 +20,10 @@
                   <li><g:link controller="Arquivo">Arquivo</g:link></li>
                   <li><g:link controller="EstadoDoAluno">EstadoDoAluno</g:link></li>
                   <li><g:link controller="Serie">Serie</g:link></li>
+                  <li><g:link controller="Rua">Rua</g:link></li>
+                  <li><g:link controller="Bairro">Bairro</g:link></li>
+                  <li><g:link controller="Cidade">Cidade</g:link></li>
+                  <li><g:link controller="UF">UF</g:link></li>
                   <li><g:link controller="Posicao">Posicao</g:link></li>
               </ul>
             </nav>
