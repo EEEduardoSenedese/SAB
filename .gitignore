@@ -12,3 +12,4 @@ build/
 .asscache
 *.db
 doc/*.dia
+.attach_*
