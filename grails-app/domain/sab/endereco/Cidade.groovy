@@ -11,4 +11,8 @@ class Cidade {
     static constraints = {
       nome unique: true
     }
+
+    String toString(){
+        nome
+    }
 }

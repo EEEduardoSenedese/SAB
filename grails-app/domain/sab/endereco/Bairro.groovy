@@ -11,4 +11,8 @@ class Bairro {
     static constraints = {
       nome unique: true
     }
+
+    String toString(){
+        nome
+    }
 }

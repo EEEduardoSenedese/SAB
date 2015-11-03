@@ -8,4 +8,8 @@ class UF {
     static constraints = {
       nome unique: true
     }
+
+    String toString(){
+        nome
+    }
 }

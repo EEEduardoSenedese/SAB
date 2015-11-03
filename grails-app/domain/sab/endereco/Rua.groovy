@@ -10,4 +10,8 @@ class Rua {
 
       nome unique: true
     }
+
+    String toString(){
+        nome
+    }
 }
