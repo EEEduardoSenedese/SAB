@@ -19,7 +19,7 @@ class AutorLivroController {
 
     def create() {
 
-        def autorLivroList = sab.AutorLivro.withCriteria {
+        def autorLivroList = AutorLivro.withCriteria {
             livro{
                 eq 'id', params.long('livro.id')
             }

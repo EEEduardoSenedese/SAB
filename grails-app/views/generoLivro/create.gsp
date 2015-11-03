@@ -28,7 +28,7 @@
                 <fieldset class="form">
                     <!-- Escolhe genero -->
                     <f:field bean="generoLivro" property="genero">
-                        <g:select name="genero.id" optionKey="id" from="${sab.Genero.list(sort: 'nome')}"/>
+                        <g:select name="genero.id" optionKey="id" from="${sab.livros.Genero.list(sort: 'nome')}"/>
                         <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero" />
 
                     </f:field>
@@ -40,7 +40,7 @@
 
                 <!-- Livro -->
                 <!-- Este item fica escondido -->
-                <g:select name="livro.id" optionKey="id" from="${sab.Livro.get(params.long('livro.id'))}" class="escondido"/>
+                <g:select name="livro.id" optionKey="id" from="${sab.livros.Livro.get(params.long('livro.id'))}" class="escondido"/>
             </g:form>
 
             <fieldset class="form">

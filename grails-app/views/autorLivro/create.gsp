@@ -31,7 +31,7 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:field bean="autorLivro" property="autor">
-                        <g:select name="autor.id" from="${sab.Autor.list(sort:'nome')}" optionKey="id"/>
+                        <g:select name="autor.id" from="${sab.livros.Autor.list(sort:'nome')}" optionKey="id"/>
 
                         <g:submitButton name="create" class="botao-normal" value="Adicionar este Autor"/>
 
@@ -40,7 +40,7 @@
                     <!-- Link para novo Autor-->
                     <g:link controller="Autor" action="create" target="_blank">Novo Autor</g:link>
 
-                    <g:select name="livro.id" from="${sab.Livro.get(params.long('livro.id'))}" optionKey="id" class="escondido"/>
+                    <g:select name="livro.id" from="${sab.livros.Livro.get(params.long('livro.id'))}" optionKey="id" class="escondido"/>
 
                     <div class="fieldset">
                 </fieldset>
@@ -55,7 +55,7 @@
                                 <td>
                                     <g:link action="show" controller="Autor" id="${autorLivro.autor.id}"> ${autorLivro.autor.nome} </g:link>
                                 </td>
-                                
+
                                 <td>
                                     <g:form resource="${autorLivro}" method="DELETE">
                                         <fieldset class="buttons">

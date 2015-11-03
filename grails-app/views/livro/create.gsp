@@ -61,6 +61,7 @@
                     <f:field bean="livro" property="data"/>
                     <f:field bean="livro" property="numeroDePaginas"/>
                     <f:field bean="livro" property="categoria"/>
+                    <f:field bean="livro" property="dataDeAquisicao"/>
 
                 </fieldset>
                 <fieldset class="buttons">

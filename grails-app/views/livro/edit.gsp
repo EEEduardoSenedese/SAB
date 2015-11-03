@@ -44,7 +44,7 @@
                 <fieldset class="form">
                     <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas"/>
                     <f:field bean="livro" property="editora">
-                        <g:select name="editora.id" from="${sab.Editora.list(sort:'nome')}" optionKey="id" value="${livro.editora.id}"/>
+                        <g:select name="editora.id" from="${sab.livros.Editora.list(sort:'nome')}" optionKey="id" value="${livro.editora.id}"/>
                     </f:field>
 
                     <f:field bean="livro" property="data">

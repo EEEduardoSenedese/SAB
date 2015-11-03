@@ -21,7 +21,7 @@ class GeneroLivroController {
 
         //println sab.Genero.findAllBy
 
-        def generoLivroList = sab.GeneroLivro.withCriteria {
+        def generoLivroList = GeneroLivro.withCriteria {
             livro{
                 eq 'id', params.long('livro.id')
             }

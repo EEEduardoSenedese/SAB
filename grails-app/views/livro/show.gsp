@@ -96,7 +96,7 @@
                     <span id="autorLivro-label" class="property-label">Autor(es) do Livro</span>
                     <div class="property-value" aria-labelledby="autorLivro-label">
                         <ul>
-                            <g:each var="autorLivro" in="${sab.AutorLivro.findAllByLivro(livro)}">
+                            <g:each var="autorLivro" in="${sab.livros.AutorLivro.findAllByLivro(livro)}">
                                 <li><g:link  controller="Autor" action="show" target="_blank" id="${autorLivro.autor.id}">${autorLivro.autor.nome}</g:link ></li>
                             </g:each>
                         </ul>
@@ -109,7 +109,7 @@
                     <span id="generoLivro-label" class="property-label">Genero(s) do Livro</span>
                     <div class="property-value" aria-labelledby="generoLivro-label">
                         <ul>
-                            <g:each in="${sab.GeneroLivro.findAllByLivro(livro)}" var="generoLivro">
+                            <g:each in="${sab.livros.GeneroLivro.findAllByLivro(livro)}" var="generoLivro">
                                 <li>
                                     <g:link controller="Genero" action="show" id="${generoLivro.genero.id}" target="_blank">
                                     ${generoLivro.genero.nome}
