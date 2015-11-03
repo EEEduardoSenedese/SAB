@@ -4,7 +4,7 @@
   padding: 30px;
   border-radius: 10px;
   background-color: #f2f2f2;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 1);
 }
 
 h1{
@@ -41,6 +41,12 @@ table a{
   border-radius: 10px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   font-size: 15pt;
+  transition: 0.5s;
+}
+
+table a:hover{
+  background-color: white;
+  color: black;
 }
 
 body{
