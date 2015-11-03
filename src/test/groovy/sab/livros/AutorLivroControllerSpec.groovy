@@ -1,11 +1,11 @@
-package sab
+package sab.livros
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(EstadoDoAlunoController)
-@Mock(EstadoDoAluno)
-class EstadoDoAlunoControllerSpec extends Specification {
+@TestFor(AutorLivroController)
+@Mock(AutorLivro)
+class AutorLivroControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class EstadoDoAlunoControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.estadoDoAlunoList
-            model.estadoDoAlunoCount == 0
+            !model.autorLivroList
+            model.autorLivroCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class EstadoDoAlunoControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.estadoDoAluno!= null
+            model.autorLivro!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class EstadoDoAlunoControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def estadoDoAluno = new EstadoDoAluno()
-            estadoDoAluno.validate()
-            controller.save(estadoDoAluno)
+            def autorLivro = new AutorLivro()
+            autorLivro.validate()
+            controller.save(autorLivro)
 
         then:"The create view is rendered again with the correct model"
-            model.estadoDoAluno!= null
+            model.autorLivro!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            estadoDoAluno = new EstadoDoAluno(params)
+            autorLivro = new AutorLivro(params)
 
-            controller.save(estadoDoAluno)
+            controller.save(autorLivro)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/estadoDoAluno/show/1'
+            response.redirectedUrl == '/autorLivro/show/1'
             controller.flash.message != null
-            EstadoDoAluno.count() == 1
+            AutorLivro.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class EstadoDoAlunoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def estadoDoAluno = new EstadoDoAluno(params)
-            controller.show(estadoDoAluno)
+            def autorLivro = new AutorLivro(params)
+            controller.show(autorLivro)
 
         then:"A model is populated containing the domain instance"
-            model.estadoDoAluno == estadoDoAluno
+            model.autorLivro == autorLivro
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class EstadoDoAlunoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def estadoDoAluno = new EstadoDoAluno(params)
-            controller.edit(estadoDoAluno)
+            def autorLivro = new AutorLivro(params)
+            controller.edit(autorLivro)
 
         then:"A model is populated containing the domain instance"
-            model.estadoDoAluno == estadoDoAluno
+            model.autorLivro == autorLivro
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class EstadoDoAlunoControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/estadoDoAluno/index'
+            response.redirectedUrl == '/autorLivro/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def estadoDoAluno = new EstadoDoAluno()
-            estadoDoAluno.validate()
-            controller.update(estadoDoAluno)
+            def autorLivro = new AutorLivro()
+            autorLivro.validate()
+            controller.update(autorLivro)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.estadoDoAluno == estadoDoAluno
+            model.autorLivro == autorLivro
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            estadoDoAluno = new EstadoDoAluno(params).save(flush: true)
-            controller.update(estadoDoAluno)
+            autorLivro = new AutorLivro(params).save(flush: true)
+            controller.update(autorLivro)
 
         then:"A redirect is issued to the show action"
-            estadoDoAluno != null
-            response.redirectedUrl == "/estadoDoAluno/show/$estadoDoAluno.id"
+            autorLivro != null
+            response.redirectedUrl == "/autorLivro/show/$autorLivro.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class EstadoDoAlunoControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/estadoDoAluno/index'
+            response.redirectedUrl == '/autorLivro/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def estadoDoAluno = new EstadoDoAluno(params).save(flush: true)
+            def autorLivro = new AutorLivro(params).save(flush: true)
 
         then:"It exists"
-            EstadoDoAluno.count() == 1
+            AutorLivro.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(estadoDoAluno)
+            controller.delete(autorLivro)
 
         then:"The instance is deleted"
-            EstadoDoAluno.count() == 0
-            response.redirectedUrl == '/estadoDoAluno/index'
+            AutorLivro.count() == 0
+            response.redirectedUrl == '/autorLivro/index'
             flash.message != null
     }
 }

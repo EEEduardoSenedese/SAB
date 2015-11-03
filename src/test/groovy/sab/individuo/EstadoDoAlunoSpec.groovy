@@ -1,4 +1,4 @@
-package sab
+package sab.individuo
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification

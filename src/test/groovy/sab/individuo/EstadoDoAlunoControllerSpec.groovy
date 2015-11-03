@@ -1,11 +1,11 @@
-package sab
+package sab.individuo
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(LivroController)
-@Mock(Livro)
-class LivroControllerSpec extends Specification {
+@TestFor(EstadoDoAlunoController)
+@Mock(EstadoDoAluno)
+class EstadoDoAlunoControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class LivroControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.livroList
-            model.livroCount == 0
+            !model.estadoDoAlunoList
+            model.estadoDoAlunoCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class LivroControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.livro!= null
+            model.estadoDoAluno!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class LivroControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def livro = new Livro()
-            livro.validate()
-            controller.save(livro)
+            def estadoDoAluno = new EstadoDoAluno()
+            estadoDoAluno.validate()
+            controller.save(estadoDoAluno)
 
         then:"The create view is rendered again with the correct model"
-            model.livro!= null
+            model.estadoDoAluno!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            livro = new Livro(params)
+            estadoDoAluno = new EstadoDoAluno(params)
 
-            controller.save(livro)
+            controller.save(estadoDoAluno)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/livro/show/1'
+            response.redirectedUrl == '/estadoDoAluno/show/1'
             controller.flash.message != null
-            Livro.count() == 1
+            EstadoDoAluno.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class LivroControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def livro = new Livro(params)
-            controller.show(livro)
+            def estadoDoAluno = new EstadoDoAluno(params)
+            controller.show(estadoDoAluno)
 
         then:"A model is populated containing the domain instance"
-            model.livro == livro
+            model.estadoDoAluno == estadoDoAluno
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class LivroControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def livro = new Livro(params)
-            controller.edit(livro)
+            def estadoDoAluno = new EstadoDoAluno(params)
+            controller.edit(estadoDoAluno)
 
         then:"A model is populated containing the domain instance"
-            model.livro == livro
+            model.estadoDoAluno == estadoDoAluno
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class LivroControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/livro/index'
+            response.redirectedUrl == '/estadoDoAluno/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def livro = new Livro()
-            livro.validate()
-            controller.update(livro)
+            def estadoDoAluno = new EstadoDoAluno()
+            estadoDoAluno.validate()
+            controller.update(estadoDoAluno)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.livro == livro
+            model.estadoDoAluno == estadoDoAluno
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            livro = new Livro(params).save(flush: true)
-            controller.update(livro)
+            estadoDoAluno = new EstadoDoAluno(params).save(flush: true)
+            controller.update(estadoDoAluno)
 
         then:"A redirect is issued to the show action"
-            livro != null
-            response.redirectedUrl == "/livro/show/$livro.id"
+            estadoDoAluno != null
+            response.redirectedUrl == "/estadoDoAluno/show/$estadoDoAluno.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class LivroControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/livro/index'
+            response.redirectedUrl == '/estadoDoAluno/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def livro = new Livro(params).save(flush: true)
+            def estadoDoAluno = new EstadoDoAluno(params).save(flush: true)
 
         then:"It exists"
-            Livro.count() == 1
+            EstadoDoAluno.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(livro)
+            controller.delete(estadoDoAluno)
 
         then:"The instance is deleted"
-            Livro.count() == 0
-            response.redirectedUrl == '/livro/index'
+            EstadoDoAluno.count() == 0
+            response.redirectedUrl == '/estadoDoAluno/index'
             flash.message != null
     }
 }

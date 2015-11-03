@@ -1,11 +1,11 @@
-package sab
+package sab.livros
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(GeneroController)
-@Mock(Genero)
-class GeneroControllerSpec extends Specification {
+@TestFor(AquisicaoController)
+@Mock(Aquisicao)
+class AquisicaoControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class GeneroControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.generoList
-            model.generoCount == 0
+            !model.aquisicaoList
+            model.aquisicaoCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class GeneroControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.genero!= null
+            model.aquisicao!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class GeneroControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def genero = new Genero()
-            genero.validate()
-            controller.save(genero)
+            def aquisicao = new Aquisicao()
+            aquisicao.validate()
+            controller.save(aquisicao)
 
         then:"The create view is rendered again with the correct model"
-            model.genero!= null
+            model.aquisicao!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            genero = new Genero(params)
+            aquisicao = new Aquisicao(params)
 
-            controller.save(genero)
+            controller.save(aquisicao)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/genero/show/1'
+            response.redirectedUrl == '/aquisicao/show/1'
             controller.flash.message != null
-            Genero.count() == 1
+            Aquisicao.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class GeneroControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def genero = new Genero(params)
-            controller.show(genero)
+            def aquisicao = new Aquisicao(params)
+            controller.show(aquisicao)
 
         then:"A model is populated containing the domain instance"
-            model.genero == genero
+            model.aquisicao == aquisicao
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class GeneroControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def genero = new Genero(params)
-            controller.edit(genero)
+            def aquisicao = new Aquisicao(params)
+            controller.edit(aquisicao)
 
         then:"A model is populated containing the domain instance"
-            model.genero == genero
+            model.aquisicao == aquisicao
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class GeneroControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/genero/index'
+            response.redirectedUrl == '/aquisicao/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def genero = new Genero()
-            genero.validate()
-            controller.update(genero)
+            def aquisicao = new Aquisicao()
+            aquisicao.validate()
+            controller.update(aquisicao)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.genero == genero
+            model.aquisicao == aquisicao
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            genero = new Genero(params).save(flush: true)
-            controller.update(genero)
+            aquisicao = new Aquisicao(params).save(flush: true)
+            controller.update(aquisicao)
 
         then:"A redirect is issued to the show action"
-            genero != null
-            response.redirectedUrl == "/genero/show/$genero.id"
+            aquisicao != null
+            response.redirectedUrl == "/aquisicao/show/$aquisicao.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class GeneroControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/genero/index'
+            response.redirectedUrl == '/aquisicao/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def genero = new Genero(params).save(flush: true)
+            def aquisicao = new Aquisicao(params).save(flush: true)
 
         then:"It exists"
-            Genero.count() == 1
+            Aquisicao.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(genero)
+            controller.delete(aquisicao)
 
         then:"The instance is deleted"
-            Genero.count() == 0
-            response.redirectedUrl == '/genero/index'
+            Aquisicao.count() == 0
+            response.redirectedUrl == '/aquisicao/index'
             flash.message != null
     }
 }

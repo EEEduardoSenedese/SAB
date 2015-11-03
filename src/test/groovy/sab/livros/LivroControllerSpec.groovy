@@ -1,11 +1,11 @@
-package sab
+package sab.livros
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(EditoraController)
-@Mock(Editora)
-class EditoraControllerSpec extends Specification {
+@TestFor(LivroController)
+@Mock(Livro)
+class LivroControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class EditoraControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.editoraList
-            model.editoraCount == 0
+            !model.livroList
+            model.livroCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class EditoraControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.editora!= null
+            model.livro!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class EditoraControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def editora = new Editora()
-            editora.validate()
-            controller.save(editora)
+            def livro = new Livro()
+            livro.validate()
+            controller.save(livro)
 
         then:"The create view is rendered again with the correct model"
-            model.editora!= null
+            model.livro!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            editora = new Editora(params)
+            livro = new Livro(params)
 
-            controller.save(editora)
+            controller.save(livro)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/editora/show/1'
+            response.redirectedUrl == '/livro/show/1'
             controller.flash.message != null
-            Editora.count() == 1
+            Livro.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class EditoraControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def editora = new Editora(params)
-            controller.show(editora)
+            def livro = new Livro(params)
+            controller.show(livro)
 
         then:"A model is populated containing the domain instance"
-            model.editora == editora
+            model.livro == livro
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class EditoraControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def editora = new Editora(params)
-            controller.edit(editora)
+            def livro = new Livro(params)
+            controller.edit(livro)
 
         then:"A model is populated containing the domain instance"
-            model.editora == editora
+            model.livro == livro
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class EditoraControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/editora/index'
+            response.redirectedUrl == '/livro/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def editora = new Editora()
-            editora.validate()
-            controller.update(editora)
+            def livro = new Livro()
+            livro.validate()
+            controller.update(livro)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.editora == editora
+            model.livro == livro
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            editora = new Editora(params).save(flush: true)
-            controller.update(editora)
+            livro = new Livro(params).save(flush: true)
+            controller.update(livro)
 
         then:"A redirect is issued to the show action"
-            editora != null
-            response.redirectedUrl == "/editora/show/$editora.id"
+            livro != null
+            response.redirectedUrl == "/livro/show/$livro.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class EditoraControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/editora/index'
+            response.redirectedUrl == '/livro/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def editora = new Editora(params).save(flush: true)
+            def livro = new Livro(params).save(flush: true)
 
         then:"It exists"
-            Editora.count() == 1
+            Livro.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(editora)
+            controller.delete(livro)
 
         then:"The instance is deleted"
-            Editora.count() == 0
-            response.redirectedUrl == '/editora/index'
+            Livro.count() == 0
+            response.redirectedUrl == '/livro/index'
             flash.message != null
     }
 }

@@ -1,11 +1,11 @@
-package sab
+package sab.individuo
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(AutorLivroController)
-@Mock(AutorLivro)
-class AutorLivroControllerSpec extends Specification {
+@TestFor(AlunoController)
+@Mock(Aluno)
+class AlunoControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class AutorLivroControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.autorLivroList
-            model.autorLivroCount == 0
+            !model.alunoList
+            model.alunoCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class AutorLivroControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.autorLivro!= null
+            model.aluno!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class AutorLivroControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def autorLivro = new AutorLivro()
-            autorLivro.validate()
-            controller.save(autorLivro)
+            def aluno = new Aluno()
+            aluno.validate()
+            controller.save(aluno)
 
         then:"The create view is rendered again with the correct model"
-            model.autorLivro!= null
+            model.aluno!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            autorLivro = new AutorLivro(params)
+            aluno = new Aluno(params)
 
-            controller.save(autorLivro)
+            controller.save(aluno)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/autorLivro/show/1'
+            response.redirectedUrl == '/aluno/show/1'
             controller.flash.message != null
-            AutorLivro.count() == 1
+            Aluno.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class AutorLivroControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def autorLivro = new AutorLivro(params)
-            controller.show(autorLivro)
+            def aluno = new Aluno(params)
+            controller.show(aluno)
 
         then:"A model is populated containing the domain instance"
-            model.autorLivro == autorLivro
+            model.aluno == aluno
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class AutorLivroControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def autorLivro = new AutorLivro(params)
-            controller.edit(autorLivro)
+            def aluno = new Aluno(params)
+            controller.edit(aluno)
 
         then:"A model is populated containing the domain instance"
-            model.autorLivro == autorLivro
+            model.aluno == aluno
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class AutorLivroControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/autorLivro/index'
+            response.redirectedUrl == '/aluno/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def autorLivro = new AutorLivro()
-            autorLivro.validate()
-            controller.update(autorLivro)
+            def aluno = new Aluno()
+            aluno.validate()
+            controller.update(aluno)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.autorLivro == autorLivro
+            model.aluno == aluno
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            autorLivro = new AutorLivro(params).save(flush: true)
-            controller.update(autorLivro)
+            aluno = new Aluno(params).save(flush: true)
+            controller.update(aluno)
 
         then:"A redirect is issued to the show action"
-            autorLivro != null
-            response.redirectedUrl == "/autorLivro/show/$autorLivro.id"
+            aluno != null
+            response.redirectedUrl == "/aluno/show/$aluno.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class AutorLivroControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/autorLivro/index'
+            response.redirectedUrl == '/aluno/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def autorLivro = new AutorLivro(params).save(flush: true)
+            def aluno = new Aluno(params).save(flush: true)
 
         then:"It exists"
-            AutorLivro.count() == 1
+            Aluno.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(autorLivro)
+            controller.delete(aluno)
 
         then:"The instance is deleted"
-            AutorLivro.count() == 0
-            response.redirectedUrl == '/autorLivro/index'
+            Aluno.count() == 0
+            response.redirectedUrl == '/aluno/index'
             flash.message != null
     }
 }

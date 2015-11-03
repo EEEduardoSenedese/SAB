@@ -1,11 +1,11 @@
-package sab
+package sab.livros
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(AquisicaoController)
-@Mock(Aquisicao)
-class AquisicaoControllerSpec extends Specification {
+@TestFor(CategoriaController)
+@Mock(Categoria)
+class CategoriaControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class AquisicaoControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.aquisicaoList
-            model.aquisicaoCount == 0
+            !model.categoriaList
+            model.categoriaCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class AquisicaoControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.aquisicao!= null
+            model.categoria!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class AquisicaoControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def aquisicao = new Aquisicao()
-            aquisicao.validate()
-            controller.save(aquisicao)
+            def categoria = new Categoria()
+            categoria.validate()
+            controller.save(categoria)
 
         then:"The create view is rendered again with the correct model"
-            model.aquisicao!= null
+            model.categoria!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            aquisicao = new Aquisicao(params)
+            categoria = new Categoria(params)
 
-            controller.save(aquisicao)
+            controller.save(categoria)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/aquisicao/show/1'
+            response.redirectedUrl == '/categoria/show/1'
             controller.flash.message != null
-            Aquisicao.count() == 1
+            Categoria.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class AquisicaoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def aquisicao = new Aquisicao(params)
-            controller.show(aquisicao)
+            def categoria = new Categoria(params)
+            controller.show(categoria)
 
         then:"A model is populated containing the domain instance"
-            model.aquisicao == aquisicao
+            model.categoria == categoria
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class AquisicaoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def aquisicao = new Aquisicao(params)
-            controller.edit(aquisicao)
+            def categoria = new Categoria(params)
+            controller.edit(categoria)
 
         then:"A model is populated containing the domain instance"
-            model.aquisicao == aquisicao
+            model.categoria == categoria
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class AquisicaoControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/aquisicao/index'
+            response.redirectedUrl == '/categoria/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def aquisicao = new Aquisicao()
-            aquisicao.validate()
-            controller.update(aquisicao)
+            def categoria = new Categoria()
+            categoria.validate()
+            controller.update(categoria)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.aquisicao == aquisicao
+            model.categoria == categoria
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            aquisicao = new Aquisicao(params).save(flush: true)
-            controller.update(aquisicao)
+            categoria = new Categoria(params).save(flush: true)
+            controller.update(categoria)
 
         then:"A redirect is issued to the show action"
-            aquisicao != null
-            response.redirectedUrl == "/aquisicao/show/$aquisicao.id"
+            categoria != null
+            response.redirectedUrl == "/categoria/show/$categoria.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class AquisicaoControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/aquisicao/index'
+            response.redirectedUrl == '/categoria/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def aquisicao = new Aquisicao(params).save(flush: true)
+            def categoria = new Categoria(params).save(flush: true)
 
         then:"It exists"
-            Aquisicao.count() == 1
+            Categoria.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(aquisicao)
+            controller.delete(categoria)
 
         then:"The instance is deleted"
-            Aquisicao.count() == 0
-            response.redirectedUrl == '/aquisicao/index'
+            Categoria.count() == 0
+            response.redirectedUrl == '/categoria/index'
             flash.message != null
     }
 }

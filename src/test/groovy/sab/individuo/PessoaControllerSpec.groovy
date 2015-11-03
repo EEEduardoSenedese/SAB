@@ -1,11 +1,11 @@
-package sab
+package sab.individuo
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ColecaoController)
-@Mock(Colecao)
-class ColecaoControllerSpec extends Specification {
+@TestFor(PessoaController)
+@Mock(Pessoa)
+class PessoaControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -19,8 +19,8 @@ class ColecaoControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.colecaoList
-            model.colecaoCount == 0
+            !model.pessoaList
+            model.pessoaCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -28,7 +28,7 @@ class ColecaoControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.colecao!= null
+            model.pessoa!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -36,25 +36,25 @@ class ColecaoControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def colecao = new Colecao()
-            colecao.validate()
-            controller.save(colecao)
+            def pessoa = new Pessoa()
+            pessoa.validate()
+            controller.save(pessoa)
 
         then:"The create view is rendered again with the correct model"
-            model.colecao!= null
+            model.pessoa!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            colecao = new Colecao(params)
+            pessoa = new Pessoa(params)
 
-            controller.save(colecao)
+            controller.save(pessoa)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/colecao/show/1'
+            response.redirectedUrl == '/pessoa/show/1'
             controller.flash.message != null
-            Colecao.count() == 1
+            Pessoa.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class ColecaoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def colecao = new Colecao(params)
-            controller.show(colecao)
+            def pessoa = new Pessoa(params)
+            controller.show(pessoa)
 
         then:"A model is populated containing the domain instance"
-            model.colecao == colecao
+            model.pessoa == pessoa
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class ColecaoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def colecao = new Colecao(params)
-            controller.edit(colecao)
+            def pessoa = new Pessoa(params)
+            controller.edit(pessoa)
 
         then:"A model is populated containing the domain instance"
-            model.colecao == colecao
+            model.pessoa == pessoa
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class ColecaoControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/colecao/index'
+            response.redirectedUrl == '/pessoa/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def colecao = new Colecao()
-            colecao.validate()
-            controller.update(colecao)
+            def pessoa = new Pessoa()
+            pessoa.validate()
+            controller.update(pessoa)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.colecao == colecao
+            model.pessoa == pessoa
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            colecao = new Colecao(params).save(flush: true)
-            controller.update(colecao)
+            pessoa = new Pessoa(params).save(flush: true)
+            controller.update(pessoa)
 
         then:"A redirect is issued to the show action"
-            colecao != null
-            response.redirectedUrl == "/colecao/show/$colecao.id"
+            pessoa != null
+            response.redirectedUrl == "/pessoa/show/$pessoa.id"
             flash.message != null
     }
 
@@ -128,23 +128,23 @@ class ColecaoControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/colecao/index'
+            response.redirectedUrl == '/pessoa/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def colecao = new Colecao(params).save(flush: true)
+            def pessoa = new Pessoa(params).save(flush: true)
 
         then:"It exists"
-            Colecao.count() == 1
+            Pessoa.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(colecao)
+            controller.delete(pessoa)
 
         then:"The instance is deleted"
-            Colecao.count() == 0
-            response.redirectedUrl == '/colecao/index'
+            Pessoa.count() == 0
+            response.redirectedUrl == '/pessoa/index'
             flash.message != null
     }
 }

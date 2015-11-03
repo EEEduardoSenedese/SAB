@@ -1,4 +1,4 @@
-package sab
+package sab.livros
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Aluno)
-class AlunoSpec extends Specification {
+@TestFor(Aquisicao)
+class AquisicaoSpec extends Specification {
 
     def setup() {
     }
