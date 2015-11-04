@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Welcome to Grails</title>
+        <title>Bem vindo ao SAB</title>
         <asset:stylesheet src="boasvindas.css"/>
     </head>
     <body>
