@@ -46,11 +46,14 @@
             <g:form action="save">
                 <fieldset class="form">
                     <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
+                    <!--
                     <f:field bean="livro" property="editora">
                       <div class="ui-widget">
                         <input id="editoras"/>
                       </div>
                     </f:field>
+
+
                     <g:javascript>
                       $(function(){
 
@@ -63,13 +66,17 @@
                         $(editoras).autocomplete({source: editoras});
                       })
                     </g:javascript>
+
+                  -->
                     <f:field bean="livro" property="editora">
                         <g:select name="editora.id" from="${sab.livros.Editora.list(sort:'nome')}" optionKey="id"/>
                         <g:link action="create" controller="Editora" target="_blank">Nova Editora</g:link>
                     </f:field>
 
+                    <!-- item nenhum é o primeiro item cadastrado no banco, portanto é o item 0-->
+
                     <f:field bean="livro" property="colecao">
-                        <g:select name="colecao.id" from="${sab.livros.Colecao.list()}" optionKey="id"/>
+                        <g:select name="colecao.id" from="${sab.livros.Colecao.list(sort: 'nome')}" optionKey="id" noSelection="${['0': 'Nenhuma']}"/>
                         <g:link action="create" controller="Colecao" target="_blank">Nova Colecao</g:link>
                     </f:field>
 
