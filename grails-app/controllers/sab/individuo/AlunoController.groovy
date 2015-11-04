@@ -82,9 +82,19 @@ class AlunoController {
     }
 
     def pesquisarPorCodigo(){
-      def aluno = Aluno.findByCodigo($params.codigo)
+      def aluno = Aluno.findByCodigo(params.codigo)
 
-      respond aluno
+      if(aluno){
+        redirect aluno
+      } else{
+        request.withFormat {
+          form multipartForm {
+              flash.message = message(code: "Aluno com código $params.codigo não foi encontrado")
+              redirect action:"index", method:"GET"
+          }
+          '*'{ render status: NO_CONTENT }
+        }
+      }
     }
 
     @Transactional

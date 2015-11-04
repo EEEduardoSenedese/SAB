@@ -18,6 +18,12 @@
                       <input type="text" name="parametro" value="${params.parametro}" placeholder="Pesquisa">
                   </g:form>
                 </li>
+                <li>
+                    <g:form action="pesquisarPorCodigo">
+                        <label for="id" class="escondido">Pesquisa por Codigo</label>
+                        <input type="number" name="codigo" value="" autofocus placeholder="Pesquisa por Código">
+                    </g:form>
+                </li>
             </ul>
         </div>
         <div id="list-aluno" class="content scaffold-list" role="main">
