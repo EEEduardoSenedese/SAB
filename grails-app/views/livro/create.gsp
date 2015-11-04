@@ -5,6 +5,7 @@
         <g:set var="entityName" value="${message(code: 'livro.label', default: 'Livro')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-ui.js"/>
+        <asset:stylesheet src="jquery-ui.css"/>
     </head>
     <body>
         <a href="#create-livro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -47,10 +48,8 @@
                 <fieldset class="form">
                     <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
                     <!--
-                    <f:field bean="livro" property="editora">
-                      <div class="ui-widget">
+                    <f:field bean="livro" property="editora" class="ui-widget">
                         <input id="editoras"/>
-                      </div>
                     </f:field>
 
 
@@ -60,10 +59,12 @@
                         var editoras = [
                           "edioro",
                           "Atica",
-                          "Record"
+                          "Record",
+                          "Editora 1",
+                          "Editora 2"
                         ]
 
-                        $(editoras).autocomplete({source: editoras});
+                        $("#editoras").autocomplete({source: editoras});
                       })
                     </g:javascript>
 
