@@ -28,22 +28,23 @@
             <g:form action="save">
                 <fieldset class="form">
 
-                    <f:field bean="aluno" property="nome">
-                        <input type="text" autofocus name="nome"/>
-                    </f:field>
                     <f:field bean="aluno" property="arquivo"/>
-                    <f:field bean="aluno" property="naturalidade"/>
-                    <f:field bean="aluno" property="pai"/>
-                    <f:field bean="aluno" property="mae"/>
-                    <f:field bean="aluno" property="serie"/>
+                    <f:field bean="aluno" property="codigo">
+                      <input type="number" autofocus name="codigo"/>
+                    </f:field>
+                    <f:field bean="aluno" property="nome"/>
                     <f:field bean="aluno" property="dataDeNascimento"/>
                     <f:field bean="aluno" property="sexo"/>
+                    <f:field bean="aluno" property="pai"/>
+                    <f:field bean="aluno" property="mae"/>
+                    <f:field bean="aluno" property="naturalidade"/>
                     <f:field bean="aluno" property="estadoDoAluno"/>
+                    <f:field bean="aluno" property="serie"/>
                     <f:field bean="aluno" property="ultimoAno"/>
 
                     <br>
 
-                    <f:all bean="aluno" except="nome, arquivo, dataDeNascimento, sexo, serie, ultimoAno, naturalidade, pai, mae, estadoDoAluno"/>
+                    <f:all bean="aluno" except="nome, arquivo, dataDeNascimento, sexo, serie, ultimoAno, naturalidade, pai, mae, estadoDoAluno, senha, email, usuario, codigo"/>
 
                 </fieldset>
                 <fieldset class="buttons">

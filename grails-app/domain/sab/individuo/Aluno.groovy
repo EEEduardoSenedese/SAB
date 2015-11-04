@@ -3,7 +3,7 @@ package sab.individuo
 class Aluno extends Pessoa{
 
     int ultimoAno
-    int codigo = 0
+    int codigo
 
     static belongsTo = [
       arquivo: Arquivo,
@@ -12,6 +12,7 @@ class Aluno extends Pessoa{
     ]
 
     static constraints = {
+      codigo unique:true, nullable: false, blank:false
     }
 
     String toString(){
