@@ -12,16 +12,10 @@
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li>
-                    <g:form action="pesquisar">
-                        <label for="parametro" class="escondido">Pesquisa por Nome</label>
-                        <input type="text" name="parametro" value="" placeholder="Pesquisa">
-                    </g:form>
-                </li>
-                <li>
-                    <g:form action="pesquisarPorCodigo">
-                        <label for="id" class="escondido">Pesquisa por Codigo</label>
-                        <input type="number" name="codigo" value="" autofocus placeholder="Pesquisa por Código">
-                    </g:form>
+                  <g:form action="pesquisar">
+                      <label for="parametro" class="escondido">Pesquisa por Nome</label>
+                      <input type="text" name="parametro" value="${params.parametro}" placeholder="Pesquisa">
+                  </g:for>
                 </li>
             </ul>
         </div>
@@ -30,11 +24,7 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${alunoList}" properties="["nome", "arquivo"]"/>
-
-            <div class="pagination">
-                <g:paginate total="${alunoCount ?: 0}" />
-            </div>
+            <f:table collection="${listaAlunos}" properties="["nome", "arquivo"]"/>
         </div>
     </body>
 </html>

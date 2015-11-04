@@ -75,6 +75,17 @@ class AlunoController {
         }
     }
 
+    def pesquisar(){
+      def alunosEncontrados = Aluno.findAllByNomeLike("%$params.parametro%", sort: 'nome')
+      [listaAlunos: alunosEncontrados]
+    }
+
+    def pesquisarPorCodigo(){
+      def aluno = Aluno.findByCodigo($params.codigo)
+
+      respond aluno
+    }
+
     @Transactional
     def delete(Aluno aluno) {
 
