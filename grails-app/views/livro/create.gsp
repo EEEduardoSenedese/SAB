@@ -76,7 +76,7 @@
                     <!-- item nenhum é o primeiro item cadastrado no banco, portanto é o item 0-->
 
                     <f:field bean="livro" property="colecao">
-                        <g:select name="colecao.id" from="${sab.livros.Colecao.list(sort: 'nome')}" optionKey="id" noSelection="${['0': 'Nenhuma']}"/>
+                        <g:select name="colecao.id" from="${sab.livros.Colecao.list(sort: 'nome')}" optionKey="id" noSelection="${['0': '-- Nenhuma --']}"/>
                         <g:link action="create" controller="Colecao" target="_blank">Nova Colecao</g:link>
                     </f:field>
 
