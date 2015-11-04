@@ -10,12 +10,13 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li>
                   <g:form action="pesquisar">
                       <label for="parametro" class="escondido">Pesquisa por Nome</label>
                       <input type="text" name="parametro" value="${params.parametro}" placeholder="Pesquisa">
-                  </g:for>
+                  </g:form>
                 </li>
             </ul>
         </div>
@@ -24,7 +25,7 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${listaAlunos}" properties="["nome", "arquivo"]"/>
+            <f:table collection="${listaAlunos}" properties="["nome"]"/>
         </div>
     </body>
 </html>

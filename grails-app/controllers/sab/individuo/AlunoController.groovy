@@ -76,7 +76,8 @@ class AlunoController {
     }
 
     def pesquisar(){
-      def alunosEncontrados = Aluno.findAllByNomeLike("%$params.parametro%", sort: 'nome')
+      def alunosEncontrados = Aluno.findAllByNomeLike("%$params.parametro%", [sort: 'nome'])
+      println alunosEncontrados.size()
       [listaAlunos: alunosEncontrados]
     }
 
