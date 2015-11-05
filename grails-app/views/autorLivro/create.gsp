@@ -6,7 +6,12 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-ui.js"/>
         <asset:stylesheet src="jquery-ui.css"/>
-        <asset:stylesheet src="jquery-ui.theme.css"/>
+
+        <g:javascript>
+          $.get("${createLink(controller: 'autor', action: 'listagem')}", function(autores){
+            $('#autores').autocomplete({source: autores})
+          });
+        </g:javascript>
 
     </head>
     <body>
@@ -31,14 +36,10 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:field bean="autorLivro" property="autor">
-                        <g:select name="autor.id" from="${sab.livros.Autor.list(sort:'nome')}" optionKey="id"/>
+                        <input id="autores" autofocus name="autor.nome"/>
 
                         <g:submitButton name="create" class="botao-normal" value="Adicionar este Autor"/>
-
                     </f:field>
-
-                    <!-- Link para novo Autor-->
-                    <g:link controller="Autor" action="create" target="_blank">Novo Autor</g:link>
 
                     <g:select name="livro.id" from="${sab.livros.Livro.get(params.long('livro.id'))}" optionKey="id" class="escondido"/>
 

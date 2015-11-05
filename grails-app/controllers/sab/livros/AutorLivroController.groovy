@@ -42,6 +42,19 @@ class AutorLivroController {
             return
         }
 
+        Autor autor = Autor.findByNome(autorLivro.autor.nome)
+
+        if(autor){
+          //Autor existe
+          autorLivro.autor = autor
+        } else{
+          //Autor não existe
+          autor = autorLivro.autor;
+          autor.save()
+
+          autorLivro.autor = autor
+        }
+
         autorLivro.save flush:true
 
         redirect (action:"create", params:['livro.id':autorLivro.livro.id])

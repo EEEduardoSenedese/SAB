@@ -2,6 +2,7 @@ package sab.livros
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class GeneroController {
@@ -111,5 +112,15 @@ class GeneroController {
         def generoEncontrados = Genero.findAllByNomeLike("$params.parametro%", [sort: 'nome'])
 
         [generoList: generoEncontrados]
+    }
+
+    def listagem(){
+      def resposta= []
+
+      Genero.list().each{
+        resposta << "${it.nome}"
+      }
+
+      render resposta as JSON
     }
 }

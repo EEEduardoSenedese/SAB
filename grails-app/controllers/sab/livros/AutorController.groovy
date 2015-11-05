@@ -2,6 +2,7 @@ package sab.livros
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class AutorController {
@@ -111,5 +112,15 @@ class AutorController {
         def autorEncontrados = Autor.findAllByNomeLike("$params.parametro%", [sort: 'nome'])
 
         [autorList: autorEncontrados]
+    }
+
+    def listagem(){
+      def resposta = []
+
+      Autor.list().each{
+        resposta << "${it.nome}"
+      }
+
+      render resposta as JSON
     }
 }
