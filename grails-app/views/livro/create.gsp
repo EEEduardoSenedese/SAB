@@ -47,28 +47,17 @@
             <g:form action="save">
                 <fieldset class="form">
                     <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
-                    <!--
+
                     <f:field bean="livro" property="editora" class="ui-widget">
                         <input id="editoras"/>
                     </f:field>
 
-
                     <g:javascript>
-                      $(function(){
-
-                        var editoras = [
-                          "edioro",
-                          "Atica",
-                          "Record",
-                          "Editora 1",
-                          "Editora 2"
-                        ]
-
-                        $("#editoras").autocomplete({source: editoras});
-                      })
+                    $.get("${createLink(controller: 'editora', action: 'listagem')}", function(editoras){
+                      $('#editoras').autocomplete({source: editoras});
+                    });
                     </g:javascript>
 
-                  -->
                     <f:field bean="livro" property="editora">
                         <g:select name="editora.id" from="${sab.livros.Editora.list(sort:'nome')}" optionKey="id"/>
                         <g:link action="create" controller="Editora" target="_blank">Nova Editora</g:link>

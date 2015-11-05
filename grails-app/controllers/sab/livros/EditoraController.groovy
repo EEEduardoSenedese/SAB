@@ -2,6 +2,7 @@ package sab.livros
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class EditoraController {
@@ -111,5 +112,16 @@ class EditoraController {
         def aditoraEncontrada = Editora.findAllByNomeLike("$params.parametro%", [sort: 'nome'])
 
         [editoraList: aditoraEncontrada]
+    }
+
+    def listagem(){
+      def editoras = Editora.list()
+      def resposta = []
+
+      editoras.each{
+        resposta << "${it.nome}"
+      }
+
+      render resposta as JSON
     }
 }
