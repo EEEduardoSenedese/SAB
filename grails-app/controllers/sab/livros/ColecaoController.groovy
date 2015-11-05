@@ -2,6 +2,7 @@ package sab.livros
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class ColecaoController {
@@ -103,5 +104,15 @@ class ColecaoController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def listagem(){
+      def resposta = []
+
+      Colecao.list().each{
+        resposta << "${it.nome}"
+      }
+
+      render resposta as JSON
     }
 }

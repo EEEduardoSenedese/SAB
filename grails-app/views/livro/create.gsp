@@ -6,14 +6,19 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-ui.js"/>
         <asset:stylesheet src="jquery-ui.css"/>
+        <g:javascript>
+          $.get("${createLink(controller: 'editora', action: 'listagem')}", function(editoras){
+            $('#editoras').autocomplete({source: editoras});
+          });
+
+          $.get("${createLink(controller: 'colecao', action: 'listagem')}", function(colecoes){
+            $('#colecoes').autocomplete({source: colecoes});
+          });
+        </g:javascript>
     </head>
     <body>
         <a href="#create-livro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
 
-            </ul>
-        </div>
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -49,25 +54,11 @@
                     <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
 
                     <f:field bean="livro" property="editora" class="ui-widget">
-                        <input id="editoras"/>
+                        <input name="editora.nome" id="editoras"/>
                     </f:field>
 
-                    <g:javascript>
-                    $.get("${createLink(controller: 'editora', action: 'listagem')}", function(editoras){
-                      $('#editoras').autocomplete({source: editoras});
-                    });
-                    </g:javascript>
-
-                    <f:field bean="livro" property="editora">
-                        <g:select name="editora.id" from="${sab.livros.Editora.list(sort:'nome')}" optionKey="id"/>
-                        <g:link action="create" controller="Editora" target="_blank">Nova Editora</g:link>
-                    </f:field>
-
-                    <!-- item nenhum é o primeiro item cadastrado no banco, portanto é o item 0-->
-
-                    <f:field bean="livro" property="colecao">
-                        <g:select name="colecao.id" from="${sab.livros.Colecao.list(sort: 'nome')}" optionKey="id" noSelection="${['0': '-- Nenhuma --']}"/>
-                        <g:link action="create" controller="Colecao" target="_blank">Nova Colecao</g:link>
+                    <f:field bean="livro" property="colecao" class="ui-widget">
+                        <input name="colecao.nome" id="colecoes" value="${sab.livros.Colecao.get('0').nome}"/>
                     </f:field>
 
                     <f:field bean="livro" property="titulo"/>
