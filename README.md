@@ -12,3 +12,4 @@ para mais informações entre em contato com geansaturno@gmail.com.
 - [ ] definir que quando uma editora, categoria e etc não existir ser criado transparentemente para o usuário
 - [ ] alterar data do livro para data de publicação
 - [ ] alterar projeção da tabela de livros
+- [ ] Adicionar a função de pesquisa em outras páginas dos alunos
