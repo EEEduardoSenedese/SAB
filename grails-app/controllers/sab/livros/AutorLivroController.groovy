@@ -42,18 +42,8 @@ class AutorLivroController {
             return
         }
 
-        Autor autor = Autor.findByNome(autorLivro.autor.nome)
-
-        if(autor){
-          //Autor existe
-          autorLivro.autor = autor
-        } else{
-          //Autor não existe
-          autor = autorLivro.autor;
-          autor.save()
-
-          autorLivro.autor = autor
-        }
+        Autor autor = Autor.findOrSaveByNome(autorLivro.autor.nome)
+        autorLivro.autor = autor
 
         autorLivro.save flush:true
 
