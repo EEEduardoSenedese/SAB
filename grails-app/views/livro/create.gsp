@@ -32,7 +32,7 @@
                 <li>
                     <g:form action="pesquisarPorId">
                         <label for="id" class="escondido">Pesquisa por ID</label>
-                        <input type="number" name="id" value="" autofocus placeholder="Pesquisa por ID">
+                        <input type="number" name="id" value="" placeholder="Pesquisa por ID">
                     </g:form>
                 </li>
             </ul>
@@ -45,7 +45,7 @@
             <g:hasErrors bean="${this.livro}">
             <ul class="errors" role="alert">
                 <g:eachError bean="${this.livro}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if><g:message error="${error}"/></li>
                 </g:eachError>
             </ul>
             </g:hasErrors>
@@ -63,10 +63,10 @@
 
                     <f:field bean="livro" property="titulo"/>
                     <f:field bean="livro" property="aquisicao"/>
+                    <f:field bean="livro" property="dataDeAquisicao"/>
                     <f:field bean="livro" property="data"/>
                     <f:field bean="livro" property="numeroDePaginas"/>
                     <f:field bean="livro" property="categoria"/>
-                    <f:field bean="livro" property="dataDeAquisicao"/>
 
                 </fieldset>
                 <fieldset class="buttons">
