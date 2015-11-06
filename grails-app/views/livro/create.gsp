@@ -54,7 +54,7 @@
                     <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
 
                     <f:field bean="livro" property="editora" class="ui-widget">
-                        <input name="editora.nome" id="editoras"/>
+                        <input name="editora.nome" id="editoras" autofocus/>
                     </f:field>
 
                     <f:field bean="livro" property="colecao" class="ui-widget">
