@@ -44,7 +44,19 @@ class GeneroLivroController {
             return
         }
 
+        Genero genero = Genero.findByNome(generoLivro.genero.nome)
+
+        if (genero){
+          generoLivro.genero = genero
+        } else{
+          genero = generoLivro.genero
+          genero.save()
+
+          generoLivro.genero = genero
+        }
+
         generoLivro.save flush:true
+        
         redirect (action:"create", params:['livro.id':generoLivro.livro.id])
     }
 

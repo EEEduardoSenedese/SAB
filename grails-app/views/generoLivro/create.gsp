@@ -4,6 +4,14 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'generoLivro.label', default: 'GeneroLivro')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:javascript src="jquery-ui.js"/>
+        <asset:stylesheet src="jquery-ui.css"/>
+
+        <g:javascript>
+          $.get("${createLink(controller: 'genero', action: 'listagem')}", function(generos){
+            $("#generos").autocomplete({source: generos});
+          });
+        </g:javascript>
     </head>
     <body>
         <a href="#create-generoLivro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -20,7 +28,7 @@
             <g:hasErrors bean="${this.generoLivro}">
             <ul class="errors" role="alert">
                 <g:eachError bean="${this.generoLivro}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if><g:message error="${error}"/></li>
                 </g:eachError>
             </ul>
             </g:hasErrors>
@@ -28,13 +36,10 @@
                 <fieldset class="form">
                     <!-- Escolhe genero -->
                     <f:field bean="generoLivro" property="genero">
-                        <g:select name="genero.id" optionKey="id" from="${sab.livros.Genero.list(sort: 'nome')}"/>
+                        <input id="generos" autofocus name="genero.nome"/>
                         <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero" />
 
                     </f:field>
-
-                    <!-- Link para novo genero-->
-                    <g:link controller="Genero" action="create" target="_blank">Novo Genero</g:link>
 
                 </fieldset>
 
