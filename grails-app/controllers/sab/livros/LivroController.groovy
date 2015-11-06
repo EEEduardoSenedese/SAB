@@ -62,7 +62,7 @@ class LivroController {
         } else{
           colecao = livro.colecao
           colecao.save()
-          
+
           livro.colecao = colecao
         }
 
@@ -93,6 +93,30 @@ class LivroController {
             transactionStatus.setRollbackOnly()
             respond livro.errors, view:'edit'
             return
+        }
+        
+        Editora editora = Editora.findByNome(livro.editora.nome)
+
+        //Se a editora foi encontrada então ela existe e editora não é nula
+        if(editora){
+          livro.editora = editora
+        } else{
+          //Se é nula então a editora não existe e precisa ser criada
+          editora = livro.editora
+          editora.save()
+
+          livro.editora = editora
+        }
+
+        Colecao colecao = Colecao.findByNome(livro.colecao.nome)
+
+        if(colecao){
+          livro.colecao = colecao
+        } else{
+          colecao = livro.colecao
+          colecao.save()
+
+          livro.colecao = colecao
         }
 
         livro.save flush:true

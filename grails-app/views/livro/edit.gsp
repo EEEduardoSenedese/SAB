@@ -4,6 +4,18 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'livro.label', default: 'Livro')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <asset:javascript src="jquery-ui.js"/>
+        <asset:stylesheet src="jquery-ui.css"/>
+
+        <g:javascript>
+          $.get("${createLink(action: 'listagem', controller: 'editora')}", function(editoras){
+            $("#editoras").autocomplete({source: editoras});
+          });
+
+          $.get("${createLink(action: 'listagem', controller: 'colecao')}", function(colecoes){
+            $("#colecoes").autocomplete({source: colecoes});
+          });
+        </g:javascript>
     </head>
     <body>
         <a href="#edit-livro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -42,9 +54,14 @@
             <g:form resource="${this.livro}" method="PUT">
                 <g:hiddenField name="version" value="${this.livro?.version}" />
                 <fieldset class="form">
-                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas"/>
+                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas, colecao"/>
+
+                    <f:field bean="livro" property="colecao">
+                        <input id="colecoes" name="colecao.nome" value="${this.livro.colecao.nome}"/>
+                    </f:field>
+
                     <f:field bean="livro" property="editora">
-                        <g:select name="editora.id" from="${sab.livros.Editora.list(sort:'nome')}" optionKey="id" value="${livro.editora.id}"/>
+                        <input id="editoras" name="editora.nome" value="${this.livro.editora.nome}"/>
                     </f:field>
 
                     <f:field bean="livro" property="data">
