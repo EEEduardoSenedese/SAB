@@ -62,7 +62,7 @@ class LivroController {
         } else{
           colecao = livro.colecao
           colecao.save()
-          
+
           livro.colecao = colecao
         }
 
