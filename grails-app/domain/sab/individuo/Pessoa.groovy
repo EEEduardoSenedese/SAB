@@ -28,7 +28,7 @@ class Pessoa {
     ]
 
     static constraints = {
-      nome nullable: false, blank: false, unique: true
+      nome unique: false
       email nullable: true, blank: true
       usuario nullable: true, blank: true, unique: true
       senha nullable: true, blank: true
@@ -37,6 +37,9 @@ class Pessoa {
       cep nullable: true, blank:true
       complemento nullable:true , blank:true
       nacionalidade nullable: true, blank: true
+      pai nullable: true, blank: true
+      mae nullable: true, blank: true
+      naturalidade nullable: true, blank: true
     }
 
     String toString(){

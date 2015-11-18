@@ -12,7 +12,6 @@ class Aluno extends Pessoa{
     ]
 
     static constraints = {
-      codigo unique:true, nullable: false, blank:false
     }
 
     String toString(){
