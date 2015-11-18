@@ -56,7 +56,6 @@
                                 <td>
                                     <g:link action="show" controller="Autor" id="${autorLivro.autor.id}"> ${autorLivro.autor.nome} </g:link>
                                 </td>
-
                                 <td>
                                     <g:form resource="${autorLivro}" method="DELETE">
                                         <fieldset class="buttons">
@@ -69,7 +68,6 @@
                     </table>
                 </div>
             </fieldset>
-
             <fieldset class="buttons">
                 <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Voltar</g:link>
             </fieldset>
