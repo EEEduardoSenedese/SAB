@@ -74,6 +74,13 @@
                     </div>
                 </li>
 
+                <li class="fieldcontain">
+                    <span id="prateleira-label" class="property-label">Prateleira</span>
+                    <div class="property-value" aria-labelledby="categoria-label">
+                        <g:link controller="Prateleira" action="show" id="${livro.categoria.id}" target="_blank">${livro.prateleira}</g:link>
+                    </div>
+                </li>
+
                 <br>
 
                 <li class="fieldcontain">

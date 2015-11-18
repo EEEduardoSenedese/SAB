@@ -54,8 +54,6 @@
             <g:form resource="${this.livro}" method="PUT">
                 <g:hiddenField name="version" value="${this.livro?.version}" />
                 <fieldset class="form">
-                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas, colecao"/>
-
                     <f:field bean="livro" property="colecao">
                         <input id="colecoes" name="colecao.nome" value="${this.livro.colecao.nome}"/>
                     </f:field>
@@ -72,7 +70,7 @@
                         <input type="number" name="numeroDePaginas" value="${livro.numeroDePaginas}">
                     </f:field>
 
-
+                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas, colecao"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

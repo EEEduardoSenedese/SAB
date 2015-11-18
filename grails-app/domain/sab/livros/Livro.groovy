@@ -16,6 +16,7 @@ class Livro {
       categoria:  Categoria,
       editora:    Editora,
       colecao:      Colecao,
+      prateleira:   Prateleira,
       ]
 
     static constraints = {
