@@ -1,5 +1,7 @@
 package sab.livros
 
+import sab.Emprestimo
+
 class Livro {
 
   String titulo
@@ -7,7 +9,10 @@ class Livro {
   Date dataDeAquisicao
   int numeroDeEmprestimos
 
-    static hasMany = [autorLivro: AutorLivro, generoLivro: GeneroLivro]
+    static hasMany = [
+        autorLivro: AutorLivro,
+        generoLivro: GeneroLivro
+    ]
 
     int numeroDePaginas
 
@@ -16,8 +21,8 @@ class Livro {
       categoria:  Categoria,
       editora:    Editora,
       colecao:      Colecao,
-      prateleira:   Prateleira,
-      ]
+      prateleira:   Prateleira
+    ]
 
     static constraints = {
       titulo  nullable:false, blank:false, maxsize:128, unique:false
