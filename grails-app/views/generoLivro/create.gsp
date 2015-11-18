@@ -41,6 +41,12 @@
 
                     </f:field>
 
+                    <f:field bean="generoLivro" property="genero">
+                        <input id="generos" autofocus name="genero.nome"/>
+                        <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero" />
+
+                    </f:field>
+
                 </fieldset>
 
                 <!-- Livro -->
