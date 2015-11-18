@@ -4,12 +4,3 @@ Este projeto tem como finalidade ajudar a gestão de bibliotecas escolares e mun
 Na pasta doc é possível encontrar mais informações sobre as características do projeto e sua estrutura de dados.
 
 para mais informações entre em contato com geansaturno@gmail.com.
-
-##Lista de afazeres:
-
-- [ ] fazer relação n para n em categoria do livro
-- [X] colocar autocompletar nos campos como editora, autor genero e etc.
-- [X] definir que quando uma editora, categoria e etc não existir ser criado transparentemente para o usuário
-- [ ] alterar data do livro para data de publicação
-- [ ] alterar projeção da tabela de livros
-- [ ] Adicionar a função de pesquisa em outras páginas dos alunos
