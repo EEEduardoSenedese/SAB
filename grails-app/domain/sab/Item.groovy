@@ -10,4 +10,8 @@ class Item {
 
     static constraints = {
     }
+
+    String toString(){
+        livro.titulo
+    }
 }
