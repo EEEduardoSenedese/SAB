@@ -36,7 +36,7 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:field bean="emprestimo" property="pessoa">
-                        <input id="pessoas" autofocus name="pessoa"/>
+                        <input id="pessoas" autofocus name="pessoa.nome"/>
                     </f:field>
 
                     <f:all bean="emprestimo" except="dataRealDeDevolucao, pessoa, livros"/>
