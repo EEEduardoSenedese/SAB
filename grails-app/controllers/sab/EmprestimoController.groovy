@@ -2,6 +2,7 @@ package sab
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import sab.individuo.Pessoa
 
 @Transactional(readOnly = true)
 class EmprestimoController {
@@ -34,6 +35,14 @@ class EmprestimoController {
             respond emprestimo.errors, view:'create'
             return
         }
+
+        println "parametro: $params.pessoa.nome"
+
+        Pessoa pessoa = Pessoa.findOrSaveByNome(params.pessoa.nome)
+
+        println pessoa.nome
+
+        emprestimo.pessoa = pessoa
 
         emprestimo.save flush:true
 
