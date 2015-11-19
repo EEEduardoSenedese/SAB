@@ -41,8 +41,9 @@
                 </li>
 
                 <li class="fieldcontain">
-                    <span id="disponivel-label" class="property-label">Disponivel</span>
+                    <span id="disponivel-label" class="property-label">Disponível</span>
                     <div class="property-value" aria-labelledby="disponivel-label">
+                        <f:display bean="livro" property="disponivel"/>
                     </div>
                 </li>
 
