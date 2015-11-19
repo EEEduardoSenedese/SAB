@@ -2,6 +2,7 @@ package sab.individuo
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class PessoaController {
@@ -103,5 +104,14 @@ class PessoaController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def listagem(){
+        def resposta = []
+
+        Pessoa.list().each{
+            resposta << "${it.nome}"
+        }
+        render resposta as JSON
     }
 }
