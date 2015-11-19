@@ -18,7 +18,6 @@ class Livro {
         item:   Item,
     ]
 
-
     static belongsTo = [
       aquisicao:  Aquisicao,
       categoria:  Categoria,
