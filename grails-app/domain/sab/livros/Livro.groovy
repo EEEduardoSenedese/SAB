@@ -1,21 +1,23 @@
 package sab.livros
 
 import sab.Emprestimo
+import sab.Item
 
 class Livro {
 
-  String titulo
-  int data //data de publicação
-  Date dataDeAquisicao
-  int numeroDeEmprestimos
-  boolean disponivel = true
+    String titulo
+    int data //data de publicação
+    Date dataDeAquisicao
+    int numeroDeEmprestimos
+    boolean disponivel = true
+    int numeroDePaginas
 
     static hasMany = [
         autorLivro: AutorLivro,
-        generoLivro: GeneroLivro
+        generoLivro: GeneroLivro,
+        item:   Item,
     ]
 
-    int numeroDePaginas
 
     static belongsTo = [
       aquisicao:  Aquisicao,
