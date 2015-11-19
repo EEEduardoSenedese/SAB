@@ -8,7 +8,7 @@ class Emprestimo {
 
     Date dataDeEmprestimo
     Date dataDeDevolucao
-    Date dataRealDeDevolucao
+    Date dataRealDaDevolucao
     Serie serie
 
     static belongsTo = [
@@ -20,7 +20,7 @@ class Emprestimo {
     ]
 
     static constraints = {
-        dataRealDeDevolucao nullable:true, blank:true
+        dataRealDaDevolucao nullable:true, blank:true
     }
 
     String toString(){
