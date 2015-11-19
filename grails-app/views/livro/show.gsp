@@ -41,6 +41,12 @@
                 </li>
 
                 <li class="fieldcontain">
+                    <span id="disponivel-label" class="property-label">Disponivel</span>
+                    <div class="property-value" aria-labelledby="disponivel-label">
+                    </div>
+                </li>
+
+                <li class="fieldcontain">
                     <span id="data-label" class="property-label">Data</span>
                     <div class="property-value" aria-labelledby="data-label">${livro.data}</div>
                 </li>

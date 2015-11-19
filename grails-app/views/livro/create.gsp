@@ -68,6 +68,9 @@
                     <f:field bean="livro" property="numeroDePaginas"/>
                     <f:field bean="livro" property="categoria"/>
                     <f:field bean="livro" property="prateleira"/>
+                    <f:field bean="livro" property="disponivel">
+                        <g:checkBox name="disponivel" checked="${true}"/>
+                    </f:field>
 
                 </fieldset>
                 <fieldset class="buttons">
