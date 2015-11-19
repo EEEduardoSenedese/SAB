@@ -16,7 +16,7 @@ class Emprestimo {
     ]
 
     static hasMany = [
-        livros: Livro
+        itens: Item
     ]
 
     static constraints = {

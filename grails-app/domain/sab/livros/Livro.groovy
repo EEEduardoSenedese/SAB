@@ -8,6 +8,7 @@ class Livro {
   int data //data de publicação
   Date dataDeAquisicao
   int numeroDeEmprestimos
+  boolean disponivel = true
 
     static hasMany = [
         autorLivro: AutorLivro,
