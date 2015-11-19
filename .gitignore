@@ -13,3 +13,4 @@ build/
 *.db
 doc/*.dia
 .attach_*
+.autosave
