@@ -36,15 +36,22 @@ class ItemController {
         }
 
         if (sab.livros.Livro.get(item.livro.id)) {
-            println item.livro.id
-            item.save flush:true
 
-            request.withFormat {
-                form multipartForm {
-                    flash.message = message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), item.id])
-                    redirect (action: "create", controller: "item", params: ['emprestimo.id': item.emprestimo.id])
+            if (item.livro.disponivel) {
+
+                item.livro.disponivel = false
+                item.save flush:true
+
+                request.withFormat {
+                    form multipartForm {
+                        flash.message = message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), item.id])
+                        redirect (action: "create", controller: "item", params: ['emprestimo.id': item.emprestimo.id])
+                    }
+                    '*' { respond item, [status: CREATED] }
                 }
-                '*' { respond item, [status: CREATED] }
+            } else {
+                flash.message = "$item.livro.titulo com id $params.livro.id não Está disponível"
+                redirect (action: "create", controller: "item", params: ['emprestimo.id': item.emprestimo.id])
             }
         } else {
             flash.message = "Livro com id $params.livro.id não encontrado"
