@@ -61,7 +61,7 @@
             </fieldset>
 
             <fieldset class="buttons">
-                <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                <g:link action="show" controller="emprestimo" id="${params.long("emprestimo.id")}">Voltar</g:link>
             </fieldset>
         </div>
     </body>
