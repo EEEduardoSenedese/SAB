@@ -42,10 +42,10 @@
                 <div class="fieldcontain">
                     <table class="tabela-de-adicao">
                         <caption>Livros adicionados</caption>
-                        <g:each in="${itensList}" var="item" status="i">
+                        <g:each in="${sab.Item.findAllByEmprestimo(sab.Emprestimo.get(params.emprestimo.id))}" var="item" status="i">
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                                 <td>
-                                    <g:link action="show" controller="Livro" id="${item.livro.id}"> ${item.livro.nome} </g:link>
+                                    <g:link action="show" controller="Livro" id="${item.livro.id}"> ${"$item.livro.id: $item.livro.titulo"} </g:link>
                                 </td>
                                 <td>
                                     <g:form resource="${item}" method="DELETE">
