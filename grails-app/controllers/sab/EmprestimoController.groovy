@@ -39,8 +39,6 @@ class EmprestimoController {
             return
         }
 
-        println "parametro: $params.pessoa.nome"
-
         //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
         Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
 
@@ -61,18 +59,15 @@ class EmprestimoController {
             pessoa.save flush: true
         }
 
-        println pessoa.nome
-
         emprestimo.pessoa = pessoa
-
         emprestimo.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'emprestimo.label', default: 'Emprestimo'), emprestimo.id])
-                redirect emprestimo
+                redirect (controller: "item", action: "create", params: ['emprestimo.id': emprestimo.id])
             }
-            '*' { respond emprestimo, [status: CREATED] }
+            '*' { redirect(controller: "item", action: "create", params: ['emprestimo.id': emprestimo.id])}
         }
     }
 
