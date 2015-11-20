@@ -12,6 +12,8 @@ class Item {
     }
 
     String toString(){
-        livro.titulo
+        if(livro && emprestimo){
+            "${emprestimo.pessoa.nome} : ${livro.titulo}"
+        }
     }
 }
