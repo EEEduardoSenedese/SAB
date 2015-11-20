@@ -35,14 +35,20 @@ class ItemController {
             return
         }
 
-        item.save flush:true
+        if (sab.livros.Livro.get(item.livro.id)) {
+            println item.livro.id
+            item.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), item.id])
-                redirect item
+            request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), item.id])
+                    redirect (action: "create", controller: "item", params: ['emprestimo.id': item.emprestimo.id])
+                }
+                '*' { respond item, [status: CREATED] }
             }
-            '*' { respond item, [status: CREATED] }
+        } else {
+            flash.message = "Livro com id $params.livro.id não encontrado"
+            redirect (action: "create", controller: "item", params: ['emprestimo.id': item.emprestimo.id])
         }
     }
 
