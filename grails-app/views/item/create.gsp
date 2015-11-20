@@ -27,12 +27,42 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="item"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <div class="escondido">
+                        <f:field bean="item" property="emprestimo"/>
+                    </div>
+
+                    <f:field bean="item" property="livro">
+                        <input type="number" name="livro.id" autofocus/>
+                        <g:submitButton name="create" class="botao-normal" value="Adicionar Livro"/>
+                    </f:field>
                 </fieldset>
             </g:form>
+
+            <fieldset class="form">
+                <div class="fieldcontain">
+                    <table class="tabela-de-adicao">
+                        <caption>Livros adicionados</caption>
+                        <g:each in="${itensList}" var="item" status="i">
+                            <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                                <td>
+                                    <g:link action="show" controller="Livro" id="${item.livro.id}"> ${item.livro.nome} </g:link>
+                                </td>
+                                <td>
+                                    <g:form resource="${item}" method="DELETE">
+                                        <fieldset class="buttons">
+                                            <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                        </fieldset>
+                                    </g:form>
+                                </td>
+                            </tr>
+                        </g:each>
+                    </table>
+                </div>
+            </fieldset>
+
+            <fieldset class="buttons">
+                <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            </fieldset>
         </div>
     </body>
 </html>
