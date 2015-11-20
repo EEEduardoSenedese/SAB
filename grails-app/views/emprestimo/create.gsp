@@ -38,8 +38,11 @@
                     <f:field bean="emprestimo" property="pessoa">
                         <input id="pessoas" autofocus name="pessoa.nome"/>
                     </f:field>
+                    <div class="escondido">
+                        <f:field bean="emprestimo" property="dataDeEmprestimo"/>
+                    </div>
 
-                    <f:all bean="emprestimo" except="dataRealDaDevolucao, pessoa, itens"/>
+                    <f:all bean="emprestimo" except="dataRealDaDevolucao, dataDeEmprestimo, pessoa, itens"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
