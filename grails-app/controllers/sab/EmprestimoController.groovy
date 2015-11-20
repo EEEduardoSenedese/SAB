@@ -3,6 +3,9 @@ package sab
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import sab.individuo.Pessoa
+import sab.individuo.Posicao
+import sab.individuo.Sexo
+import sab.endereco.*
 
 @Transactional(readOnly = true)
 class EmprestimoController {
@@ -38,7 +41,25 @@ class EmprestimoController {
 
         println "parametro: $params.pessoa.nome"
 
-        Pessoa pessoa = Pessoa.findOrSaveByNome(params.pessoa.nome)
+        //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
+        Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
+
+        if(!pessoa){ //Se não foi encontrado nenhuma pessoa
+            pessoa = new Pessoa()
+
+            pessoa.nome = params.pessoa.nome
+            pessoa.bairro = Bairro.list(max: '1')[0] //Pega uma lista com no maximo 1 item e pega o primeiro item desta linha, ou seja, pega o priemiro item do banco de dados
+            //Deste modo não é necessário buscar todos os items do banco, reduzindo sua carga
+            pessoa.cidade = Cidade.list(max: '1')[0]
+            pessoa.posicao = Posicao.list(max: '1')[0]
+            pessoa.uf = UF.list(max: '1')[0]
+            pessoa.rua = Rua.list(max: '1')[0]
+            pessoa.sexo = Sexo.list(max: '1')[0]
+            pessoa.numeroDaRua = 0
+            pessoa.dataDeNascimento = new Date()
+
+            pessoa.save flush: true
+        }
 
         println pessoa.nome
 
