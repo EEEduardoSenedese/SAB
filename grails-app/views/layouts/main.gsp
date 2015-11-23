@@ -21,6 +21,7 @@
                   <li><g:link controller="Autor">Autor</g:link></li>
                   <li><g:link controller="Editora">Editoras</g:link></li>
                   <li><g:link controller="Emprestimo">Emprestimo</g:link></li>
+                  <li><g:link controller="Devolucao">Devolução</g:link></li>
                   <li><g:link controller="Categoria">Categoria</g:link></li>
                   <li><g:link controller="Aquisicao">Aquisição</g:link></li>
                   <li><g:link controller="Colecao">Coleção</g:link></li>

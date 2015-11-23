@@ -3,6 +3,9 @@ import sab.livros.Livro
 
 class Item {
 
+    boolean devolvido
+    Date dataDaDevolucao
+
     static belongsTo = [
         emprestimo: Emprestimo,
         livro: Livro
