@@ -20,7 +20,7 @@
             <div class="message" role="status">${flash.message}</div>
             </g:if>
             <!--<f:display bean="emprestimo" except="itens"/>-->
-            <ol class="property-list livro">
+            <ol class="property-list emprestimo">
                 <li class="fieldcontain">
                     <span id="dataDeEmprestimo-label" class="property-label">Data de Emprestimo</span>
                     <div class="property-value" aria-labelledby="dataDeEmprestimo-label">
