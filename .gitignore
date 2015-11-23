@@ -14,3 +14,4 @@ build/
 doc/*.dia
 .attach_*
 .autosave
+.to-do.md
