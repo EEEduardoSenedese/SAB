@@ -26,7 +26,7 @@
                     <li class="fieldcontain">
                         <span class="property-label">ID do livro</span>
                         <div class="property-value">
-                            <input name="id-devolucao" autofocus/>
+                            <input name="id" autofocus/>
                             <g:submitButton name="devolver" class="save" value="Pesquisar"/>
                         </div>
                     </li>
