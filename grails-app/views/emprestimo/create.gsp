@@ -45,7 +45,7 @@
                     <f:all bean="emprestimo" except="dataRealDaDevolucao, dataDeEmprestimo, pessoa, itens"/>
                 </fieldset>
                 <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <g:submitButton name="create" class="save" value="Próximo" />
                 </fieldset>
             </g:form>
         </div>
