@@ -164,6 +164,10 @@ class LivroController {
       copia.categoria = livro.categoria
       copia.colecao = livro.colecao
       copia.dataDeAquisicao = livro.dataDeAquisicao
+      copia.prateleira = livro.prateleira
+      copia.numeroDeEmprestimos = 0;
+      copia.disponivel = true
+
 
       for(autorLivroAtual in livro.autorLivro){
           copia.addToAutorLivro(new AutorLivro(autor: autorLivroAtual.autor))
