@@ -56,7 +56,7 @@
                     <div class="property-value" aria-labelledby="itens-label">
                         <ul>
                             <g:each var="item" in="${sab.Item.findAllByEmprestimo(emprestimo)}">
-                                <li><g:link  controller="item" action="show" target="_blank" id="${item.livro.id}">${item.livro.titulo}</g:link ></li>
+                                <li><g:link  controller="livro" action="show" target="_blank" id="${item.livro.id}">${item.livro.titulo}</g:link ></li>
                             </g:each>
                         </ul>
                     </div>
