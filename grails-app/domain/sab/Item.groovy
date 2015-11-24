@@ -12,6 +12,7 @@ class Item {
     ]
 
     static constraints = {
+        dataDaDevolucao nullable:true, blank: true
     }
 
     String toString(){
