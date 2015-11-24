@@ -117,4 +117,14 @@ class ItemController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def devolver(Item item){
+
+        println params
+
+        flash.message="Livro $item.livro.titulo, id: $item.livro.id"
+
+        redirect (action: 'index')
+
+    }
 }

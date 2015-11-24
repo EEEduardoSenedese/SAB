@@ -10,12 +10,23 @@ class DevolucaoController {
 
     def show(long id){
 
-        println id
-
         Livro livro = Livro.get(id)
 
-        println livro.titulo
-        Emprestimo emprestimo = sab.Item.findByLivro(livro).emprestimo
-        return emprestimo
+        Item item = sab.Item.findByLivroAndDevolvido(livro, false)
+
+        //item.devolvido = true
+
+        Emprestimo emprestimo = item.emprestimo
+        respond emprestimo, model:[itemDevolucao: item]
+    }
+
+    def devolver(Item item){
+
+        println params
+
+        flash.message="Livro $item.livro.titulo, id: $item.livro.id"
+
+        redirect (action: 'index')
+
     }
 }
