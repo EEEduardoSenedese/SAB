@@ -25,7 +25,9 @@ class LivroController {
     }
 
     def create() {
-        respond new Livro(params)
+        Livro livro = new Livro(params)
+        livro.dataDeAquisicao = new Date()
+        respond livro
     }
 
     @Transactional
