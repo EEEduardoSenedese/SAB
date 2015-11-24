@@ -9,19 +9,19 @@ class Emprestimo {
     Date dataDeEmprestimo
     Date dataDeDevolucao
     Serie serie
+    boolean devolvido = false
+    Date devolvidoEm
 
     static belongsTo = [
         pessoa: Pessoa,
-    ]
-
-    static hasMany = [
-        itens: Item
+        livro: Livro,
     ]
 
     static constraints = {
+        devolvidoEm nullable: true, blank:true
     }
 
     String toString(){
-        "$pessoa, $id"
+        "$pessoa, $livro"
     }
 }
