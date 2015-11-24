@@ -58,7 +58,7 @@
                     </f:field>
 
                     <f:field bean="livro" property="colecao" class="ui-widget">
-                        <input name="colecao.nome" id="colecoes" value="${sab.livros.Colecao.get('0').nome}"/>
+                        <input name="colecao.nome" id="colecoes" value="${sab.livros.Colecao.list(max: '1')[0].nome}"/>
                     </f:field>
 
                     <f:field bean="livro" property="titulo"/>
