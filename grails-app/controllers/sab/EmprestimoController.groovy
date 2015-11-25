@@ -153,4 +153,14 @@ class EmprestimoController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def pesquisarLivro(long id){
+
+        Livro livro = Livro.get(id)
+
+        if(livro){
+            Emprestimo emprestimo = Emprestimo.findByLivroAndDevolvido(livro, false)
+        }
+
+    }
 }
