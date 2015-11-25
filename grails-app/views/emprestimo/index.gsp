@@ -11,6 +11,13 @@
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li>
+                    <g:form action="pesquisarLivro">
+                        <label for="devolucao">Devolver livro</label>
+                        <input type="number" name="devolucao" value="" placeholder="Id do livro">
+                        <g:submitButton name="search" class="edit" value="Pesquisar"/>
+                    </g:form>
+                </li>
             </ul>
         </div>
         <div id="list-emprestimo" class="content scaffold-list" role="main">
