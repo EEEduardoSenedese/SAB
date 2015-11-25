@@ -36,13 +36,17 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:field bean="emprestimo" property="pessoa">
-                        <input id="pessoas" autofocus name="pessoa.nome"/>
+                        <input id="pessoas" name="pessoa.nome" value="${pessoa?.nome}"/>
                     </f:field>
                     <div class="escondido">
                         <f:field bean="emprestimo" property="dataDeEmprestimo"/>
                     </div>
 
-                    <f:all bean="emprestimo" except="dataRealDaDevolucao, dataDeEmprestimo, pessoa, itens"/>
+                    <f:all bean="emprestimo" except="dataDeEmprestimo, devolvido, devolvidoEm, pessoa, livro"/>
+
+                    <f:field bean="emprestimo" property="livro">
+                        <input type="number" name="livro.id"/>
+                    </f:field>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="Próximo" />
