@@ -16,16 +16,15 @@
             <nav id="menu-corpo">
               <h2>Menu</h2>
               <ul>
-                  <li><g:link controller="Livro">Livro</g:link></li>
-                  <li><g:link controller="Genero">Gênero</g:link></li>
-                  <li><g:link controller="Autor">Autor</g:link></li>
+                  <li><g:link controller="Livro">Livros</g:link></li>
+                  <li><g:link controller="Genero">Gêneros</g:link></li>
+                  <li><g:link controller="Autor">Autores</g:link></li>
                   <li><g:link controller="Editora">Editoras</g:link></li>
-                  <li><g:link controller="Emprestimo">Emprestimo</g:link></li>
-                  <li><g:link controller="Devolucao">Devolução</g:link></li>
-                  <li><g:link controller="Categoria">Categoria</g:link></li>
-                  <li><g:link controller="Aquisicao">Aquisição</g:link></li>
-                  <li><g:link controller="Colecao">Coleção</g:link></li>
-                  <li><g:link controller="Prateleira">Prateleira</g:link></li>
+                  <li><g:link controller="Emprestimo">Emprestimos</g:link></li>
+                  <li><g:link controller="Categoria">Categorias</g:link></li>
+                  <li><g:link controller="Aquisicao">Aquisições</g:link></li>
+                  <li><g:link controller="Colecao">Coleções</g:link></li>
+                  <li><g:link controller="Prateleira">Prateleiras</g:link></li>
               </ul>
             </nav>
         </header>
