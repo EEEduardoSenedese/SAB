@@ -36,7 +36,7 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:field bean="emprestimo" property="pessoa">
-                        <input id="pessoas" name="pessoa.nome" value="${pessoa?.nome}"/>
+                        <input id="pessoas" name="pessoa.nome" value="${emprestimo?.pessoa?.nome}"/>
                     </f:field>
                     <div class="escondido">
                         <f:field bean="emprestimo" property="dataDeEmprestimo"/>
@@ -45,7 +45,7 @@
                     <f:all bean="emprestimo" except="dataDeEmprestimo, devolvido, devolvidoEm, pessoa, livro"/>
 
                     <f:field bean="emprestimo" property="livro">
-                        <input type="number" name="livro.id"/>
+                        <input type="number" name="livro.id" value=""/>
                     </f:field>
                 </fieldset>
                 <fieldset class="buttons">

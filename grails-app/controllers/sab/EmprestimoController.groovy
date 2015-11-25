@@ -7,6 +7,8 @@ import sab.individuo.Posicao
 import sab.individuo.Sexo
 import sab.endereco.*
 
+import sab.livros.Livro
+
 @Transactional(readOnly = true)
 class EmprestimoController {
 
@@ -64,14 +66,32 @@ class EmprestimoController {
         }
 
         emprestimo.pessoa = pessoa
-        emprestimo.save flush:true
+
+        def mensagen
+
+        if(Livro.exists(emprestimo.livro.id)){
+
+            if(!emprestimo.livro.disponivel){
+                mensagen = "Livro $emprestimo.livro.titulo id: $emprestimo.livro.id não está disponível"
+
+            } else{
+
+                emprestimo.livro.disponivel = false
+                emprestimo.save flush:true
+
+                mensagen = message(code: 'default.created.message', args: [message(code: 'emprestimo.label', default: 'Emprestimo'), emprestimo.id])
+            }
+
+        } else{
+            mensagen = "Livro com id $params.livro.id não existe"
+        }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'emprestimo.label', default: 'Emprestimo'), emprestimo.id])
-                redirect (controller: "item", action: "create", params: ['emprestimo.id': emprestimo.id])
+                flash.message = mensagen
+                redirect (controller: "emprestimo", action: "create", params: ["pessoa.nome": emprestimo.pessoa.nome, "serie.id": emprestimo.serie.id])
             }
-            '*' { redirect(controller: "item", action: "create", params: ['emprestimo.id': emprestimo.id])}
+            '*' { redirect(controller: "emprestimo", action: "create", params: ["pessoa.nome": emprestimo.pessoa.nome, "serie.id": emprestimo.serie.id])}
         }
     }
 
