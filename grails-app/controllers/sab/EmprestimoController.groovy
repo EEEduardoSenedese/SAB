@@ -45,26 +45,6 @@ class EmprestimoController {
             return
         }
 
-        //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
-        Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
-
-        if(!pessoa){ //Se não foi encontrado nenhuma pessoa
-            pessoa = new Pessoa()
-
-            pessoa.nome = params.pessoa.nome
-            pessoa.bairro = Bairro.list(max: '1')[0] //Pega uma lista com no maximo 1 item e pega o primeiro item desta linha, ou seja, pega o priemiro item do banco de dados
-            //Deste modo não é necessário buscar todos os items do banco, reduzindo sua carga
-            pessoa.cidade = Cidade.list(max: '1')[0]
-            pessoa.posicao = Posicao.list(max: '1')[0]
-            pessoa.uf = UF.list(max: '1')[0]
-            pessoa.rua = Rua.list(max: '1')[0]
-            pessoa.sexo = Sexo.list(max: '1')[0]
-            pessoa.numeroDaRua = 0
-            pessoa.dataDeNascimento = new Date()
-
-            pessoa.save flush: true
-        }
-
         emprestimo.pessoa = pessoa
 
         def mensagen
@@ -151,6 +131,90 @@ class EmprestimoController {
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
+        }
+    }
+
+    def pesquisarAluno(){
+
+    }
+
+    def selecionarLivro(Emprestimo ultimoEmprestimo){
+        //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
+        println "PARAMETROS:\n $params"
+
+        Emprestimo emprestimo
+
+        if(!ultimoEmprestimo){
+            Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
+
+            if(!pessoa){ //Se não foi encontrado nenhuma pessoa
+                pessoa = new Pessoa()
+
+                pessoa.nome = params.pessoa.nome
+                pessoa.bairro = Bairro.list(max: '1')[0] //Pega uma lista com no maximo 1 item e pega o primeiro item desta linha, ou seja, pega o priemiro item do banco de dados
+                //Deste modo não é necessário buscar todos os items do banco, reduzindo sua carga
+                pessoa.cidade = Cidade.list(max: '1')[0]
+                pessoa.posicao = Posicao.list(max: '1')[0]
+                pessoa.uf = UF.list(max: '1')[0]
+                pessoa.rua = Rua.list(max: '1')[0]
+                pessoa.sexo = Sexo.list(max: '1')[0]
+                pessoa.numeroDaRua = 0
+                pessoa.dataDeNascimento = new Date()
+
+                pessoa.save flush: true
+            }
+
+            emprestimo = new Emprestimo()
+            emprestimo.pessoa = pessoa
+
+        } else{
+            emprestimo.serie = ultimoEmprestimo.serie
+            emprestimo.dataDeDevolucao = ultimoEmprestimo.dataDeDevolucao
+        }
+
+        [emprestimo: emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(pessoa, false)]
+    }
+
+    @Transactional
+    def finalizarEmprestimo(Emprestimo emprestimo){
+
+        if (emprestimo == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        if (emprestimo.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond emprestimo.errors, view:'create'
+            return
+        }
+
+        def mensagen
+
+        if(Livro.exists(emprestimo.livro.id)){
+
+            if(!emprestimo.livro.disponivel){
+                mensagen = "Livro $emprestimo.livro.titulo id: $emprestimo.livro.id não está disponível"
+
+            } else{
+
+                emprestimo.livro.disponivel = false
+                emprestimo.save flush:true
+
+                mensagen = message(code: 'default.created.message', args: [message(code: 'emprestimo.label', default: 'Emprestimo'), emprestimo.id])
+            }
+
+        } else{
+            mensagen = "Livro com id $params.livro.id não existe"
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = mensagen
+                redirect(controller: "emprestimo", action: "selecionarLivro", params: ["emprestimo": emprestimo])
+            }
+            '*' { redirect(controller: "emprestimo", action: "selecionarLivro", params: ["emprestimo": emprestimo])}
         }
     }
 
