@@ -191,31 +191,38 @@ class EmprestimoController {
             return
         }
 
-        def mensagen
+        def mensagem
 
         if(Livro.exists(emprestimo.livro.id)){
 
             if(!emprestimo.livro.disponivel){
-                mensagen = "Livro $emprestimo.livro.titulo id: $emprestimo.livro.id não está disponível"
+                mensagem = "Livro $emprestimo.livro.titulo id: $emprestimo.livro.id não está disponível"
 
             } else{
 
                 emprestimo.livro.disponivel = false
                 emprestimo.save flush:true
 
-                mensagen = message(code: 'default.created.message', args: [message(code: 'emprestimo.label', default: 'Emprestimo'), emprestimo.id])
+                mensagem = message(code: 'default.created.message', args: [message(code: 'emprestimo.label', default: 'Emprestimo'), emprestimo.id])
             }
 
         } else{
-            mensagen = "Livro com id $params.livro.id não existe"
+            mensagem = "Livro com id $params.livro.id não existe"
         }
+
+        Emprestimo novoEmprestimo = new Emprestimo(
+            pessoa: emprestimo.pessoa,
+            serie: emprestimo.serie,
+            dataDeDevolucao: emprestimo.dataDeDevolucao,
+            dataDeEmprestimo: emprestimo.dataDeEmprestimo
+        )
 
         request.withFormat {
             form multipartForm {
-                flash.message = mensagen
-                redirect(controller: "emprestimo", action: "selecionarLivro", params: ["emprestimo": emprestimo])
+                flash.message = mensagem
+                render (view: 'selecionarLivro', model: ["emprestimo": novoEmprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)])
             }
-            '*' { redirect(controller: "emprestimo", action: "selecionarLivro", params: ["emprestimo": emprestimo])}
+            '*' { respond emprestimo, status[CREATED] }
         }
     }
 
