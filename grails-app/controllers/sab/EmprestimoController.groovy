@@ -141,7 +141,6 @@ class EmprestimoController {
     @Transactional
     def selecionarLivro(Emprestimo ultimoEmprestimo){
         //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
-        println "PARAMETROS:\n $params"
 
         Emprestimo emprestimo
 
@@ -233,6 +232,9 @@ class EmprestimoController {
         if(livro){
             Emprestimo emprestimo = Emprestimo.findByLivroAndDevolvido(livro, false)
         }
+    }
 
+    def devolver(){
+        
     }
 }
