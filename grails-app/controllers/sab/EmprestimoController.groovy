@@ -138,13 +138,14 @@ class EmprestimoController {
 
     }
 
+    @Transactional
     def selecionarLivro(Emprestimo ultimoEmprestimo){
         //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
         println "PARAMETROS:\n $params"
 
         Emprestimo emprestimo
 
-        if(!ultimoEmprestimo){
+        if(!ultimoEmprestimo.serie){ //requisição de pesquisar aluno
             Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
 
             if(!pessoa){ //Se não foi encontrado nenhuma pessoa
@@ -167,12 +168,12 @@ class EmprestimoController {
             emprestimo = new Emprestimo()
             emprestimo.pessoa = pessoa
 
-        } else{
+        } else{ //requisição de finalizarEmprestimo
             emprestimo.serie = ultimoEmprestimo.serie
             emprestimo.dataDeDevolucao = ultimoEmprestimo.dataDeDevolucao
         }
 
-        [emprestimo: emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(pessoa, false)]
+        [emprestimo: emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)]
     }
 
     @Transactional
