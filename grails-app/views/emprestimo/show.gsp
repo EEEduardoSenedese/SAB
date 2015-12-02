@@ -21,6 +21,14 @@
             </g:if>
             <!--<f:display bean="emprestimo" except="itens"/>-->
             <ol class="property-list emprestimo">
+
+                <li class="fieldcontain">
+                    <span id="dataDeEmprestimo-label" class="property-label">Devolvido</span>
+                    <div class="property-value" aria-labelledby="devolvido-label">
+                        <f:display bean="emprestimo" property="devolvido"/>
+                    </div>
+                </li>
+                
                 <li class="fieldcontain">
                     <span id="dataDeDevolucao-label" class="property-label">Data de Devolução</span>
                     <div class="property-value" aria-labelledby="dataDeDevolução-label">
@@ -56,13 +64,6 @@
                     </div>
                 </li>
 
-                <li class="fieldcontain">
-                    <span id="dataDeEmprestimo-label" class="property-label">Devolvido</span>
-                    <div class="property-value" aria-labelledby="devolvido-label">
-                        <f:display bean="emprestimo" property="devolvido"/>
-                    </div>
-                </li>
-
                 <br>
 
                 <li class="fieldcontain">
@@ -82,7 +83,7 @@
                     <g:link class="edit" action="edit" resource="${this.emprestimo}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                     <g:if test="${!emprestimo.devolvido}">
-                        <g:link class="edit" action="devolver" resource="${this.emprestimo}">Devolver</g:link>
+                        <g:link class="edit" action="devolver" resource="${this.emprestimo}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Devolver</g:link>
                     </g:if>
                 </fieldset>
             </g:form>
