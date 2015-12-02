@@ -22,6 +22,6 @@ class Emprestimo {
     }
 
     String toString(){
-        "$pessoa, $livro"
+        "$pessoa - $livro" 
     }
 }
