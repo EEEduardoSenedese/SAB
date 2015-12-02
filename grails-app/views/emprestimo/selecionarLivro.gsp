@@ -32,12 +32,14 @@
                         <input type="number" autofocus="true" name="livro.id"/>
                     </f:field>
                 </fieldset>
+
+                <f:table collection="${emprestimoList}" properties="['id', "dataDeEmprestimo", "dataDeDevolucao", "livro", "devolvido"]"/>
                 <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="Finalizar Emprestimo"/>
+                    <g:link action="index"> Sair</g:link>
+                    <g:submitButton name="create" class="save" value="Fazer Emprestimo"/>
                 </fieldset>
             </g:form>
 
-            <f:table collection="${emprestimoList}" properties="['id', "pessoa", "livro", "devolvido"]"/>
         </div>
     </body>
 </html>
