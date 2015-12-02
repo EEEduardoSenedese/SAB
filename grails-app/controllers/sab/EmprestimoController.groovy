@@ -186,7 +186,7 @@ class EmprestimoController {
 
         if (emprestimo.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond emprestimo.errors, view:'create'
+            respond emprestimo.errors, view:'selecionarLivro'
             return
         }
 
@@ -227,14 +227,39 @@ class EmprestimoController {
 
     def pesquisarLivro(long id){
 
+        //println id
         Livro livro = Livro.get(id)
+        //println livro
 
         if(livro){
             Emprestimo emprestimo = Emprestimo.findByLivroAndDevolvido(livro, false)
+
+            if(emprestimo){
+                flash.message = "Emprestimo localizado"
+                redirect emprestimo
+
+            } else{
+                flash.message = "Livro $livro.titulo consta como disponível"
+                redirect action: "index"
+            }
+
+        } else{
+            flash.message = "Livro com id $id não existe"
+            redirect action: "index"
         }
     }
 
+    @Transactional
     def devolver(Emprestimo emprestimo){
         println emprestimo
+
+        emprestimo.devolvido = true;
+        emprestimo.devolvidoEm = new Date()
+        emprestimo.livro.disponivel = true;
+        emprestimo.livro.numeroDeEmprestimos += 1
+
+        emprestimo.save flush: true
+
+        redirect emprestimo
     }
 }
