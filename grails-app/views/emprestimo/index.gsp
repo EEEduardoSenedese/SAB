@@ -14,7 +14,7 @@
                 <li>
                     <g:form action="pesquisarLivro">
                         <label for="devolucao">Devolver livro</label>
-                        <input type="number" name="devolucao" value="" placeholder="Id do livro">
+                        <input type="number" name="id" value="" placeholder="Id do livro">
                         <g:submitButton name="search" class="edit" value="Pesquisar"/>
                     </g:form>
                 </li>
