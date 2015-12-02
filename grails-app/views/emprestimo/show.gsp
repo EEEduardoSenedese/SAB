@@ -22,16 +22,16 @@
             <!--<f:display bean="emprestimo" except="itens"/>-->
             <ol class="property-list emprestimo">
                 <li class="fieldcontain">
-                    <span id="dataDeEmprestimo-label" class="property-label">Data de Emprestimo</span>
-                    <div class="property-value" aria-labelledby="dataDeEmprestimo-label">
-                        <f:display bean="emprestimo" property="dataDeEmprestimo"/>
+                    <span id="dataDeDevolucao-label" class="property-label">Data de Devolução</span>
+                    <div class="property-value" aria-labelledby="dataDeDevolução-label">
+                        <f:display bean="emprestimo" property="dataDeDevolucao"/>
                     </div>
                 </li>
 
                 <li class="fieldcontain">
-                    <span id="dataDeDevolucao-label" class="property-label">Data de Devolução</span>
-                    <div class="property-value" aria-labelledby="dataDeDevolução-label">
-                        <f:display bean="emprestimo" property="dataDeDevolucao"/>
+                    <span id="dataDeDevolucao-label" class="property-label">Devolvido dia</span>
+                    <div class="property-value" aria-labelledby="devolvidoEm-label">
+                        <f:display bean="emprestimo" property="devolvidoEm"/>
                     </div>
                 </li>
 
@@ -49,24 +49,41 @@
                     </div>
                 </li>
 
+                <li class="fieldcontain">
+                    <span id="dataDeEmprestimo-label" class="property-label">Data de Emprestimo</span>
+                    <div class="property-value" aria-labelledby="dataDeEmprestimo-label">
+                        <f:display bean="emprestimo" property="dataDeEmprestimo"/>
+                    </div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="dataDeEmprestimo-label" class="property-label">Devolvido</span>
+                    <div class="property-value" aria-labelledby="devolvido-label">
+                        <f:display bean="emprestimo" property="devolvido"/>
+                    </div>
+                </li>
+
                 <br>
 
                 <li class="fieldcontain">
-                    <span id="itens-label" class="property-label">Livro(s) do emprestimo</span>
-                    <div class="property-value" aria-labelledby="itens-label">
-                        <ul>
-                            <g:each var="item" in="${sab.Item.findAllByEmprestimo(emprestimo)}">
-                                <li><g:link  controller="livro" action="show" target="_blank" id="${item.livro.id}">${item.livro.titulo}</g:link ></li>
-                            </g:each>
-                        </ul>
+                    <span id="dataDeEmprestimo-label" class="property-label">Livro</span>
+                    <div class="property-value" aria-labelledby="livro-label">
+                        <f:display bean="emprestimo" property="livro"/>
                     </div>
                 </li>
+
+                <Br>
             </ol>
+
+            <f:table collection="${sab.Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false, [order: desc])}" properties="['id', 'dataDeEmprestimo', 'dataDeDevolucao', 'livro']"/>
 
             <g:form resource="${this.emprestimo}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.emprestimo}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:if test="${!emprestimo.devolvido}">
+                        <g:link class="edit" action="devolver" resource="${this.emprestimo}">Devolver</g:link>
+                    </g:if>
                 </fieldset>
             </g:form>
         </div>
