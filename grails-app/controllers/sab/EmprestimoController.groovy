@@ -234,7 +234,7 @@ class EmprestimoController {
         }
     }
 
-    def devolver(){
-        
+    def devolver(Emprestimo emprestimo){
+        println emprestimo
     }
 }
