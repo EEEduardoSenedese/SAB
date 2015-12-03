@@ -139,38 +139,34 @@ class EmprestimoController {
     }
 
     @Transactional
-    def selecionarLivro(Emprestimo ultimoEmprestimo){
-        //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
+    def selecionarLivro(){
 
         Emprestimo emprestimo
 
-        if(!ultimoEmprestimo.ano){ //requisição de pesquisar aluno
-            Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
+        Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
 
-            if(!pessoa){ //Se não foi encontrado nenhuma pessoa
-                pessoa = new Pessoa()
+        if(!pessoa){ //Se não foi encontrado nenhuma pessoa
 
-                pessoa.nome = params.pessoa.nome
-                pessoa.bairro = Bairro.list(max: '1')[0] //Pega uma lista com no maximo 1 item e pega o primeiro item desta linha, ou seja, pega o priemiro item do banco de dados
-                //Deste modo não é necessário buscar todos os items do banco, reduzindo sua carga
-                pessoa.cidade = Cidade.list(max: '1')[0]
-                pessoa.posicao = Posicao.list(max: '1')[0]
-                pessoa.uf = UF.list(max: '1')[0]
-                pessoa.rua = Rua.list(max: '1')[0]
-                pessoa.sexo = Sexo.list(max: '1')[0]
-                pessoa.numeroDaRua = 0
-                pessoa.dataDeNascimento = new Date()
+            //Pessoa possui atributos obrigatórios, pois isto não pode ser utilizado findOrSaveByNome()
+            pessoa = new Pessoa()
 
-                pessoa.save flush: true
-            }
+            pessoa.nome = params.pessoa.nome
+            pessoa.bairro = Bairro.list(max: '1')[0] //Pega uma lista com no maximo 1 item e pega o primeiro item desta linha, ou seja, pega o priemiro item do banco de dados
+            //Deste modo não é necessário buscar todos os items do banco, reduzindo sua carga
+            pessoa.cidade = Cidade.list(max: '1')[0]
+            pessoa.posicao = Posicao.list(max: '1')[0]
+            pessoa.uf = UF.list(max: '1')[0]
+            pessoa.rua = Rua.list(max: '1')[0]
+            pessoa.sexo = Sexo.list(max: '1')[0]
+            pessoa.numeroDaRua = 0
+            pessoa.dataDeNascimento = new Date()
 
-            emprestimo = new Emprestimo()
-            emprestimo.pessoa = pessoa
-
-        } else{ //requisição de finalizarEmprestimo
-            emprestimo.ano = ultimoEmprestimo.ano
-            emprestimo.dataDeDevolucao = ultimoEmprestimo.dataDeDevolucao
+            pessoa.save flush: true
         }
+
+        emprestimo = new Emprestimo()
+        emprestimo.pessoa = pessoa
+        emprestimo.dataDeDevolucao = new Date().plus(7)
 
         [emprestimo: emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)]
     }
