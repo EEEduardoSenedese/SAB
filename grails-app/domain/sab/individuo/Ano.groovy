@@ -1,6 +1,6 @@
 package sab.individuo
 
-class Serie {
+class Ano {
 
     String nome
 

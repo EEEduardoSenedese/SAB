@@ -69,9 +69,9 @@ class EmprestimoController {
         request.withFormat {
             form multipartForm {
                 flash.message = mensagen
-                redirect (controller: "emprestimo", action: "create", params: ["pessoa.nome": emprestimo.pessoa.nome, "serie.id": emprestimo.serie.id])
+                redirect (controller: "emprestimo", action: "create", params: ["pessoa.nome": emprestimo.pessoa.nome, "ano.id": emprestimo.ano.id])
             }
-            '*' { redirect(controller: "emprestimo", action: "create", params: ["pessoa.nome": emprestimo.pessoa.nome, "serie.id": emprestimo.serie.id])}
+            '*' { redirect(controller: "emprestimo", action: "create", params: ["pessoa.nome": emprestimo.pessoa.nome, "ano.id": emprestimo.ano.id])}
         }
     }
 
@@ -144,7 +144,7 @@ class EmprestimoController {
 
         Emprestimo emprestimo
 
-        if(!ultimoEmprestimo.serie){ //requisição de pesquisar aluno
+        if(!ultimoEmprestimo.ano){ //requisição de pesquisar aluno
             Pessoa pessoa = Pessoa.findByNome(params.pessoa.nome)
 
             if(!pessoa){ //Se não foi encontrado nenhuma pessoa
@@ -168,7 +168,7 @@ class EmprestimoController {
             emprestimo.pessoa = pessoa
 
         } else{ //requisição de finalizarEmprestimo
-            emprestimo.serie = ultimoEmprestimo.serie
+            emprestimo.ano = ultimoEmprestimo.ano
             emprestimo.dataDeDevolucao = ultimoEmprestimo.dataDeDevolucao
         }
 
@@ -211,7 +211,7 @@ class EmprestimoController {
 
         Emprestimo novoEmprestimo = new Emprestimo(
             pessoa: emprestimo.pessoa,
-            serie: emprestimo.serie,
+            ano: emprestimo.ano,
             dataDeDevolucao: emprestimo.dataDeDevolucao,
             dataDeEmprestimo: emprestimo.dataDeEmprestimo
         )

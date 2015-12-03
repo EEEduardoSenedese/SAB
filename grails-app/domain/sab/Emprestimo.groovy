@@ -2,13 +2,13 @@ package sab
 
 import sab.individuo.Pessoa
 import sab.livros.Livro
-import sab.individuo.Serie
+import sab.individuo.Ano
 
 class Emprestimo {
 
     Date dataDeEmprestimo
     Date dataDeDevolucao
-    Serie serie
+    Ano ano
     boolean devolvido = false
     Date devolvidoEm
 
@@ -22,6 +22,6 @@ class Emprestimo {
     }
 
     String toString(){
-        "$pessoa - $livro" 
+        "$pessoa - $livro"
     }
 }

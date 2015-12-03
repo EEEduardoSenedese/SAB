@@ -16,15 +16,12 @@
             <nav id="menu-corpo">
               <h2>Menu</h2>
               <ul>
-                  <li><g:link controller="Aluno">Aluno</g:link></li>
-                  <li><g:link controller="Arquivo">Arquivo</g:link></li>
-                  <li><g:link controller="EstadoDoAluno">Estado Do Aluno</g:link></li>
+                  <li><g:link controller="Pessoa">Pessoas</g:link></li>
                   <li><g:link controller="Serie">Serie</g:link></li>
                   <li><g:link controller="Rua">Rua</g:link></li>
                   <li><g:link controller="Bairro">Bairro</g:link></li>
                   <li><g:link controller="Cidade">Cidade</g:link></li>
                   <li><g:link controller="UF">UF</g:link></li>
-                  <li><g:link controller="Posicao">Posicao</g:link></li>
                   <li><g:link controller="Sexo">Sexo</g:link></li>
               </ul>
             </nav>

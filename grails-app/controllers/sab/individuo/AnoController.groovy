@@ -4,91 +4,91 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class SerieController {
+class AnoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Serie.list(params), model:[serieCount: Serie.count()]
+        respond Ano.list(params), model:[anoCount: Ano.count()]
     }
 
-    def show(Serie serie) {
-        respond serie
+    def show(Ano ano) {
+        respond ano
     }
 
     def create() {
-        respond new Serie(params)
+        respond new Ano(params)
     }
 
     @Transactional
-    def save(Serie serie) {
-        if (serie == null) {
+    def save(Ano ano) {
+        if (ano == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (serie.hasErrors()) {
+        if (ano.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond serie.errors, view:'create'
+            respond ano.errors, view:'create'
             return
         }
 
-        serie.save flush:true
+        ano.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'serie.label', default: 'Serie'), serie.id])
-                redirect serie
+                flash.message = message(code: 'default.created.message', args: [message(code: 'ano.label', default: 'Ano'), ano.id])
+                redirect ano
             }
-            '*' { respond serie, [status: CREATED] }
+            '*' { respond ano, [status: CREATED] }
         }
     }
 
-    def edit(Serie serie) {
-        respond serie
+    def edit(Ano ano) {
+        respond ano
     }
 
     @Transactional
-    def update(Serie serie) {
-        if (serie == null) {
+    def update(Ano ano) {
+        if (ano == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (serie.hasErrors()) {
+        if (ano.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond serie.errors, view:'edit'
+            respond ano.errors, view:'edit'
             return
         }
 
-        serie.save flush:true
+        ano.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'serie.label', default: 'Serie'), serie.id])
-                redirect serie
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'ano.label', default: 'Ano'), ano.id])
+                redirect ano
             }
-            '*'{ respond serie, [status: OK] }
+            '*'{ respond ano, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Serie serie) {
+    def delete(Ano ano) {
 
-        if (serie == null) {
+        if (ano == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        serie.delete flush:true
+        ano.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'serie.label', default: 'Serie'), serie.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ano.label', default: 'Ano'), ano.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class SerieController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'serie.label', default: 'Serie'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ano.label', default: 'Ano'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

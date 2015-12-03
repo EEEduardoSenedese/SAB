@@ -28,7 +28,7 @@
                         <f:display bean="emprestimo" property="devolvido"/>
                     </div>
                 </li>
-                
+
                 <li class="fieldcontain">
                     <span id="dataDeDevolucao-label" class="property-label">Data de Devolução</span>
                     <div class="property-value" aria-labelledby="dataDeDevolução-label">
@@ -51,9 +51,9 @@
                 </li>
 
                 <li class="fieldcontain">
-                    <span id="serie-label" class="property-label">Serie</span>
-                    <div class="property-value" aria-labelledby="serie-label">
-                        <g:link controller="Pessoa" action="show" id="${emprestimo.serie.id}" target="_blank">${emprestimo.serie}</g:link>
+                    <span id="ano-label" class="property-label">Ano</span>
+                    <div class="property-value" aria-labelledby="ano-label">
+                        <g:link controller="Pessoa" action="show" id="${emprestimo.ano.id}" target="_blank">${emprestimo.ano}</g:link>
                     </div>
                 </li>
 
