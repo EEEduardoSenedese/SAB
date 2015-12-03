@@ -258,4 +258,20 @@ class EmprestimoController {
 
         redirect emprestimo
     }
+
+    def renovar(Emprestimo emprestimo){
+        emprestimo.devolvido = true;
+        emprestimo.devolvidoEm = new Date()
+        emprestimo.livro.numeroDeEmprestimos += 1
+
+        emprestimo.save flush: true
+
+        Emprestimo novoEmprestimo = new Emprestimo()
+        novoEmprestimo.livro = emprestimo.livro
+        novoEmprestimo.pessoa = emprestimo.pessoa
+        novoEmprestimo.dataDeDevolucao = new Date().plus(7)
+        novoEmprestimo.ano = emprestimo.ano
+
+        redirect novoEmprestimo
+    }
 }
