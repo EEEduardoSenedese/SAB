@@ -109,7 +109,7 @@ class EditoraController {
 
     def pesquisar(){
 
-        def aditoraEncontrada = Editora.findAllByNomeLike("$params.parametro%", [sort: 'nome'])
+        def aditoraEncontrada = Editora.findAllByNomeLike("%$params.parametro%", [sort: 'nome'])
 
         [editoraList: aditoraEncontrada]
     }

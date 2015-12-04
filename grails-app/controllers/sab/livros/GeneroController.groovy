@@ -109,7 +109,7 @@ class GeneroController {
 
     def pesquisar(){
 
-        def generoEncontrados = Genero.findAllByNomeLike("$params.parametro%", [sort: 'nome'])
+        def generoEncontrados = Genero.findAllByNomeLike("%$params.parametro%", [sort: 'nome'])
 
         [generoList: generoEncontrados]
     }
