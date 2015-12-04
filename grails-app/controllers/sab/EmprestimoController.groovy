@@ -182,9 +182,11 @@ class EmprestimoController {
 
         if (emprestimo.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond emprestimo.errors, view:'selecionarLivro'
+            respond emprestimo.errors, view:'finalizarEmprestimo', model:["emprestimo": emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)]
             return
         }
+
+        emprestimo.dataDeEmprestimo = new Date()
 
         def mensagem
 
@@ -259,19 +261,21 @@ class EmprestimoController {
         redirect emprestimo
     }
 
+    @Transactional
     def renovar(Emprestimo emprestimo){
-        emprestimo.devolvido = true;
+        emprestimo.devolvido = true
         emprestimo.devolvidoEm = new Date()
         emprestimo.livro.numeroDeEmprestimos += 1
+        emprestimo.livro.disponivel = true
 
         emprestimo.save flush: true
 
         Emprestimo novoEmprestimo = new Emprestimo()
         novoEmprestimo.livro = emprestimo.livro
         novoEmprestimo.pessoa = emprestimo.pessoa
-        novoEmprestimo.dataDeDevolucao = new Date().plus(7)
+        novoEmprestimo.dataDeDevolucao = emprestimo.dataDeDevolucao.plus(7)
         novoEmprestimo.ano = emprestimo.ano
 
-        redirect novoEmprestimo
+        render (view: 'selecionarLivro', model: ["emprestimo": novoEmprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)])
     }
 }
