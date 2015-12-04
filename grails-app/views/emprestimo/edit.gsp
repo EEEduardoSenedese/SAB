@@ -4,6 +4,14 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'emprestimo.label', default: 'Emprestimo')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <asset:javascript src="jquery-ui.js"/>
+        <asset:stylesheet src="jquery-ui.css"/>
+
+        <g:javascript>
+            $.get("${createLink(controller: 'Pessoa', action: 'listagem')}", function(pessoas){
+                $('#pessoa.nome').autocomplete({source: pessoas});
+            });
+        </g:javascript>
     </head>
     <body>
         <a href="#edit-emprestimo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -36,7 +44,9 @@
             <g:form resource="${this.emprestimo}" method="PUT">
                 <g:hiddenField name="version" value="${this.emprestimo?.version}" />
                 <fieldset class="form">
-                    <f:all bean="emprestimo"/>
+                    <f:all bean="emprestimo" except="livro, pessoa"/>
+                    <f:field bean="emprestimo" property="livro.id"/>
+                    <f:field bean="emprestimo" property="pessoa.nome"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
