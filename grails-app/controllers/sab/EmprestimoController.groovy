@@ -113,6 +113,8 @@ class EmprestimoController {
             return
         }
 
+        emprestimo.livro.disponivel = true
+
         emprestimo.delete flush:true
 
         request.withFormat {
