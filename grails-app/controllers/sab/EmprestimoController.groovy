@@ -182,7 +182,7 @@ class EmprestimoController {
 
         if (emprestimo.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond emprestimo.errors, view:'finalizarEmprestimo', model:["emprestimo": emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)]
+            respond emprestimo.errors, view:'selecionarLivro'
             return
         }
 
