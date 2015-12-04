@@ -28,9 +28,7 @@
                         <f:field bean="emprestimo" property="dataDeEmprestimo"/>
                         <f:field bean="emprestimo" property="pessoa"/>
                     </div>
-                    <f:field bean="emprestimo" property="livro">
-                        <input type="number" autofocus="true" name="livro.id"/>
-                    </f:field>
+                    <f:field bean="emprestimo" property="livro.id"/>
                 </fieldset>
 
                 <f:table collection="${emprestimoList}" properties="['id', "dataDeEmprestimo", "dataDeDevolucao", "livro", "devolvido"]"/>
