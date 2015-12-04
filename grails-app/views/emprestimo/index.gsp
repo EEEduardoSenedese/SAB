@@ -13,8 +13,8 @@
                 <li><g:link class="create" action="pesquisarAluno"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li>
                     <g:form action="pesquisarLivro">
-                        <label for="devolucao">Devolver livro</label>
-                        <input type="number" name="id" value="" placeholder="Id do livro">
+                        <label for="devolucao">Pesquisar emprestimo</label>
+                        <input type="number" name="id" value="" placeholder="Id do livro" autofocus>
                         <g:submitButton name="search" class="edit" value="Pesquisar"/>
                     </g:form>
                 </li>
