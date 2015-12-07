@@ -51,26 +51,33 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <!--<f:all bean="livro" except="autorLivro, generoLivro"/>-->
 
-                    <f:field bean="livro" property="editora" class="ui-widget">
-                        <input name="editora.nome" id="editoras" autofocus/>
-                    </f:field>
+                    <f:with bean="livro">
+                        <f:field property="editora">
+                            <f:widget property="editora.nome" id="editoras" autofocus="true"/>
+                        </f:field>
 
-                    <f:field bean="livro" property="colecao" class="ui-widget">
-                        <input name="colecao.nome" id="colecoes" value="${sab.livros.Colecao.list(max: '1')[0].nome}"/>
-                    </f:field>
+                        <f:field property="colecao">
+                            <f:widget property="colecao.nome" value="${sab.livros.Colecao.list(max: 1)[0]}"/>
+                        </f:field>
 
-                    <f:field bean="livro" property="titulo"/>
-                    <f:field bean="livro" property="aquisicao"/>
-                    <f:field bean="livro" property="dataDeAquisicao"/>
-                    <f:field bean="livro" property="data"/>
-                    <f:field bean="livro" property="numeroDePaginas"/>
-                    <f:field bean="livro" property="categoria"/>
-                    <f:field bean="livro" property="prateleira"/>
-                    <f:field bean="livro" property="disponivel">
-                        <g:checkBox name="disponivel" checked="${true}"/>
-                    </f:field>
+                        <f:field property="titulo"/>
+
+                        <f:field property="aquisicao"/>
+
+                        <f:field property="dataDeAquisicao"/>
+
+                        <f:field property="data"/>
+
+                        <f:field property="numeroDePaginas"/>
+
+                        <f:field property="categoria"/>
+
+                        <f:field property="prateleira"/>
+
+                        <f:field property="disponivel"/>
+
+                    </f:with>
 
                 </fieldset>
                 <fieldset class="buttons">
