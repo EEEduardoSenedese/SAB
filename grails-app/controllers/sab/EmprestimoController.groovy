@@ -311,7 +311,7 @@ class EmprestimoController {
             params.order = "desc"
         }
 
-        [livroList: sab.livros.Livro.list(params)]
+        [livroList: sab.livros.Livro.list(params), livroCount: sab.livros.Livro.count()]
     }
 
     def relatorioPessoa(){

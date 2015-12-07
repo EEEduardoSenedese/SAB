@@ -9,20 +9,7 @@
         <a href="#list-emprestimo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li>
-                    <g:form action="relatorioIndex">
-                        <li>
-                            <label for="inicio">Início</label>
-                            <g:datePicker id="inicio"/>
-                        </li>
-                        <li>
-                            <label for="fim">Fim</label>
-                            <g:datePicker id="fim"/>
-                        </li>
 
-                        <g:submitButton name="search" class="edit" value="Pesquisar"/>
-                    </g:form>
-                </li>
             </ul>
         </div>
         <div id="list-emprestimo" class="content scaffold-list" role="main">
@@ -30,14 +17,16 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <ol class="property-list livro">
 
-                <li class="fieldcontain">
-                    <span id="titulo-label" class="property-label">Total de Emprestimo</span>
-                    <div class="property-value" aria-labelledby="titulo-label">${emprestimoList.size()}</div>
-                </li>
-            </ol>
-            <f:table collectizon="${emprestimoList}" properties="['id', "pessoa", "livro", "dataDeEmprestimo", "dataDeDevolucao", "devolvido"]"/>
+            <div class="pagination">
+                <g:paginate total="${livroCount ?: 0}" />
+            </div>
+
+            <f:table collection="${livroList}" properties="['id', "titulo", "editora", "numeroDeEmprestimos", "disponivel"]"/>
+
+            <div class="pagination">
+                <g:paginate total="${livroCount ?: 0}" />
+            </div>
         </div>
     </body>
 </html>
