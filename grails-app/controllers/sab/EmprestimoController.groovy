@@ -280,4 +280,8 @@ class EmprestimoController {
 
         render (view: 'selecionarLivro', model: ["emprestimo": novoEmprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)])
     }
+
+    def relatorioIndex(){
+
+    }
 }
