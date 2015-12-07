@@ -13,11 +13,12 @@
                 <li><g:link class="create" action="pesquisarAluno"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li>
                     <g:form action="pesquisarLivro">
-                        <label for="devolucao">Pesquisar emprestimo</label>
-                        <input type="number" name="id" value="" placeholder="Id do livro" autofocus>
-                        <g:submitButton name="search" class="edit" value="Pesquisar"/>
+                        <label for="devolucao" class="escondido">Pesquisar emprestimo</label>
+                        <input type="number" name="id" value="" placeholder="id do livro emprestado" autofocus>
+                        <g:submitButton name="search" class="edit" value="Localizar"/>
                     </g:form>
                 </li>
+                <li><g:link class="create" action="relatorioIndex">Relatórios</g:link></li>
             </ul>
         </div>
         <div id="list-emprestimo" class="content scaffold-list" role="main">
