@@ -283,5 +283,42 @@ class EmprestimoController {
 
     def relatorioIndex(){
 
+        println params
+
+        Date data = new Date().clearTime()
+
+        println data
+
+        [emprestimoList: Emprestimo.findAllByDataDeDevolucao(data)]
+    }
+
+    def relatorioEmprestimos(){
+
+        println params
+
+        if(!params.order && !params.sort){
+            params.order = "desc"
+            params.sort = "id"
+        }
+
+        [emprestimoList: Emprestimo.list(params)]
+    }
+
+    def relatorioLivros(Integer max){
+        params.max = Math.min(max ?: 200, 5000)
+        if(!params.sort && !params.order){
+            params.sort = "numeroDeEmprestimos"
+            params.order = "desc"
+        }
+
+        [livroList: sab.livros.Livro.list(params)]
+    }
+
+    def relatorioPessoa(){
+
+    }
+
+    def relatorioSerie(){
+
     }
 }

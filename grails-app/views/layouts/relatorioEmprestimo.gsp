@@ -17,8 +17,8 @@
               <h2>Menu</h2>
               <ul>
                   <li><g:link action="relatorioIndex">Emprestimos de hoje</g:link></li>
-                  <li><g:link action="total">Total de Emprestimos</g:link></li>
-                  <li><g:link action="emprestimosPorSerie">Autores</g:link></li>
+                  <li><g:link action="relatorioEmprestimos">Total de Emprestimos</g:link></li>
+                  <li><g:link action="relatorioLivros">Relatorio de Livros</g:link></li>
                   <li><g:link action="emprestimosPorAluno">Editoras</g:link></li>
               </ul>
             </nav>
