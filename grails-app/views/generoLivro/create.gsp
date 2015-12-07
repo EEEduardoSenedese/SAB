@@ -34,17 +34,20 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <!-- Escolhe genero -->
-                    <f:field bean="generoLivro" property="genero">
-                        <input id="generos" autofocus name="genero.nome"/>
-                        <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero" />
 
-                    </f:field>
+                    <f:with bean="generoLivro">
+                        <f:field property="livro">
+                            <g:select name="livro.id" id="livro.id" from="${sab.livros.Livro.get(params.long('livro.id'))}" optionKey="id"/>
+                        </f:field>
+
+                        <f:field property="genero">
+                            <f:widget property="genero.nome" id="generos" autofocus="true"/>
+                            <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero"/>
+                        </f:field>
+                    </f:with>
+
                 </fieldset>
-
-                <!-- Livro -->
-                <!-- Este item fica escondido -->
-                <g:select name="livro.id" optionKey="id" from="${sab.livros.Livro.get(params.long('livro.id'))}" class="escondido"/>
+                
             </g:form>
 
             <fieldset class="form">
@@ -72,7 +75,7 @@
             </fieldset>
 
             <fieldset class="buttons">
-                <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Voltar</g:link>
+                <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Finalizar</g:link>
             </fieldset>
         </div>
     </body>
