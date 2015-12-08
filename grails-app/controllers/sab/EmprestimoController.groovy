@@ -293,16 +293,37 @@ class EmprestimoController {
         [emprestimoList: Emprestimo.findAllByDataDeDevolucaoAndDevolvido(data, false), data: data]
     }
 
-    def relatorioEmprestimos(){
+    def relatorioEmprestimos(Integer max){
 
         println params
+
+        Date inicio
+        Date fim
+
+        if (params.inicio_day && params.inicio_month && params.inicio_year)
+            inicio = new Date("$params.inicio_month/$params.inicio_day/$params.inicio_year")
+        else
+            inicio = new Date().clearTime()
+
+        if(params.fim_day && params.fim_month && params.fim_year)
+            fim = new Date("$params.fim_month/$params.fim_day/$params.fim_year")
+        else
+            fim = inicio.minus(7)
+
+        println "Inicio: $inicio"
+        println "Fim: $fim"
+
+        params.max = Math.min(max ?: 100, 200)
 
         if(!params.order && !params.sort){
             params.order = "desc"
             params.sort = "id"
         }
 
-        [emprestimoList: Emprestimo.list(params)]
+        def emprestimo = Emprestimo.findAll("select * from emprestimo where data_de_emprestimo between :inicio and :fim", [inicio: inicio, fim: fim])
+        def emprestimoCount = emprestimo.size()
+
+        [emprestimoList: emprestimo, inicio: inicio, fim:fim, emprestimoCount: emprestimoCount]
     }
 
     def relatorioLivros(Integer max){
