@@ -91,7 +91,7 @@
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                     <g:if test="${!emprestimo.devolvido}">
                         <g:link class="edit" action="devolver" resource="${this.emprestimo}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Devolver</g:link>
-                        <g:link class="edit" action="renovar" resource="${this.emprestimo}">Renovar</g:link>
+                        <g:link class="edit" action="renovar" resource="${this.emprestimo}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Renovar</g:link>
                     </g:if>
                 </fieldset>
             </g:form>
