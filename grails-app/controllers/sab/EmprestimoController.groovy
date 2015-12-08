@@ -283,13 +283,14 @@ class EmprestimoController {
 
     def relatorioIndex(){
 
-        println params
+        Date data
 
-        Date data = new Date().clearTime()
+        if(params.data_day && params.data_month && params.data_year)
+            data = new Date("$params.data_month/$params.data_day/$params.data_year")
+        else
+            data = new Date().clearTime()
 
-        println data
-
-        [emprestimoList: Emprestimo.findAllByDataDeDevolucao(data)]
+        [emprestimoList: Emprestimo.findAllByDataDeDevolucaoAndDevolvido(data, false), data: data]
     }
 
     def relatorioEmprestimos(){

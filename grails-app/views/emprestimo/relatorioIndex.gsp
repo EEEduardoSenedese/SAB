@@ -13,10 +13,10 @@
                     <g:form action="relatorioIndex">
                         <li>
                             <label for="data">Início</label>
-                            <g:datePicker id="data"/>
+                            <g:datePicker id="data" precision="day" name="data"  value="${data}"/>
                         </li>
 
-                        <g:submitButton name="search" class="edit" value="Pesquisar"/>
+                        <g:submitButton name="search" class="edit" value="Alterar dia"/>
                     </g:form>
                 </li>
             </ul>
