@@ -11,6 +11,7 @@
             <ul>
                 <li>
                     <g:form action="relatorioIndex">
+                        <li><a class="home" href="${createLink(controller: "emprestimo")}">Voltar</a></li>
                         <li>
                             <label for="data">Início</label>
                             <g:datePicker id="data" precision="day" name="data"  value="${data}"/>
@@ -33,7 +34,19 @@
                     <div class="property-value" aria-labelledby="titulo-label">${emprestimoList.size()}</div>
                 </li>
             </ol>
-            <f:table collection="${emprestimoList}" properties="['id', "pessoa", "livro", "dataDeEmprestimo", "dataDeDevolucao", "devolvido"]"/>
+            <g:if test="${emprestimoList.size() > 0}">
+                <f:table collection="${emprestimoList}" properties="['id', "pessoa", "ano", "livro", "dataDeEmprestimo"]"/>
+            </g:if>
+            <g:else>
+            <ol class="property-list livro">
+
+                <li class="fieldcontain">
+                    <p>
+                        Nenhuma devolução para esta data
+                    </p>
+                </li>
+            </ol>
+            </g:else>
         </div>
     </body>
 </html>
