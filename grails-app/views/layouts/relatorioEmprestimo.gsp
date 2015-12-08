@@ -19,7 +19,7 @@
                   <li><g:link action="relatorioIndex">Emprestimos de hoje</g:link></li>
                   <li><g:link action="relatorioEmprestimos">Total de Emprestimos</g:link></li>
                   <li><g:link action="relatorioLivros">Relatorio de Livros</g:link></li>
-                  <li><g:link action="emprestimosPorAluno">Editoras</g:link></li>
+                  <li><g:link action="relatorioPessoa">Relatorio de Pessoas</g:link></li>
                   <li><g:link action="index" controller="emprestimo">Voltar</g:link></li>
               </ul>
             </nav>
