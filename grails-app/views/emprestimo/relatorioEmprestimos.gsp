@@ -11,6 +11,7 @@
             <ul>
                 <li>
                     <g:form action="relatorioEmprestimos">
+                        <li><a class="home" href="${createLink(controller: "emprestimo")}">Voltar</a></li>
                         <li>
                             <label for="inicio">Início</label>
                             <g:datePicker id="inicio" precision="day" name="inicio" value="${inicio}"/>
