@@ -320,7 +320,15 @@ class EmprestimoController {
             params.sort = "id"
         }
 
-        def emprestimo = Emprestimo.findAll("select * from emprestimo where data_de_emprestimo between :inicio and :fim", [inicio: inicio, fim: fim])
+        //def emprestimo = Emprestimo.findAll("from Emprestimo where data_de_emprestimo between ("$inicio.format("yyyy-MM-dd")") and :("format("yyyy-MM-dd")")")
+        def emprestimo
+        emprestimo = Emprestimo.findAll("from Emprestimo where data_de_emprestimo between :inicio and :fim", [inicio: inicio.format("yyyy-MM-dd"), fim: fim.format("yyyy-MM-dd")])
+
+        println emprestimo
+
+        emprestimo = Emprestimo.findAllByDataDeEmprestimoGreaterThanEquals(inicio, fim, params)
+
+        println emprestimo
         def emprestimoCount = emprestimo.size()
 
         [emprestimoList: emprestimo, inicio: inicio, fim:fim, emprestimoCount: emprestimoCount]
