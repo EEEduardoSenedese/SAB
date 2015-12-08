@@ -335,7 +335,7 @@ class EmprestimoController {
     }
 
     def relatorioLivros(Integer max){
-        params.max = Math.min(max ?: 200, 5000)
+        params.max = Math.min(max ?: 200, 500)
         if(!params.sort && !params.order){
             params.sort = "numeroDeEmprestimos"
             params.order = "desc"
@@ -344,8 +344,19 @@ class EmprestimoController {
         [livroList: sab.livros.Livro.list(params), livroCount: sab.livros.Livro.count()]
     }
 
-    def relatorioPessoa(){
+    def relatorioPessoa(Integer max){
+        params.max = Math.min(max ?: 200, 500)
+        if(!params.sort && !params.order){
 
+        }
+
+        def pessoas = sab.individuo.Pessoa.withCriteria {
+            like "nome", "%ge%"
+        }
+
+        println pessoas
+
+        [pessoaList: pessoas]
     }
 
     def relatorioSerie(){
