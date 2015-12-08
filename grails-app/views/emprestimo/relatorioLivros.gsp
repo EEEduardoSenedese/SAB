@@ -9,6 +9,7 @@
         <a href="#list-emprestimo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
+                <li><a class="home" href="${createLink(controller: "emprestimo")}">Voltar</a></li>
 
             </ul>
         </div>
