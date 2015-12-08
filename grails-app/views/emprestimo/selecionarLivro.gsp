@@ -15,7 +15,7 @@
                 <li>
                     <g:form action="pesquisarLivro">
                         <label for="devolucao">Pesquisar emprestimo</label>
-                        <input type="number" name="id" value="" placeholder="Id do livro" autofocus>
+                        <input type="number" name="id" value="" placeholder="Id do livro">
                         <g:submitButton name="search" class="edit" value="Pesquisar"/>
                     </g:form>
                 </li>
@@ -35,7 +35,9 @@
                         <f:field bean="emprestimo" property="dataDeEmprestimo"/>
                         <f:field bean="emprestimo" property="pessoa"/>
                     </div>
-                    <f:field bean="emprestimo" property="livro.id"/>
+                    <f:field bean="emprestimo" property="livro.id">
+                        <f:widget bean="emprestimo" property="livro.id" autofocus="true"/>
+                    </f:field>
                 </fieldset>
 
                 <f:table collection="${emprestimoList}" properties="['id', "dataDeEmprestimo", "dataDeDevolucao", "livro", "devolvido"]"/>
