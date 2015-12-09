@@ -1,6 +1,7 @@
 package sab.individuo
 
 import sab.endereco.*
+import sab.Emprestimo
 
 class Pessoa {
 
@@ -25,6 +26,10 @@ class Pessoa {
       cidade: Cidade,
       uf: UF,
       sexo: Sexo
+    ]
+
+    static hasMany = [
+        emprestimo: Emprestimo
     ]
 
     static constraints = {

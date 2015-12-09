@@ -15,6 +15,7 @@ class Livro {
     static hasMany = [
         autorLivro: AutorLivro,
         generoLivro: GeneroLivro,
+        emprestimo: Emprestimo
     ]
 
     static belongsTo = [
