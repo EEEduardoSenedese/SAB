@@ -310,9 +310,6 @@ class EmprestimoController {
         else
             fim = inicio.minus(7)
 
-        println "Inicio: $inicio"
-        println "Fim: $fim"
-
         params.max = Math.min(max ?: 100, 200)
 
         if(!params.order && !params.sort){
@@ -320,15 +317,11 @@ class EmprestimoController {
             params.sort = "id"
         }
 
-        //def emprestimo = Emprestimo.findAll("from Emprestimo where data_de_emprestimo between ("$inicio.format("yyyy-MM-dd")") and :("format("yyyy-MM-dd")")")
-        def emprestimo
-        emprestimo = Emprestimo.findAll("from Emprestimo where data_de_emprestimo between :inicio and :fim", [inicio: inicio.format("yyyy-MM-dd"), fim: fim.format("yyyy-MM-dd")])
+        def emprestimo = Emprestimo.withCriteria {
+            gt ("dataDeEmprestimo", fim)
+            lt ("dataDeEmprestimo", inicio)
+        }
 
-        println emprestimo
-
-        emprestimo = Emprestimo.findAllByDataDeEmprestimoGreaterThanEquals(inicio, fim, params)
-
-        println emprestimo
         def emprestimoCount = emprestimo.size()
 
         [emprestimoList: emprestimo, inicio: inicio, fim:fim, emprestimoCount: emprestimoCount]
@@ -351,7 +344,7 @@ class EmprestimoController {
         }
 
         def pessoas = sab.individuo.Pessoa.withCriteria {
-            like "nome", "%ge%"
+
         }
 
         println pessoas
