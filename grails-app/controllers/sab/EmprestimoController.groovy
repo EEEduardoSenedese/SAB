@@ -343,9 +343,8 @@ class EmprestimoController {
 
         }
 
-        def pessoas = sab.individuo.Pessoa.withCriteria {
+        def pessoas = Pessoa.list()
 
-        }
 
         println pessoas
 
