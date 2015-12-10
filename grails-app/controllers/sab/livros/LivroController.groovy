@@ -50,6 +50,14 @@ class LivroController {
         Colecao colecao = Colecao.findOrSaveByNome(livro.colecao.nome)
         livro.colecao = colecao
 
+        if(colecao){
+          livro.colecao = colecao
+        } else{
+          colecao = livro.colecao
+          colecao.save()
+
+          livro.colecao = colecao
+        }
 
         livro.save flush:true
 

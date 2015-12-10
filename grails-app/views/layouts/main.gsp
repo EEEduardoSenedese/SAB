@@ -12,6 +12,9 @@
         <g:layoutHead/>
     </head>
     <body>
+        <g:if test="${session['usuario'] == null}">
+            <%redirect (uri: '/')%>
+        </g:if>
         <header>
             <nav id="menu-corpo">
               <h2>Menu</h2>
@@ -34,10 +37,10 @@
         </section>
 
         <div class="footer" role="contentinfo">
-          <h1>Sistema de apoio Bibliotecário</h1>
-          <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
-          </h2>
-          <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
+            <h1>Sistema de apoio Bibliotecário</h1>
+            <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
+            </h2>
+            <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
         </div>
         <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
     </body>

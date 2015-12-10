@@ -12,6 +12,9 @@
         <g:layoutHead/>
     </head>
     <body>
+        <g:if test="${session['usuario'] == null}">
+            <%redirect (uri: '/')%>
+        </g:if>
         <header>
             <nav id="menu-corpo">
               <h2>Menu</h2>
