@@ -14,19 +14,19 @@
             </ul>
         </div>
         <div id="list-emprestimo" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <h1>Relatorio de Pessoas</h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
             <div class="pagination">
-                <g:paginate total="${livroCount ?: 0}" />
+                <g:paginate total="${pessoaCount ?: 0}" />
             </div>
 
-            <f:table collection="${pessoaList}" properties="['id', "nome"]"/>
+            <f:table collection="${pessoaList}" properties="['id', "nome", 'numeroDeEmprestimos']"/>
 
             <div class="pagination">
-                <g:paginate total="${livroCount ?: 0}" />
+                <g:paginate total="${pessoaCount ?: 0}" />
             </div>
         </div>
     </body>

@@ -227,9 +227,7 @@ class EmprestimoController {
 
     def pesquisarLivro(long id){
 
-        //println id
         Livro livro = Livro.get(id)
-        //println livro
 
         if(livro){
             Emprestimo emprestimo = Emprestimo.findByLivroAndDevolvido(livro, false)
@@ -258,6 +256,10 @@ class EmprestimoController {
         emprestimo.livro.disponivel = true;
         emprestimo.livro.numeroDeEmprestimos += 1
 
+        emprestimo.pessoa.numeroDeEmprestimos += 1
+
+        emprestimo.ano.numeroDeEmprestimos += 1
+
         emprestimo.save flush: true
 
         redirect emprestimo
@@ -269,6 +271,10 @@ class EmprestimoController {
         emprestimo.devolvidoEm = new Date()
         emprestimo.livro.numeroDeEmprestimos += 1
         emprestimo.livro.disponivel = true
+
+        emprestimo.pessoa.numeroDeEmprestimos += 1
+
+        emprestimo.ano.numeroDeEmprestimos += 1
 
         emprestimo.save flush: true
 
@@ -340,15 +346,11 @@ class EmprestimoController {
     def relatorioPessoa(Integer max){
         params.max = Math.min(max ?: 200, 500)
         if(!params.sort && !params.order){
-
+            params.sort = "numeroDeEmprestimos"
+            params.order  ='desc'
         }
 
-        def pessoas = Pessoa.list()
-
-
-        println pessoas
-
-        [pessoaList: pessoas]
+        [pessoaList: Pessoa.list(params), pessoaCount: Pessoa.list().size()]
     }
 
     def relatorioSerie(){

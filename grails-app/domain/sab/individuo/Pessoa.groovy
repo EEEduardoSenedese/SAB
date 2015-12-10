@@ -19,6 +19,8 @@ class Pessoa {
     String cep
     String complemento
 
+    int numeroDeEmprestimos
+
     static belongsTo = [
       posicao: Posicao,
       rua: Rua,
