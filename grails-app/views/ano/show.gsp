@@ -19,7 +19,18 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="ano" />
+            <ol class="property-list ano">
+                <li class="fieldcontain">
+                    <span id="nome-label" class="property-label">Nome</span>
+                    <div class="property-value" aria-labelledby="nome-label"><f:display bean="ano" property="nome"/></div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="numeroDeEmprestimos-label" class="property-label">Numero De Emprestimos</span>
+                    <div class="property-value" aria-labelledby="numeroDeEmprestimos-label"><f:display bean="ano" property="numeroDeEmprestimos"/></div>
+                </li>
+
+        </ol>
             <g:form resource="${this.ano}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.ano}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

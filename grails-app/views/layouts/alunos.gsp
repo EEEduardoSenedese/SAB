@@ -17,7 +17,7 @@
               <h2>Menu</h2>
               <ul>
                   <li><g:link controller="Pessoa">Pessoas</g:link></li>
-                  <li><g:link controller="Serie">Serie</g:link></li>
+                  <li><g:link controller="Ano">Ano</g:link></li>
                   <li><g:link controller="Rua">Rua</g:link></li>
                   <li><g:link controller="Bairro">Bairro</g:link></li>
                   <li><g:link controller="Cidade">Cidade</g:link></li>

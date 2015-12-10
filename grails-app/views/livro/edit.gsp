@@ -70,7 +70,7 @@
                         <input type="number" name="numeroDePaginas" value="${livro.numeroDePaginas}">
                     </f:field>
 
-                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas, colecao"/>
+                    <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas, colecao, emprestimo"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
