@@ -14,15 +14,16 @@
                     <g:if test="${flash.message}">
                         <div class="message" role="status">${flash.message}</div>
                     </g:if>
-                    <g:form action="autenticar" controller="autenticacao">
+                    <g:form action="autenticar">
                         <fieldset>
+
                             <div class="">
-                                <label for="usuario.usuario">Usuario</label>
-                                <input name="usuario.usuario"/>
+                                <label for="pessoa.usuario">Usuario</label>
+                                <input name="pessoa.usuario"/>
                             </div>
                             <div class="">
-                                <label for="usuario.senha">Senha</label>
-                                <input name="usuario.senha" type="password"/>
+                                <label for="pessoa.senha">Senha</label>
+                                <input name="pessoa.senha" type="password"/>
                             </div>
                         </fieldset>
                         <fieldset>
