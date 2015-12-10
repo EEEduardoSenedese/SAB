@@ -5,6 +5,7 @@ import grails.transaction.Transactional
 import sab.individuo.Pessoa
 import sab.individuo.Posicao
 import sab.individuo.Sexo
+import sab.individuo.Ano
 import sab.endereco.*
 
 import sab.livros.Livro
@@ -353,7 +354,13 @@ class EmprestimoController {
         [pessoaList: Pessoa.list(params), pessoaCount: Pessoa.list().size()]
     }
 
-    def relatorioSerie(){
+    def relatorioAnos(Integer max){
+        params.max = Math.min(max?: 200, 500)
+        if (!params.sort && !params.order) {
+            params.sort = 'numeroDeEmprestimos'
+            params.order = 'desc'
+        }
 
+        [anosList: Ano.list(params), anosCount: Ano.list().size()]
     }
 }

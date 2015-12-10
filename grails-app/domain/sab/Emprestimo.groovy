@@ -8,13 +8,14 @@ class Emprestimo {
 
     Date dataDeEmprestimo
     Date dataDeDevolucao
-    Ano ano
     boolean devolvido = false
     Date devolvidoEm
+    
 
     static belongsTo = [
         pessoa: Pessoa,
         livro: Livro,
+        ano: Ano
     ]
 
     static constraints = {

@@ -20,7 +20,7 @@
                   <li><g:link action="relatorioEmprestimos">Total de Emprestimos</g:link></li>
                   <li><g:link action="relatorioLivros">Relatorio de Livros</g:link></li>
                   <li><g:link action="relatorioPessoa">Relatorio de Pessoas</g:link></li>
-                  <li><g:link action="index" controller="emprestimo">Voltar</g:link></li>
+                  <li><g:link action="relatorioAnos">Relatorio dos Anos</g:link></li>
               </ul>
             </nav>
         </header>
