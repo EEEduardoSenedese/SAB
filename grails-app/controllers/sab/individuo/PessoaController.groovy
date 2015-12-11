@@ -36,6 +36,10 @@ class PessoaController {
             return
         }
 
+        if (!pessoa.numeroDeEmprestimos) {
+            pessoa.numeroDeEmprestimos = 0
+        }
+
         pessoa.save flush:true
 
         request.withFormat {

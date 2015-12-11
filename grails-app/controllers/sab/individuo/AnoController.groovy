@@ -35,6 +35,10 @@ class AnoController {
             return
         }
 
+        if (!ano.numeroDeEmprestimos) {
+            ano.numeroDeEmprestimos = 0
+        }
+
         ano.save flush:true
 
         request.withFormat {
