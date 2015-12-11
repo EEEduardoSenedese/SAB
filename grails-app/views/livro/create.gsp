@@ -68,7 +68,7 @@
                         </f:field>
 
                         <f:field property="colecao">
-                            <f:widget property="colecao.nome" value="${sab.livros.Colecao.list(max: 1)[0]}"/>
+                            <f:widget property="colecao.nome" value="${sab.livros.Colecao.list(max: 1)[0]}" id="colecoes"/>
                         </f:field>
 
                         <f:field property="titulo"/>
@@ -89,7 +89,7 @@
 
                     </f:with>
                 </fieldset>
-                
+
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
