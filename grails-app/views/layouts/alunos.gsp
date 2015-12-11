@@ -12,34 +12,36 @@
         <g:layoutHead/>
     </head>
     <body>
-        <g:if test="${session['usuario'] == null}">
-            <%redirect (uri: '/')%>
-        </g:if>
-        <header>
-            <nav id="menu-corpo">
-              <h2>Menu</h2>
-              <ul>
-                  <li><g:link controller="Pessoa">Pessoas</g:link></li>
-                  <li><g:link controller="Ano">Ano</g:link></li>
-                  <li><g:link controller="Rua">Rua</g:link></li>
-                  <li><g:link controller="Bairro">Bairro</g:link></li>
-                  <li><g:link controller="Cidade">Cidade</g:link></li>
-                  <li><g:link controller="UF">UF</g:link></li>
-                  <li><g:link controller="Sexo">Sexo</g:link></li>
-              </ul>
-            </nav>
-        </header>
+        <g:if test="${session['usuario'] != null}">
+            <header>
+                <nav id="menu-corpo">
+                  <h2>Menu</h2>
+                  <ul>
+                      <li><g:link controller="Pessoa">Pessoas</g:link></li>
+                      <li><g:link controller="Ano">Ano</g:link></li>
+                      <li><g:link controller="Rua">Rua</g:link></li>
+                      <li><g:link controller="Bairro">Bairro</g:link></li>
+                      <li><g:link controller="Cidade">Cidade</g:link></li>
+                      <li><g:link controller="UF">UF</g:link></li>
+                      <li><g:link controller="Sexo">Sexo</g:link></li>
+                  </ul>
+                </nav>
+            </header>
 
-        <section>
-            <g:layoutBody/>
-        </section>
+            <section>
+                <g:layoutBody/>
+            </section>
 
-        <div class="footer" role="contentinfo">
-          <h1>Sistema de apoio Bibliotecário</h1>
-          <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
-          </h2>
-          <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
-        </div>
-        <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-    </body>
+            <div class="footer" role="contentinfo">
+              <h1>Sistema de apoio Bibliotecário</h1>
+              <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
+              </h2>
+              <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
+            </div>
+            <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+        </body>
+    </g:if>
+    <g:else>
+        <h1>Acesso Negado</h1>
+    </g:else>
 </html>
