@@ -47,7 +47,7 @@
                     </f:with>
 
                 </fieldset>
-                
+
             </g:form>
 
             <fieldset class="form">
@@ -75,7 +75,7 @@
             </fieldset>
 
             <fieldset class="buttons">
-                <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Finalizar</g:link>
+                <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Finalizar Cadastro</g:link>
             </fieldset>
         </div>
     </body>

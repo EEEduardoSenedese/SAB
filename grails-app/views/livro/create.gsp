@@ -91,7 +91,7 @@
                 </fieldset>
 
                 <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <g:submitButton name="create" class="save" value="Próximo (Adicionar Autore(s))" />
                 </fieldset>
             </g:form>
         </div>

@@ -74,7 +74,7 @@
             <fieldset class="buttons">
                 <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Voltar</g:link>
 
-                <g:link action="create" controller="GeneroLivro" params="["livro.id": "${params.long('livro.id')}"]">Próximo</g:link>
+                <g:link action="create" controller="GeneroLivro" params="["livro.id": "${params.long('livro.id')}"]">Próximo (Adicionar Genero(s))</g:link>
             </fieldset>
         </div>
     </body>
