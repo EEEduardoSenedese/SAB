@@ -39,9 +39,10 @@
               <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
             </div>
             <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-        </body>
-    </g:if>
-    <g:else>
-        <h1>Acesso Negado</h1>
-    </g:else>
+        </g:if>
+        <g:else>
+            <h1>Acesso Negado</h1>
+            faça o login: <g:link controller="autenticacao">Fazer Login</g:link>
+        </g:else>
+    </body>
 </html>
