@@ -19,7 +19,7 @@
                         <g:link controller="livro">Livros</g:link>
                       </td>
                       <td>
-                        <g:link controller="aluno">Alunos</g:link>
+                        <g:link controller="Pessoa">Alunos e Professores</g:link>
                       </td>
                     </tr>
                   </table>
