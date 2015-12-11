@@ -18,7 +18,8 @@ class BootStrap {
                 rua: Rua.list(max: 1)[0],
                 sexo: Sexo.list(max:1)[0],
                 numeroDaRua: 0,
-                dataDeNascimento: new Date()
+                dataDeNascimento: new Date(),
+                numeroDeEmprestimos: 0,
             ).save()
         }
     }
