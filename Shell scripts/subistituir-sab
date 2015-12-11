@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mvdir SAB/ SAB-old/
+mvdir SAB-new/ SAB/
