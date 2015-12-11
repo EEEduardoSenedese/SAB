@@ -10,7 +10,12 @@ class AutenticacaoController {
     }
 
     def autenticar(){
+
+        println params
+
         def pessoa = Pessoa.findByUsuarioAndSenha(params.usuario, params.senha)
+
+        println pessoa
         if (pessoa){
             session['usuario'] = pessoa
             redirect (action: "bemvindo")
@@ -21,5 +26,10 @@ class AutenticacaoController {
     }
 
     def bemvindo(){
+    }
+
+    def sair(){
+        session['usuario'] = null
+        redirect action: 'index'
     }
 }

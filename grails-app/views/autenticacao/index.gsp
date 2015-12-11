@@ -19,11 +19,11 @@
 
                             <div class="">
                                 <label for="pessoa.usuario">Usuario</label>
-                                <input name="pessoa.usuario"/>
+                                <input name="usuario"/>
                             </div>
                             <div class="">
                                 <label for="pessoa.senha">Senha</label>
-                                <input name="pessoa.senha" type="password"/>
+                                <input name="senha" type="password"/>
                             </div>
                         </fieldset>
                         <fieldset>
