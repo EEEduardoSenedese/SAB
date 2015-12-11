@@ -106,6 +106,13 @@ class ColecaoController {
         }
     }
 
+    def pesquisar(){
+
+        def colecoesEncontradas = Colecao.findAllByNomeLike("%$params.parametro%", [sort: 'nome'])
+
+        [editoraList: aditoraEncontrada]
+    }
+
     def listagem(){
       def resposta = []
 
