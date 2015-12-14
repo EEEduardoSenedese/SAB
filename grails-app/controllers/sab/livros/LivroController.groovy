@@ -206,4 +206,8 @@ class LivroController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def cadastroLivroDidatico(){
+
+    }
 }
