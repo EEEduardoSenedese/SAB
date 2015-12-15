@@ -302,8 +302,6 @@ class EmprestimoController {
 
     def relatorioEmprestimos(Integer max){
 
-        println params
-
         Date inicio
         Date fim
 
@@ -326,7 +324,7 @@ class EmprestimoController {
 
         def emprestimo = Emprestimo.withCriteria {
             gt ("dataDeEmprestimo", fim)
-            lt ("dataDeEmprestimo", inicio)
+            lt ("dataDeEmprestimo", inicio.plus(1))
         }
 
         def emprestimoCount = emprestimo.size()
