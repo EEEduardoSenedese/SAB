@@ -110,7 +110,7 @@ class ColecaoController {
 
         def colecoesEncontradas = Colecao.findAllByNomeLike("%$params.parametro%", [sort: 'nome'])
 
-        [editoraList: aditoraEncontrada]
+        [colecaoList: colecoesEncontradas]
     }
 
     def listagem(){

@@ -26,6 +26,10 @@ class AutenticacaoController {
     }
 
     def bemvindo(){
+
+        if (!session['usuario'].nome) {
+            redirect action: index
+        }
     }
 
     def sair(){
