@@ -10,6 +10,11 @@ class AnoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+
+        if (!params.order && !params.sort) {
+            params.order = 'desc'
+            params.sort = 'nome'
+        }
         respond Ano.list(params), model:[anoCount: Ano.count()]
     }
 
