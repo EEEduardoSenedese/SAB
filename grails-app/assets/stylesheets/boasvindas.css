@@ -1,10 +1,42 @@
+#usuario {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: -1px;
+}
+
+#senha{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
 #conteiner{
   margin: 80px 15%;
   border: 1px solid gray;
   padding: 30px;
   border-radius: 10px;
-  background-color: #f2f2f2;
+  background-color: #EEE;
   box-shadow: 1px 1px 30px rgba(0, 0, 0, 1);
+}
+
+.btn{
+    background-color: #3eb0eb;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 16pt;
+    height: auto;
+}
+
+form {
+    width: 50%;
+    margin: auto;
 }
 
 h1{
@@ -47,6 +79,11 @@ table a{
 table a:hover{
   background-color: white;
   color: black;
+}
+
+fieldset{
+    margin-bottom: 20px;
+    transition: 0.5s;
 }
 
 body{
