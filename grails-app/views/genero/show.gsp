@@ -24,7 +24,25 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="genero" />
+
+            <ol class="property-list genero">
+                <li class="fieldcontain">
+                    <span id="nome-label" class="property-label">Nome</span>
+                    <div class="property-value" aria-labelledby="nome-label"><f:display bean="genero" property="nome"/></div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="generoLivro-label" class="property-label">Livro</span>
+                    <div class="property-value" aria-labelledby="generoLivro-label">
+                        <ul>
+                            <g:each var="generoLivro" in="${sab.livros.GeneroLivro.findAllByGenero(genero)}">
+                                <li><g:link action="show" controller="livro" id="${generoLivro.livro.id}">${generoLivro.livro.titulo}</g:link></li>
+                            </g:>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+
             <g:form resource="${this.genero}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.genero}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
