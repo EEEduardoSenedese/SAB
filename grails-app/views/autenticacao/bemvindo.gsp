@@ -9,7 +9,7 @@
         <div id="conteiner">
 
             <div id="controller-list" role="navigation">
-                <h1>Bem vindo(a) ${session['usuario'].nome}, ao Sistema de Apoio Bibliotecário</h1>
+                <h1>Bem vindo(a) ao Sistema de Apoio Bibliotecário</h1>
                 <section>
                   <h2>Módulos disponíveis:</h2>
 
