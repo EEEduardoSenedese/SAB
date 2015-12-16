@@ -308,12 +308,12 @@ class EmprestimoController {
         if (params.inicio_day && params.inicio_month && params.inicio_year)
             inicio = new Date("$params.inicio_month/$params.inicio_day/$params.inicio_year")
         else
-            inicio = new Date().clearTime()
+            inicio = new Date().minus(7)
 
         if(params.fim_day && params.fim_month && params.fim_year)
             fim = new Date("$params.fim_month/$params.fim_day/$params.fim_year")
         else
-            fim = inicio.minus(7)
+            fim = new Date()
 
         params.max = Math.min(max ?: 100, 200)
 
@@ -323,8 +323,8 @@ class EmprestimoController {
         }
 
         def emprestimo = Emprestimo.withCriteria {
-            gt ("dataDeEmprestimo", fim)
-            lt ("dataDeEmprestimo", inicio.plus(1))
+            lt ("dataDeEmprestimo", fim.plus(1))
+            gt ("dataDeEmprestimo", inicio)
         }
 
         def emprestimoCount = emprestimo.size()
