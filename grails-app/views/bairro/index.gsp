@@ -12,8 +12,8 @@
                     <a href="#" class="navbar-brand"><%=entityName%></a>
                 </div>
                 <g:form class="navbar-form navbar-right" action="pesquisar">
-                    <input class="form-control" placeholder="Pesquisar Ano" type="text">
-                </g:form>
+		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		        </g:form>
                 <ul class="nav navbar-right navbar-nav">
                     <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 </ul>
