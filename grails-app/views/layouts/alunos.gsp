@@ -57,6 +57,7 @@
                 <li><g:link controller="Prateleira">Prateleiras</g:link></li>
             </ul>
 
+
             <ul class="nav nav-sidebar">
                 <li><g:link controller="Pessoa">Pessoas</g:link></li>
                 <li><g:link controller="Ano">Ano</g:link></li>
