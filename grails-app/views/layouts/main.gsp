@@ -42,11 +42,11 @@
             </ul>
 
             <ul class="nav nav-sidebar">
-                <li><g:link action="relatorioIndex">Emprestimos de hoje</g:link></li>
+                <li><g:link action="relatorioIndex" controller="Emprestimo">Emprestimos de hoje</g:link></li>
                 <li><g:link action="relatorioEmprestimos">Total de Emprestimos</g:link></li>
-                <li><g:link action="relatorioLivros">Relatorio de Livros</g:link></li>
-                <li><g:link action="relatorioPessoa">Relatorio de Pessoas</g:link></li>
-                <li><g:link action="relatorioAnos">Relatorio dos Anos</g:link></li>
+                <li><g:link action="relatorioLivros" controller="Emprestimo">Relatorio de Livros</g:link></li>
+                <li><g:link action="relatorioPessoa" controller="Emprestimo">Relatorio de Pessoas</g:link></li>
+                <li><g:link action="relatorioAnos" controller="Emprestimo">Relatorio dos Anos</g:link></li>
             </ul>
         </div>
             <g:layoutBody/>
