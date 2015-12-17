@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="alunos" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'ano.label', default: 'Ano')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
         </nav>
-        
+
         <section class="main col-sm-offset-2">
             <div id="create-ano" class="content scaffold-create" role="main">
                 <h1><g:message code="default.create.label" args="[entityName]" /></h1>
