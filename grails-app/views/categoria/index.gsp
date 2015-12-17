@@ -6,26 +6,42 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#list-categoria" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="list-categoria" class="content scaffold-list" role="main">
-          <div class="pagination">
-              <g:paginate total="${categoriaCount ?: 0}" />
-          </div>
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${categoriaList}" />
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="container-fluid">
+		        <div class="nav-header">
+		            <a href="#" class="navbar-brand"><%=entityName%></a>
+		        </div>
+                <g:form class="navbar-form navbar-right" action="pesquisar">
+		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		        </g:form>
+		        <ul class="nav navbar-right navbar-nav">
+                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+		        </ul>
+		    </div>
+		</nav>
 
-            <div class="pagination">
-                <g:paginate total="${categoriaCount ?: 0}" />
+		<section class="main col-sm-offset-2">
+            <div id="list-categoria" class="content scaffold-list" role="main">
+              <div class="pagination">
+                  <g:paginate total="${categoriaCount ?: 0}" />
+              </div>
+                <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+                <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                </g:if>
+                <f:table collection="${categoriaList}" />
+
+                <div class="pagination">
+                    <g:paginate total="${categoriaCount ?: 0}" />
+                </div>
             </div>
-        </div>
+
+		    <div class="footer" role="contentinfo">
+		      <h1>Sistema de apoio Bibliotecário</h1>
+		      <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
+		      </h2>
+		      <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
+		    </div>
+		</section>
     </body>
 </html>
