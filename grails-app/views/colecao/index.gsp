@@ -8,8 +8,8 @@
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		    <div class="container-fluid">
-		        <div class="nav-header">
-		            <a href="#" class="navbar-brand"><%=entityName%></a>
+                <div class="nav-header">
+		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
 		        </div>
                 <g:form class="navbar-form navbar-right" action="pesquisar">
 		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
