@@ -74,10 +74,6 @@ div#nav ul{
     width: 50%;
 }
 
-.odd{
-    background-color: rgba(200, 200, 200, .5);
-}
-
 .botao-normal{
     border-radius: 10px;
     box-shadow: 1px, 1px, 5px, rgba(0, 0, 0, 0.5);

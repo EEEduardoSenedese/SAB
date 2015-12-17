@@ -10,40 +10,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* BASE LAYOUT */
 
-html {
-    max-width: 80%;
-    margin: auto;
-    background-color: #ddd;
-    background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-    background-image: linear-gradient(top, #aaa, #ddd);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
-    background-repeat: no-repeat;
-    height: 100%;
-    /* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-
-html.no-cssgradients {
-    background-color: #aaa;
-}
-
-html * {
-    margin: 0;
-}
-
-body {
-    background: #ffffff;
-    color: #333333;
-    margin: 0 auto;
-    overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-       -moz-box-shadow: 0 0 0.3em #255b17;
-    -webkit-box-shadow: 0 0 0.3em #255b17;
-            box-shadow: 0 0 0.3em #255b17;
-}
-
 #grailsLogo {
     background-color: #333333;
 }
@@ -99,6 +65,7 @@ img {
     margin-top: 1.5em;
     padding: 1em;
     min-height: 1em;
+    border-radius: 10px;
 }
 
 .footer a {
@@ -133,75 +100,6 @@ img {
     text-indent: -9999px;
 }
 
-/* NAVIGATION MENU */
-
-.nav {
-    background-color: #efefef;
-    padding: 0.5em 0.75em;
-       -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-            box-shadow: 0 0 3px 1px #aaaaaa;
-    zoom: 1;
-}
-
-.nav ul {
-    overflow: hidden;
-    padding-left: 0;
-    zoom: 1;
-}
-
-.nav li {
-    display: block;
-    float: left;
-    list-style-type: none;
-    margin-right: 0.5em;
-    padding: 0;
-}
-
-.nav a {
-    color: #666666;
-    display: block;
-    padding: 0.25em 0.7em;
-    text-decoration: none;
-       -moz-border-radius: 0.3em;
-    -webkit-border-radius: 0.3em;
-            border-radius: 0.3em;
-}
-
-.nav a:active, .nav a:visited {
-    color: #666666;
-}
-
-.nav a:focus, .nav a:hover {
-    background-color: #999999;
-    color: #ffffff;
-    outline: none;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-}
-
-.no-borderradius .nav a:focus, .no-borderradius .nav a:hover {
-    background-color: transparent;
-    color: #444444;
-    text-decoration: underline;
-}
-
-.nav a.home, .nav a.list, .nav a.create {
-    background-position: 0.7em center;
-    background-repeat: no-repeat;
-    text-indent: 25px;
-}
-
-.nav a.home {
-    background-image: url(../images/skin/house.png);
-}
-
-.nav a.list {
-    background-image: url(../images/skin/database_table.png);
-}
-
-.nav a.create {
-    background-image: url(../images/skin/database_add.png);
-}
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */
 
@@ -399,6 +297,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1em;
+    font-size: 16px;
 }
 
 tr {
@@ -464,7 +363,8 @@ th.desc a {
 }
 
 .odd {
-    background: #f7f7f7;
+    background: rgb(190, 212, 255);
+    border-radius: 5px;
 }
 
 .even {
