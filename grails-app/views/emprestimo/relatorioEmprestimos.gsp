@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="relatorioEmprestimo" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'emprestimo.label', default: 'Emprestimo')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#list-emprestimo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li>
-                    <g:form action="relatorioEmprestimos">
-                        <li><a class="home" href="${createLink(controller: "emprestimo")}">Voltar</a></li>
-                        <li>
-                            <label for="inicio">Início</label>
-                            <g:datePicker id="inicio" precision="day" name="inicio" value="${inicio}"/>
-                        </li>
-                        <li>
-                            <label for="fim">Fim</label>
-                            <g:datePicker id="fim" precision="day" name="fim" value="${fim}"/>
-                        </li>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="container-fluid">
+                <div class="nav-header">
+		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
+		        </div>
+                <g:form class="navbar-form navbar-right" action="pesquisar">
+		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		        </g:form>
+                <g:form action="relatorioEmprestimos" class="navbar-form navbar-right">
+                    <label for="inicio">Início</label>
+                    <g:datePicker id="inicio" precision="day" name="inicio" value="${inicio}"/>
 
-                        <g:submitButton name="search" class="edit" value="Alterar"/>
-                    </g:form>
-                </li>
-            </ul>
-        </div>
-        <div id="list-emprestimo" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <ol class="property-list livro">
+                    <label for="fim">Fim</label>
+                    <g:datePicker id="fim" precision="day" name="fim" value="${fim}"/>
+                    <g:submitButton name="search" class="edit" value="Alterar"/>
+                </g:form>
+		    </div>
+		</nav>
 
-                <li class="fieldcontain">
-                    <span id="titulo-label" class="property-label">Total de Emprestimo</span>
-                    <div class="property-value" aria-labelledby="titulo-label">${emprestimoCount}</div>
-                </li>
-            </ol>
-            <f:table collection="${emprestimoList}" properties="['id', "pessoa", "livro", "dataDeEmprestimo", "dataDeDevolucao", "devolvido"]"/>
-        </div>
+		<section class="main col-sm-offset-2">
+            <div id="list-emprestimo" class="content scaffold-list" role="main">
+                <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+                <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                </g:if>
+                <ol class="property-list livro">
+
+                    <li class="fieldcontain">
+                        <span id="titulo-label" class="property-label">Total de Emprestimo</span>
+                        <div class="property-value" aria-labelledby="titulo-label">${emprestimoCount}</div>
+                    </li>
+                </ol>
+                <f:table collection="${emprestimoList}" properties="['id', "pessoa", "livro", "dataDeEmprestimo", "dataDeDevolucao", "devolvido"]"/>
+            </div>
+
+		    <div class="footer" role="contentinfo">
+		      <h1>Sistema de apoio Bibliotecário</h1>
+		      <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
+		      </h2>
+		      <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
+		    </div>
+		</section>
     </body>
 </html>
