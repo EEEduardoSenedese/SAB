@@ -12,6 +12,7 @@
         <asset:stylesheet src="estilo.css"/>
         <asset:stylesheet src="application.css"/>
         <asset:javascript src="application.js"/>
+        <asset:javascript src="jquery-2.1.3.js"/>
 
         <g:layoutHead/>
     </head>
