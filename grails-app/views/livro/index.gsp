@@ -6,42 +6,44 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#list-livro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="container-fluid">
+                <div class="nav-header">
+		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
+		        </div>
+                <g:form class="navbar-form navbar-right" action="pesquisar">
+		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		            <input class="form-control" placeholder="ID do ${entityName}" type="number" value="${params.id}" name="id">
+		        </g:form>
+		        <ul class="nav navbar-right navbar-nav">
+                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+		        </ul>
+		    </div>
+		</nav>
 
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                <li>
-                    <g:form action="pesquisar">
-                        <label for="parametro" class="escondido">Pesquisa por Titulo</label>
-                        <input type="text" name="parametro" value="" placeholder="Pesquisa por Título">
-                    </g:form>
-                </li>
-                <li>
-                    <g:form action="pesquisarPorId">
-                        <label for="id" class="escondido">Pesquisa por ID</label>
-                        <input type="number" name="id" value="" autofocus placeholder="Pesquisa por ID">
-                    </g:form>
-                </li>
-            </ul>
-        </div>
-
-        <div id="list-livro" class="content scaffold-list" role="main">
-
-            <div class="pagination">
-                <g:paginate total="${livroCount ?: 0}" />
+		<section class="main col-sm-offset-2">
+            <div id="list-livro" class="content scaffold-list" role="main">
+                <div class="pagination">
+                    <g:paginate total="${livroCount ?: 0}" />
+                </div>
+    
+                <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+                <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                </g:if>
+                <f:table collection="${livroList}" properties="["id", "titulo", "autorLivro", "generoLivro", "disponivel"]"/>
+    
+                <div class="pagination">
+                    <g:paginate total="${livroCount ?: 0}" />
+                </div>
             </div>
 
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${livroList}" properties="["id", "titulo", "autorLivro", "generoLivro", "disponivel"]"/>
-
-            <div class="pagination">
-                <g:paginate total="${livroCount ?: 0}" />
-            </div>
-        </div>
+		    <div class="footer" role="contentinfo">
+		      <h1>Sistema de apoio Bibliotecário</h1>
+		      <h2>Este software está sobre a licença GPL, e seu código é mantido pela Escola Estadual Eduardo Senedese, Juruaia - Minas Gerais
+		      </h2>
+		      <h3>A GPL não permite que o este software seja vendido. Seu código dever ser distribuido livremente</h3>
+		    </div>
+		</section>
     </body>
 </html>
