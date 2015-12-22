@@ -226,7 +226,7 @@ class EmprestimoController {
         }
     }
 
-    def pesquisarLivro(long id){
+    def pesquisar(long id){
 
         Livro livro = Livro.get(id)
 
