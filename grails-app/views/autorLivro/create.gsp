@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'autorLivro.label', default: 'AutorLivro')}" />
+        <g:set var="entityName" value="${message(code: 'autorLivro.label', default: 'Autor do Livro')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-ui.js"/>
         <asset:stylesheet src="jquery-ui.css"/>

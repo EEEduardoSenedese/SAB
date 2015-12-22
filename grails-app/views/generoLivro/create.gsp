@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'generoLivro.label', default: 'GeneroLivro')}" />
+        <g:set var="entityName" value="${message(code: 'generoLivro.label', default: 'Genero do Livro')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-ui.js"/>
         <asset:stylesheet src="jquery-ui.css"/>
@@ -43,22 +43,22 @@
                 </g:hasErrors>
                 <g:form action="save">
                     <fieldset class="form">
-    
+
                         <f:with bean="generoLivro">
                             <f:field property="livro">
                                 <g:select name="livro.id" id="livro.id" from="${sab.livros.Livro.get(params.long('livro.id'))}" optionKey="id"/>
                             </f:field>
-    
+
                             <f:field property="genero">
                                 <f:widget property="genero.nome" id="generos" autofocus="true"/>
                                 <g:submitButton name="create" class="botao-normal" value="Adicionar este Genero"/>
                             </f:field>
                         </f:with>
-    
+
                     </fieldset>
-    
+
                 </g:form>
-    
+
                 <fieldset class="form">
                     <!-- Tabela com os livros cadastrados -->
                     <div class="fieldcontain">
@@ -69,7 +69,7 @@
                                     <td>
                                         <g:link action="show" controller="Genero" id="${generoLivro.genero.id}"> ${generoLivro.genero}</g:link>
                                     </td>
-    
+
                                     <td>
                                         <g:form resource="${generoLivro}" method="DELETE">
                                             <fieldset class="buttons">
@@ -82,7 +82,7 @@
                         </table>
                     </div>
                 </fieldset>
-    
+
                 <fieldset class="buttons">
                     <g:link action="show" controller="Livro" id="${params.long('livro.id')}">Finalizar Cadastro</g:link>
                 </fieldset>
