@@ -12,7 +12,7 @@
 		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
 		        </div>
                 <g:form class="navbar-form navbar-right" action="pesquisar">
-		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="number" value="${params.parametro}" name="id">
 		        </g:form>
 		        <ul class="nav navbar-right navbar-nav">
                     <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
