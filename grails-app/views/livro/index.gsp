@@ -12,7 +12,9 @@
 		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
 		        </div>
                 <g:form class="navbar-form navbar-right" action="pesquisar">
-		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		            <input class="form-control" placeholder="Título do Livro ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		        </g:form>
+                <g:form class="navbar-form navbar-right" action="pesquisarPorId">
 		            <input class="form-control" placeholder="ID do ${entityName}" type="number" value="${params.id}" name="id">
 		        </g:form>
 		        <ul class="nav navbar-right navbar-nav">
@@ -26,13 +28,13 @@
                 <div class="pagination">
                     <g:paginate total="${livroCount ?: 0}" />
                 </div>
-    
+
                 <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
                 <f:table collection="${livroList}" properties="["id", "titulo", "autorLivro", "generoLivro", "disponivel"]"/>
-    
+
                 <div class="pagination">
                     <g:paginate total="${livroCount ?: 0}" />
                 </div>

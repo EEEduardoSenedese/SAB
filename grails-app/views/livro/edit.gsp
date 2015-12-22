@@ -24,7 +24,9 @@
 		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
 		        </div>
                 <g:form class="navbar-form navbar-right" action="pesquisar">
-		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		            <input class="form-control" placeholder="Título do Livro ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		        </g:form>
+                <g:form class="navbar-form navbar-right" action="pesquisarPorId">
 		            <input class="form-control" placeholder="ID do ${entityName}" type="number" value="${params.id}" name="id">
 		        </g:form>
 		        <ul class="nav navbar-right navbar-nav">
@@ -53,19 +55,19 @@
                         <f:field bean="livro" property="colecao">
                             <input id="colecoes" name="colecao.nome" value="${this.livro.colecao.nome}"/>
                         </f:field>
-    
+
                         <f:field bean="livro" property="editora">
                             <input id="editoras" name="editora.nome" value="${this.livro.editora.nome}"/>
                         </f:field>
-    
+
                         <f:field bean="livro" property="data">
                             <input type="number" name="data" value="${livro.data}"/>
                         </f:field>
-    
+
                         <f:field bean="livro" property="numeroDePaginas">
                             <input type="number" name="numeroDePaginas" value="${livro.numeroDePaginas}">
                         </f:field>
-    
+
                         <f:all bean="livro" except="editora, generoLivro, autorLivro, data, numeroDePaginas, colecao, emprestimo"/>
                     </fieldset>
                     <fieldset class="buttons">

@@ -25,7 +25,9 @@
 		            <a href="${createLink(action: "index")}" class="navbar-brand"><%=entityName%></a>
 		        </div>
                 <g:form class="navbar-form navbar-right" action="pesquisar">
-		            <input class="form-control" placeholder="Pesquisar ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		            <input class="form-control" placeholder="Título do Livro ${entityName}" type="text" value="${params.parametro}" name="parametro">
+		        </g:form>
+                <g:form class="navbar-form navbar-right" action="pesquisarPorId">
 		            <input class="form-control" placeholder="ID do ${entityName}" type="number" value="${params.id}" name="id">
 		        </g:form>
 		        <ul class="nav navbar-right navbar-nav">
@@ -37,11 +39,11 @@
 		<section class="main col-sm-offset-2">
             <div id="create-livro" class="content scaffold-create" role="main">
 	            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
-	
+
 	            <g:if test="${flash.message}">
 	                <div class="message" role="status">${flash.message}</div>
 	            </g:if>
-	
+
 	            <g:hasErrors bean="${this.livro}">
 	                <ul class="errors" role="alert">
 	                    <g:eachError bean="${this.livro}" var="error">
@@ -49,37 +51,37 @@
 	                    </g:eachError>
 	                </ul>
 	            </g:hasErrors>
-	
+
 	            <g:form action="save">
 	                <fieldset class="form">
 	                    <f:with bean="livro">
 	                        <f:field property="editora">
 	                            <f:widget property="editora.nome" id="editoras" autofocus="true"/>
 	                        </f:field>
-	
+
 	                        <f:field property="colecao">
 	                            <f:widget property="colecao.nome" value="${sab.livros.Colecao.list(max: 1)[0]}" id="colecoes"/>
 	                        </f:field>
-	
+
 	                        <f:field property="titulo"/>
-	
+
 	                        <f:field property="aquisicao"/>
-	
+
 	                        <f:field property="dataDeAquisicao"/>
-	
+
 	                        <f:field property="data"/>
-	
+
 	                        <f:field property="numeroDePaginas"/>
-	
+
 	                        <f:field property="categoria"/>
-	
+
 	                        <f:field property="prateleira"/>
-	
+
 	                        <f:field property="disponivel"/>
-	
+
 	                    </f:with>
 	                </fieldset>
-	
+
 	                <fieldset class="buttons">
 	                    <g:submitButton name="create" class="save" value="Próximo (Adicionar Autore(s))" />
 	                </fieldset>
