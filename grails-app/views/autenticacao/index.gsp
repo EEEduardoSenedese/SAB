@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Bem vindo ao SAB</title>
         <asset:stylesheet src="bootstrap.css"/>
+        <asset:stylesheet src="signin.css"/>
         <asset:stylesheet src="boasvindas.css"/>
     </head>
     <body>
@@ -21,10 +22,10 @@
                         <div class="form-signin">
                             <fieldset>
                                 <label for="pessoa.usuario" class="sr-only">Usuario</label>
-                                <input name="usuario" class="form-control" placeholder="Usuário" autofocus="true" id="usuario"/>
+                                <input name="usuario" class="form-control" placeholder="Usuário" autofocus="true"/>
 
                                 <label for="pessoa.senha" class="sr-only">Senha</label>
-                                <input name="senha" type="password" class="form-control" placeholder="Senha" id="senha"/>
+                                <input name="senha" type="password" class="form-control" placeholder="Senha"/>
                             </fieldset>
                             <fieldset>
                                 <g:submitButton name="autenticar" value="Autenticar" class="btn btn-lg btn-primary btn-block" />
