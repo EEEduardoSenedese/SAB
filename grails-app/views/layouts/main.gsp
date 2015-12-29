@@ -49,9 +49,12 @@
                 <li><g:link action="relatorioAnos" controller="Emprestimo">Relatorio dos Anos</g:link></li>
             </ul>
         </div>
-            <g:layoutBody/>
+            <div class="white-gradient-bottom">
+                <g:layoutBody/>
 
-            <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+                <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+            </div>
+
         </g:if>
         <g:else>
             <h1>Acesso Negado</h1>

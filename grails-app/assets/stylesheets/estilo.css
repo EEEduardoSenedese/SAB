@@ -87,3 +87,11 @@ div#nav ul{
     -webkit-box-shadow: none;
             box-shadow: none;
 }
+
+.white-gradient-bottom {
+    background-image: linear-gradient(to bottom, white, rgb(189, 189, 189));
+}
+
+.gray-gradient-bottom {
+    background-image: linear-gradient(to bottom, rgb(143, 143, 143), rgb(68, 68, 68));
+}
