@@ -3023,6 +3023,7 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   border-radius: 4px;
   transition: 0.5s;
+  border: 2px solid rgba(0, 0, 0, 0.3);
 }
 .btn:focus,
 .btn:active:focus,
