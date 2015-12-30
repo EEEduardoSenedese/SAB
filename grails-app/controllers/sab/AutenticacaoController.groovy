@@ -5,7 +5,7 @@ class AutenticacaoController {
 
     def index(){
         if (session['usuario']) {
-            redirect action: 'bemvindo'
+            redirect controller: "emprestimo", action: "relatorioIndex"
         }
     }
 
@@ -18,7 +18,7 @@ class AutenticacaoController {
         println pessoa
         if (pessoa){
             session['usuario'] = pessoa
-            redirect (action: "bemvindo")
+            redirect controller: "emprestimo", action: "relatorioIndex"
         } else{
             flash.message = "Acesso Negado"
             redirect (action: "index")
