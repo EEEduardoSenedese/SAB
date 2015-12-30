@@ -1,4 +1,12 @@
 
+body{
+    background-image: linear-gradient(rgb(244, 244, 244), rgb(177, 177, 177));
+}
+
+table {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
 
 header {
     width: 100%;
