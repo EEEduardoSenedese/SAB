@@ -1,0 +1,30 @@
+{
+  "name": "sab",
+  "version": "1.0.0",
+  "description": "Este projeto tem como finalidade ajudar a gestão de bibliotecas escolares e municipais, assim como incentivar  a leitura. Na pasta doc é possível encontrar mais informações sobre as características do projeto e sua estrutura de dados.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EEEduardoSenedese/SAB.git"
+  },
+  "author": "Gean Saturno <geansaturno@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EEEduardoSenedese/SAB/issues"
+  },
+  "homepage": "https://github.com/EEEduardoSenedese/SAB#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jit-grunt": "^0.10.0",
+    "less-plugin-clean-css": "^1.5.1",
+    "matchdep": "^1.0.1"
+  }
+}
