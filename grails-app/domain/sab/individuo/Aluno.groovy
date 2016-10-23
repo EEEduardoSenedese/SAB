@@ -8,7 +8,6 @@ class Aluno extends Pessoa{
     static belongsTo = [
       arquivo: Arquivo,
       estadoDoAluno: EstadoDoAluno,
-      ano: Ano
     ]
 
     static constraints = {

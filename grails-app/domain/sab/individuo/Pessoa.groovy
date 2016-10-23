@@ -27,7 +27,8 @@ class Pessoa {
       bairro: Bairro,
       cidade: Cidade,
       uf: UF,
-      sexo: Sexo
+      sexo: Sexo,
+      ano: Ano
     ]
 
     static hasMany = [

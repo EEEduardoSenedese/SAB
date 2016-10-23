@@ -46,7 +46,11 @@ class EmprestimoController {
             return
         }
 
+        log.info pessoa;
+
         emprestimo.pessoa = pessoa
+
+        log.info emprestimo
 
         def mensagen
 
@@ -161,6 +165,7 @@ class EmprestimoController {
             pessoa.uf = UF.list(max: '1')[0]
             pessoa.rua = Rua.list(max: '1')[0]
             pessoa.sexo = Sexo.list(max: '1')[0]
+            pessoa.ano = Ano.list(max: '1')[0]
             pessoa.numeroDaRua = 0
             pessoa.dataDeNascimento = new Date()
 
@@ -169,6 +174,7 @@ class EmprestimoController {
 
         emprestimo = new Emprestimo()
         emprestimo.pessoa = pessoa
+        emprestimo.ano = pessoa.ano;
         emprestimo.dataDeDevolucao = new Date().plus(7)
 
         [emprestimo: emprestimo, emprestimoList: Emprestimo.findAllByPessoaAndDevolvido(emprestimo.pessoa, false)]
@@ -190,6 +196,11 @@ class EmprestimoController {
         }
 
         emprestimo.dataDeEmprestimo = new Date()
+
+        if(emprestimo.ano != emprestimo.pessoa.ano){
+            emprestimo.pessoa.ano = emprestimo.ano;
+            emprestimo.pessoa.save();
+        }
 
         def mensagem
 
